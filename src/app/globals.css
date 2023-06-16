@@ -18,18 +18,18 @@ body {
   --color-pink_light: #f7b7cd;
   --color-white: #ffffff;
   --color-white_1: ##f5f5f5;
-  --font-size_xxl: 64;
-  --font-size_xl: 24;
-  --font-size_l: 20;
-  --font-size_m: 18;
-  --font-size_s: 16;
-  --font-size_xs: 10;
-  --font-weigth_xxl: 700;
-  --font-weigth_xl: 600;
+  --font-size_xxl: 64px;
+  --font-size_xl: 24px;
+  --font-size_l: 20px;
+  --font-size_m: 18px;
+  --font-size_s: 16px;
+  --font-size_xs: 10px;
+  --font-weight_xxl: 700;
+  --font-weight_xl: 600;
   --font-weight_m: 400;
 }
 
-[data-theme="default"] {
+[data-theme='default'] {
   --color-primary: var(--color-purple_dark);
   --color-secondary: var(--color-pink);
   --color-warning: var(--color-orange);
@@ -41,4 +41,5 @@ body {
   --plot-line_2: var(--color-orange);
   --plot-column: var(--color-pink_light);
   --plot-column_hover: var(--color-pink);
+  --bg-shadow: var(--color-purple_light);
 }

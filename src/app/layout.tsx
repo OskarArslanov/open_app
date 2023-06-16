@@ -24,6 +24,9 @@ export const RootLayout: FC<PropsWithChildren> = (props) => {
         data-theme="default"
       >
         <div className={styles.container}>
+          <svg width="100" height="100">
+            <circle cx="50" cy="50" r="50" />
+          </svg>
           <OAHeaderContainer />
           <OABodyContainer>{props.children}</OABodyContainer>
           <OAFooterContainer />
