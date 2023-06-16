@@ -1,0 +1,14 @@
+.OAInfoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.OAInfoCard_Title {
+  font-weight: var(--font-weigth_xl);
+
+}
+
+.OAInfoCard_Description {
+  color: var(--text-color_secondary);
+}
