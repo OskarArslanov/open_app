@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import styles from './auth.module.css';
-import AuthPageInfo from '@/widgets/auth';
+import AuthPageInfo from '@/widgets/OAAuth';
 
 const AuthLayout: FC<PropsWithChildren> = (props) => {
   return (

@@ -3,6 +3,7 @@
   flex-direction: column;
   color: var(--text-color_primary);
   font-weight: var(--font-weight_m);
+  font-size: var(--font-size_s);
 }
 
 .layout::-webkit-scrollbar {

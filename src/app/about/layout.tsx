@@ -1,7 +1,8 @@
-import styles from "./styles.module.css";
+import { FC, PropsWithChildren } from 'react';
+import styles from './styles.module.css';
 
-const AboutLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>About</div>;
+const AboutLayout: FC<PropsWithChildren> = (props) => {
+  return <div>{props.children}</div>;
 };
 
 export default AboutLayout;

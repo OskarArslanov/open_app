@@ -1,7 +1,8 @@
-import styles from "./styles.module.css";
+import { FC, PropsWithChildren } from 'react';
+import styles from './styles.module.css';
 
-const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>Platform</div>;
+const PlatformLayout: FC<PropsWithChildren> = (props) => {
+  return props.children;
 };
 
 export default PlatformLayout;
