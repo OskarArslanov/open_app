@@ -1,0 +1,11 @@
+.auth {
+  display: flex;
+  width: 100%;
+}
+
+.auth_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

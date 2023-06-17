@@ -1,7 +1,7 @@
-import styles from "./styles.module.css";
+import styles from "./contacts.module.css";
 
-const COntactsPage = () => {
+const ContactsPage = () => {
   return <div>Contacts</div>;
 };
 
-export default COntactsPage;
+export default ContactsPage;

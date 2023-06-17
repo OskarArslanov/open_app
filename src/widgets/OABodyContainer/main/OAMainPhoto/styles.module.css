@@ -1,0 +1,18 @@
+.mainphoto_imageblock {
+  position: relative;
+}
+
+.mainphoto_imageblock_bg {
+  width: 450px;
+  height: 532px;
+  background: var(--bg-shadow);
+  border-radius: 10px;
+  content: '';
+}
+
+.mainphoto_imageblock_image {
+  border-radius: 10px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}

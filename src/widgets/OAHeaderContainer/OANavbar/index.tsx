@@ -26,7 +26,7 @@ const OANavbar = () => {
         const isActive = item.href === segment;
         return (
           <Link
-            href={item.href}
+            href={`/${item.href}`}
             shallow
             key={item.name}
             className={`${styles.navbar_link} ${isActive && styles.navbar_link__active}`}

@@ -5,6 +5,7 @@ import OAFooterContainer from '@/widgets/OAFooterContainer';
 import OAHeaderContainer from '@/widgets/OAHeaderContainer';
 import OABodyContainer from '@/widgets/OABodyContainer';
 import { FC, PropsWithChildren } from 'react';
+import Main from '../widgets/OABodyContainer/main';
 
 const inter = Noto_Sans({
   subsets: ['latin'],
@@ -16,7 +17,7 @@ export const metadata = {
   description: 'Huli d.o.o test task',
 };
 
-export const RootLayout: FC<PropsWithChildren> = (props) => {
+const RootLayout: FC<PropsWithChildren> = (props) => {
   return (
     <html lang="en">
       <body
@@ -24,9 +25,6 @@ export const RootLayout: FC<PropsWithChildren> = (props) => {
         data-theme="default"
       >
         <div className={styles.container}>
-          <svg width="100" height="100">
-            <circle cx="50" cy="50" r="50" />
-          </svg>
           <OAHeaderContainer />
           <OABodyContainer>{props.children}</OABodyContainer>
           <OAFooterContainer />

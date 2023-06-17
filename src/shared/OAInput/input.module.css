@@ -1,0 +1,19 @@
+.OAInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.OAInput_label {
+}
+
+.OAInput_input {
+  background: var(--text-color_not_primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 4px 10px;
+}
+
+.OAInput__input__error {
+  border: 1px solid var(--color-error);
+}

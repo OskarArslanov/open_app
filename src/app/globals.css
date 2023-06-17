@@ -17,8 +17,9 @@ body {
   --color-red: red;
   --color-pink_light: #f7b7cd;
   --color-white: #ffffff;
-  --color-white_1: ##f5f5f5;
-  --font-size_xxl: 64px;
+  --color-white_1: #f5f5f5;
+  --font-size_xxxl: 64px;
+  --font-size_xxl: 28px;
   --font-size_xl: 24px;
   --font-size_l: 20px;
   --font-size_m: 18px;
@@ -26,6 +27,7 @@ body {
   --font-size_xs: 10px;
   --font-weight_xxl: 700;
   --font-weight_xl: 600;
+  --font-weight_l: 500;
   --font-weight_m: 400;
 }
 
@@ -42,4 +44,23 @@ body {
   --plot-column: var(--color-pink_light);
   --plot-column_hover: var(--color-pink);
   --bg-shadow: var(--color-purple_light);
+  --border-color: var(--color-gray_light)
+}
+
+@media (min-width: 1320px) {
+  .hide__L {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1319px) {
+  .hide__M {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hide__S {
+    display: none !important;
+  }
 }

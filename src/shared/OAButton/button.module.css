@@ -14,8 +14,8 @@
 }
 
 .OAButton_size__normal {
-  padding: 14px 32px;
-  font-size: var(--font-size_m);
+  padding: 12px 24px;
+  font-size: var(--font-size_s);
 }
 
 .OAButton_size__large {

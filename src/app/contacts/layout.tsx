@@ -1,7 +1,8 @@
-import styles from "./styles.module.css";
+import { FC, PropsWithChildren } from 'react';
+import styles from './styles.module.css';
 
-const ContactsLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>Contacts</div>;
+const ContactsLayout: FC<PropsWithChildren> = (props) => {
+  return <div>{props.children}</div>;
 };
 
 export default ContactsLayout;

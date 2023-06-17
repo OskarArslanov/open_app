@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 
-const PlatformPage = () => {
-  return <div>Platform</div>;
+const PortfolioPage = () => {
+  return <div>Portfolio</div>;
 };
 
-export default PlatformPage;
+export default PortfolioPage;
