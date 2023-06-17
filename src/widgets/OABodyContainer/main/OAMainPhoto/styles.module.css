@@ -2,9 +2,12 @@
   position: relative;
 }
 
-.mainphoto_imageblock_bg {
+.mainphoto_imageblock > * {
   width: 450px;
   height: 532px;
+}
+
+.mainphoto_imageblock_bg {
   background: var(--bg-shadow);
   border-radius: 10px;
   content: '';

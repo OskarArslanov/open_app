@@ -12,6 +12,7 @@ interface OAButtonProps {
   disabled?: boolean;
   style?: React.CSSProperties;
   className?: string;
+  fullwidth?: boolean;
 }
 const OAButton: FC<OAButtonProps> = (props) => {
   const themeClass = styles[`OAButton_theme__${props.theme || 'primary'}`];
@@ -20,7 +21,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
   const sizeClass = styles[`OAButton_size__${props.size || 'normal'}`];
   return (
     <ButtonBase
-      style={props.style}
+      style={{ ...props.style, width: props.fullwidth ? '100%' : 'undefined' }}
       type={props.type || 'button'}
       onClick={props.onClick}
       disabled={props.disabled}

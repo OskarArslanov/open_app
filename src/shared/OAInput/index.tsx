@@ -8,12 +8,10 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 interface OAInputProps {
   onChange?: (data: string) => void;
-  disabled?: boolean;
   style?: CSSProperties;
   className?: string;
   placeholder?: string;
   label?: string;
-  required?: boolean;
   rules?: RegisterOptions;
   name: string;
   type: 'text' | 'number' | 'email' | 'password';
@@ -43,10 +41,14 @@ const OAInput: FC<OAInputProps> = (props) => {
     }
     props.onClickEndAdornment?.();
   };
-  endAdortment = (
-    <IconButton onClick={handleClickEnd}>{endAdortment}</IconButton>
+  endAdortment = (props.endAdornment || isPassword) && (
+    <IconButton onClick={handleClickEnd} style={{ padding: '0' }}>
+      {endAdortment}
+    </IconButton>
   );
-  const startAdornment = <IconButton>{props.startAdornment}</IconButton>;
+  const startAdornment = props.startAdornment && (
+    <IconButton style={{ padding: '0' }}>{props.startAdornment}</IconButton>
+  );
 
   const [value, setValue] = useState<string>('');
   const [invalid, setInvalid] = useState<boolean>();
@@ -68,7 +70,7 @@ const OAInput: FC<OAInputProps> = (props) => {
       {props.label && (
         <label className={styles.OAInput_label}>
           {props.label}
-          {props.required && <span style={{ color: 'red' }}>*</span>}
+          {props.rules?.required && <span style={{ color: 'red' }}>*</span>}
         </label>
       )}
       <Controller
@@ -82,8 +84,9 @@ const OAInput: FC<OAInputProps> = (props) => {
               placeholder={props.placeholder}
               className={`${styles.OAInput_input} ${errorClass}`}
               type={type}
-              disabled={props.disabled}
+              disabled={props.rules?.disabled}
               value={value}
+              required={!!props.rules?.required}
               endAdornment={endAdortment}
               startAdornment={startAdornment}
               onInput={(e) => {

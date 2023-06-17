@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const OAMainPhoto = () => {
   return (
-    <div className={styles.mainphoto_imageblock}>
+    <div className={`${styles.mainphoto_imageblock} hide__S hide__M`}>
       <div className={styles.mainphoto_imageblock_bg} />
       <Image
         src={Photo}

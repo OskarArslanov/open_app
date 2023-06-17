@@ -26,7 +26,7 @@ const MOCK_CardInfo = [
 
 const Main = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       <div className={styles.container_infoblock}>
         <OAMainOrder />
         <OAMainPhoto />

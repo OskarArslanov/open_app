@@ -5,7 +5,6 @@ import OAFooterContainer from '@/widgets/OAFooterContainer';
 import OAHeaderContainer from '@/widgets/OAHeaderContainer';
 import OABodyContainer from '@/widgets/OABodyContainer';
 import { FC, PropsWithChildren } from 'react';
-import Main from '../widgets/OABodyContainer/main';
 
 const inter = Noto_Sans({
   subsets: ['latin'],

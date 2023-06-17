@@ -9,3 +9,9 @@
   align-items: center;
   width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .auth {
+    padding: 0 20px;
+  }
+}

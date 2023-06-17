@@ -9,7 +9,7 @@
 .container_infoblock {
   display: flex;
   justify-content: space-between;
-  margin-top: 135px
+  margin-top: 10%;
 }
 
 .container_cardlist {

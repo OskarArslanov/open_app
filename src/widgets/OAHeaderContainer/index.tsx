@@ -1,4 +1,5 @@
 'use client';
+
 import { FC, PropsWithChildren } from 'react';
 import styles from './header.module.css';
 import Logo from '@/shared/assets/Logo';
@@ -12,7 +13,7 @@ const OAHeaderContainer: FC<PropsWithChildren> = (props) => {
   const isAuth = segment === 'auth';
   if (isAuth) return null;
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ padding: '0 20px' }}>
       <Link href="/" shallow>
         <Logo />
       </Link>

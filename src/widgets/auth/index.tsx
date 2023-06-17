@@ -1,3 +1,5 @@
+'use client';
+
 import Calls from '@/shared/assets/png/Calls.png';
 import Dashboard from '@/shared/assets/png/Dashboard.png';
 import styles from './auth.module.css';
@@ -10,13 +12,13 @@ const AuthPageInfo = () => {
         <Image
           src={Calls}
           alt="calls"
-          priority
+          priority={false}
           className={styles.info_photos_calls}
         />
         <Image
           src={Dashboard}
           alt="dashboard"
-          priority
+          priority={false}
           className={styles.info_photos_dashboard}
         />
       </div>
