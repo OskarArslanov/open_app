@@ -1,4 +1,4 @@
-import Platform from '@/pages/Platform';
+import Platform from '@/pages/Platform/index';
 
 const PlatformPage = () => {
   return <Platform />;
