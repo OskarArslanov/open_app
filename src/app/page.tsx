@@ -1,6 +1,4 @@
-'use client';
-
-import Main from '@/widgets/OABodyContainer/main';
+import Main from '@/pages/Main';
 
 const MainPage = () => {
   return <Main />;

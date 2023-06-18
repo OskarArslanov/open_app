@@ -9,12 +9,3 @@
 .layout::-webkit-scrollbar {
   display: none;
 }
-
-.container {
-  height: 100%;
-  max-width: 1320px;
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-  align-self: center;
-}

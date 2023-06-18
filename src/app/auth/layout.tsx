@@ -1,13 +1,30 @@
+'use client';
+
 import { FC, PropsWithChildren } from 'react';
-import styles from './auth.module.css';
-import AuthPageInfo from '@/widgets/OAAuth';
+import AuthCharts from '@/pages/Auth/AuthCharts';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  @media screen and (max-width: 768px) {
+    padding: 0 20px;
+  }
+`;
+
+const AuthInput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
 
 const AuthLayout: FC<PropsWithChildren> = (props) => {
   return (
-    <div className={styles.auth}>
-      <div className={styles.auth_form}>{props.children}</div>
-      <AuthPageInfo />
-    </div>
+    <Container>
+      <AuthInput>{props.children}</AuthInput>
+      <AuthCharts />
+    </Container>
   );
 };
 

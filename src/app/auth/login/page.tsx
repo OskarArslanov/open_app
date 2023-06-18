@@ -1,6 +1,4 @@
-'use client';
-
-import Login from '@/widgets/OAAuth/login';
+import Login from "@/pages/Auth/Login";
 
 const LoginPage = () => {
   return <Login />;
