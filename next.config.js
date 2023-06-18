@@ -1,18 +1,17 @@
 /** @type {import('next').NextConfig} */
 
-const isGithubActions = process.env.GITHUB_ACTIONS || false
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
 
-const repo = 'oskararslanov.github.io';
-let assetPrefix = ``;
-let basePath = `/`;
+let assetPrefix;
+let basePath;
 
 if (isGithubActions) {
-    // trim off `<owner>/`
-    const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
-  
-    assetPrefix = `/${repo}/`
-    basePath = `/${repo}`
-  }
+  // trim off `<owner>/`
+  // const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+  const repo = 'oskararslanov.github.io';
+  assetPrefix = `/${repo}/`;
+  basePath = `/${repo}`;
+}
 
 const nextConfig = {
   assetPrefix: assetPrefix,
