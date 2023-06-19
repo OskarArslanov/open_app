@@ -87,7 +87,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
       $size={props.size}
       style={{
         ...props.style,
-        width: props.fullwidth ? '100%' : 'undefined',
+        width: props.fullwidth ? '100%' : undefined,
       }}
       type={props.type || 'button'}
       onClick={props.onClick}

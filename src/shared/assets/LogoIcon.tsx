@@ -1,4 +1,4 @@
-const Logo = () => {
+const LogoIcon = () => {
   return (
     <svg
       width="195"
@@ -37,4 +37,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default LogoIcon;

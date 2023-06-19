@@ -1,12 +1,16 @@
 'use client';
 
-import Logo from '@/shared/assets/Logo';
+import Logo from '@/shared/assets/LogoIcon';
 import Link from 'next/link';
 import OAForm from '@/shared/controls/OAForm';
 import OAInput from '@/shared/controls/OAInput';
 import OAButton from '@/shared/controls/OAButton';
 import OACheckbox from '@/shared/controls/OACheckbox';
 import styled from 'styled-components';
+import axiosInstance from '@/shared/utils/axiosConfig';
+import { useState } from 'react';
+import { AxiosError, AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
 
 const Container = styled.div`
   display: flex;
@@ -28,13 +32,28 @@ const RememberMe = styled.div`
 `;
 
 const Login = () => {
+  const router = useRouter();
+  const [error, setError] = useState<string>();
+  const handleSubmit = async (data: Record<string, any>) => {
+    axiosInstance
+      .post('/auth/login', {
+        login: data.email,
+        password: data.password,
+      })
+      .then((resp: AxiosResponse) => {
+        localStorage.setItem('jwt', resp.data.jwt);
+        localStorage.setItem('user', JSON.stringify(resp.data.user));
+        router.push('/platform');
+      })
+      .catch((err: AxiosError) => setError(err.response?.data as string));
+  };
   return (
     <Container>
       <Link href="/">
         <Logo />
       </Link>
       <Title>Вход</Title>
-      <OAForm onSubmit={console.log}>
+      <OAForm onSubmit={handleSubmit} error={error}>
         <OAInput
           name="email"
           placeholder="Email"

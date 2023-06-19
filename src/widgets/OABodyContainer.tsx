@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Container = styled.section`
   display: flex;
   flex: 1 1 auto;
+  padding: 0px 20px;
 `;
 const OABodyContainer: FC<PropsWithChildren> = (props) => {
   const segment = useSelectedLayoutSegment();

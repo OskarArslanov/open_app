@@ -4,6 +4,7 @@
   color: var(--text-color_primary);
   font-weight: var(--font-weight_m);
   font-size: var(--font-size_s);
+  height: 100%;
 }
 
 .layout::-webkit-scrollbar {

@@ -6,8 +6,6 @@ let assetPrefix;
 let basePath;
 
 if (isGithubActions) {
-  // trim off `<owner>/`
-  // const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
   const repo = 'oskararslanov.github.io';
   assetPrefix = `/${repo}/`;
   basePath = `/${repo}`;
@@ -16,6 +14,11 @@ if (isGithubActions) {
 const nextConfig = {
   assetPrefix: assetPrefix,
   basePath: basePath,
+  compiler: {
+    styledComponents: true,
+  },
+  reactStrictMode: false,
+
 };
 
 module.exports = nextConfig;

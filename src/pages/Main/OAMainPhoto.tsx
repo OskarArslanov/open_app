@@ -4,18 +4,19 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
+  & > * {
+    width: 450px;
+    height: 532px;
+    border-radius: 10px;
+  }
 `;
 
 const ImgBg = styled.div`
   background: var(--bg-shadow);
-  border-radius: 10px;
   content: '';
 `;
 
 const Img = styled(Image)`
-  width: 450px;
-  height: 532px;
-  border-radius: 10px;
   position: absolute;
   top: 40px;
   left: 40px;

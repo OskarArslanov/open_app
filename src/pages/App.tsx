@@ -9,25 +9,22 @@ import StyledComponentsProvider from '@/shared/providers/StyledComponentsProvide
 import ThemeProvider from '@/shared/providers/ThemeProvider';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-const Container = styled.div`
+const Container = styled.main`
   height: 100%;
   max-width: 1320px;
   display: flex;
   flex-flow: column;
   width: 100%;
   align-self: center;
-  & > * {
-    height: 100%;
-  }
 `;
 
 const App: FC<PropsWithChildren> = (props) => {
   const segment = useSelectedLayoutSegment() || '';
   const isAuth = segment === 'auth';
   return (
-    <Container data-theme="default">
-      <StyledComponentsProvider>
-        <ThemeProvider>
+    <StyledComponentsProvider>
+      <ThemeProvider>
+        <Container data-theme="default">
           {isAuth ? (
             props.children
           ) : (
@@ -37,9 +34,9 @@ const App: FC<PropsWithChildren> = (props) => {
               <OAFooterContainer />
             </>
           )}
-        </ThemeProvider>
-      </StyledComponentsProvider>
-    </Container>
+        </Container>
+      </ThemeProvider>
+    </StyledComponentsProvider>
   );
 };
 export default App;

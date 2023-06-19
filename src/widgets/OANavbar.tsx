@@ -1,5 +1,6 @@
 'use client';
 
+import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import styled from 'styled-components';
@@ -40,7 +41,9 @@ const OANavbar = () => {
             shallow
             key={item.name}
           >
-            {item.name}
+            <OAButton size="small" variant="text" style={{ borderRadius: 0, color: '#000000' }}>
+              {item.name}
+            </OAButton>
           </NavLink>
         );
       })}

@@ -13,14 +13,12 @@ const inter = Noto_Sans({
 export const metadata: Metadata = {
   title: 'Huli d.o.o',
   description: 'Huli d.o.o test task',
-  icons: ['/favicon.ico']
-
 };
 
 const RootLayout: FC<PropsWithChildren> = (props) => {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${app.layout}`} data-theme="default">
+      <body className={`${inter.className} ${app.layout}`}>
         <App>{props.children}</App>
       </body>
     </html>

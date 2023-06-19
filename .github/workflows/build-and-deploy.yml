@@ -23,7 +23,7 @@ jobs:
           npm run export
           touch out/.nojekyll
       - name: Deploy
-        uses: OskarArslanov/github-pages-deploy-action@4.4.0 
+        uses: OskarArslanov/oskararslanov.github.io@master 
         with:
           branch: gh-pages
           folder: out

@@ -31,7 +31,6 @@ const options = {
       labels: {
         boxHeight: 24,
         generateLabels: (chart: Chart) => {
-          console.log(chart.data);
           const currentDatasets = [...chart.data.datasets, {label: 'Ростов-на-Дону', data: []}];
           return currentDatasets?.map((l, i) => ({
             datasetIndex: i,
