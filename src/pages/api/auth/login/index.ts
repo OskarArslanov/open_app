@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 
-const MOCK_USERLIST = [
+export const MOCK_USERLIST = [
   {
     email: 'example@gmail.com',
     password: '123456',
