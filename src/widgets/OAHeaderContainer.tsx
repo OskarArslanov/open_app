@@ -1,12 +1,10 @@
 'use client';
-
-import { FC, PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import LogoIcon from '@/shared/assets/LogoIcon';
 import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
 import OANavbar from './OANavbar';
 import styled from 'styled-components';
-import isServer from '@/shared/utils/isServer';
 import PersonIcon from '@/shared/assets/PersonIcon';
 
 const Container = styled.section`
@@ -16,7 +14,6 @@ const Container = styled.section`
   margin-top: 40px;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px;
 `;
 
 const OAHeaderContainer: FC<PropsWithChildren> = (props) => {

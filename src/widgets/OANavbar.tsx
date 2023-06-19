@@ -2,7 +2,11 @@
 
 import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import {
+  usePathname,
+  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
+} from 'next/navigation';
 import styled from 'styled-components';
 
 const navbarData = [
@@ -29,11 +33,12 @@ const NavLink = styled(Link)<{ $isActive: boolean }>`
 `;
 
 const OANavbar = () => {
-  const segment = useSelectedLayoutSegment();
+  const segments = usePathname()?.split('/').slice(1);
+  // const segments = useSelectedLayoutSegment();  // does not work on build stage. I think so because Nextjs 13 is a Beta now
   return (
     <Container>
       {navbarData.map((item) => {
-        const isActive = item.href === segment;
+        const isActive = item.href === segments?.[0];
         return (
           <NavLink
             $isActive={isActive}
@@ -41,7 +46,15 @@ const OANavbar = () => {
             shallow
             key={item.name}
           >
-            <OAButton size="small" variant="text" style={{ borderRadius: 0, color: '#000000' }}>
+            <OAButton
+              size="normal"
+              variant="text"
+              style={{
+                borderRadius: 0,
+                color: '#000000',
+                padding: 0,
+              }}
+            >
               {item.name}
             </OAButton>
           </NavLink>

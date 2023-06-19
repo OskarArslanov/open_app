@@ -4,10 +4,10 @@ import {
   createContext,
   useEffect,
   useState,
-} from "react";
+} from 'react';
 
 const ThemeContext = createContext<{ theme: string; onChangeTheme: any }>({
-  theme: "light",
+  theme: 'light',
   onChangeTheme: (theme: string) => {},
 });
 
@@ -15,7 +15,7 @@ const ThemeProvider: FC<PropsWithChildren> = (props) => {
   const [theme, setTheme] = useState<string>('light');
 
   useEffect(() => {
-    setTheme(localStorage.getItem("theme") || "light");
+    setTheme(localStorage.getItem('theme') || 'light');
   }, []);
 
   const onChangeTheme = (theme: string) => {
