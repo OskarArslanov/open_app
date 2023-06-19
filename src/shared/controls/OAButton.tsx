@@ -1,5 +1,6 @@
+'use client';
+
 import { FC } from 'react';
-import { ButtonBase } from '@mui/material';
 import styled from 'styled-components';
 
 interface OAButtonProps {
@@ -63,7 +64,7 @@ const ButtonThemes: Record<string, any> = {
   `,
 };
 
-const Button = styled(ButtonBase)<{
+const Button = styled.button<{
   $variant?: string;
   $theme?: string;
   $size?: string;
@@ -75,6 +76,14 @@ const Button = styled(ButtonBase)<{
   border-radius: 10px;
   gap: 8px;
   width: max-content;
+  border: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  &:hover {
+    transition-duration: 0.1s;
+    opacity: 0.3;
+  };
   ${(props) => ButtonSize[props.$size || 'normal']}
   ${(props) => ButtonThemes[props.$theme || 'primary']}
   ${(props) => ButtonVariants[props.$variant || 'contained']}

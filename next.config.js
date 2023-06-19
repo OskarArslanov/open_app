@@ -1,24 +1,14 @@
 /** @type {import('next').NextConfig} */
 
-const isGithubActions = process.env.GITHUB_ACTIONS || false;
-
-let assetPrefix;
-let basePath;
-
-if (isGithubActions) {
-  const repo = 'oskararslanov.github.io';
-  assetPrefix = `/${repo}/`;
-  basePath = `/${repo}`;
-}
-
 const nextConfig = {
-  assetPrefix: assetPrefix,
-  basePath: basePath,
   compiler: {
-    styledComponents: true,
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+      fileName: false,
+    },
   },
-  reactStrictMode: false,
-
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;

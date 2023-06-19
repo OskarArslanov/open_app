@@ -32,7 +32,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.44.3",
     "react-switch": "^7.0.0",
-    "styled-components": "^5.3.10"
+    "styled-components": "^6.0.0-rc.3"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.2",

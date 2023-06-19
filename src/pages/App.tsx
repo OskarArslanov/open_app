@@ -23,7 +23,7 @@ const Container = styled.main<{ $isAuth: boolean }>`
 
 const App: FC<PropsWithChildren> = (props) => {
   const segments = usePathname()?.split('/').slice(1);
-  // const segments = useSelectedLayoutSegment();  // does not work on build stage. I think so because Nextjs 13 is a Beta now
+  // const segments = useSelectedLayoutSegments();  // does not work on build stage. I think so because Nextjs 13 is a Beta now
   const isAuth = segments?.[0] === 'auth' || false;
   return (
     <StyledComponentsProvider>
