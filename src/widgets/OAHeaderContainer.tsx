@@ -11,7 +11,7 @@ const Container = styled.section`
   display: flex;
   flex: 0 1 auto;
   min-height: 48px;
-  margin-top: 40px;
+  margin-top: 10px;
   justify-content: space-between;
   align-items: center;
 `;

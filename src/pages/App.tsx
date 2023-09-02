@@ -7,7 +7,7 @@ import { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import StyledComponentsProvider from '@/shared/providers/StyledComponentsProvider';
 import ThemeProvider from '@/shared/providers/ThemeProvider';
-import { usePathname, useSelectedLayoutSegments } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const Container = styled.main<{ $isAuth: boolean }>`
   height: 100%;

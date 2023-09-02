@@ -3,20 +3,32 @@
 import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import styled from 'styled-components';
 
 import React, { useState } from 'react';
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
+import styled from '@emotion/styled';
 
 const navbarData = [
-  { name: 'Обо мне', href: 'about', icon: <InfoOutlinedIcon /> },
-  { name: 'Портфолио', href: 'portfolio', icon: <WorkOutlineIcon /> },
-  { name: 'Контакты', href: 'contacts', icon: <ContactPhoneOutlinedIcon /> },
+  {
+    name: 'Обо мне',
+    href: 'about',
+    icon: <InfoOutlinedIcon style={{ color: '#FFF' }} />,
+  },
+  {
+    name: 'Портфолио',
+    href: 'portfolio',
+    icon: <WorkOutlineIcon style={{ color: '#FFF' }} />,
+  },
+  {
+    name: 'Контакты',
+    href: 'contacts',
+    icon: <ContactPhoneOutlinedIcon style={{ color: '#FFF' }} />,
+  },
 ];
 
 const Container = styled.nav`
@@ -35,6 +47,14 @@ const NavLink = styled(Link)<{ $isActive: boolean }>`
     props.$isActive ? '1px solid var(--color-primary)' : 'undefined'};
 `;
 
+const StyledSpeedDial = styled(SpeedDial)({
+  '& .MuiButtonBase-root': {
+    backgroundColor: '#656EC2',
+    '&:hover': {
+      backgroundColor: '#656EC2',
+    },
+  },
+});
 const OANavbar = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -65,7 +85,7 @@ const OANavbar = () => {
           </NavLink>
         );
       })}
-      <SpeedDial
+      <StyledSpeedDial
         className="hide__M hide__L"
         ariaLabel="SpeedDial Component Demo"
         style={{
@@ -93,7 +113,7 @@ const OANavbar = () => {
             tooltipTitle={action.href}
           />
         ))}
-      </SpeedDial>
+      </StyledSpeedDial>
     </Container>
   );
 };
