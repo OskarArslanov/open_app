@@ -16,7 +16,7 @@ const Card = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
+  padding: 20px;
 `;
 
 const Title = styled.div`

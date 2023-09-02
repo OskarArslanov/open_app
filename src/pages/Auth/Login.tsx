@@ -1,6 +1,5 @@
 'use client';
 
-import Logo from '@/shared/assets/LogoIcon';
 import Link from 'next/link';
 import OAForm from '@/shared/controls/OAForm';
 import OAInput from '@/shared/controls/OAInput';
@@ -11,6 +10,7 @@ import axiosInstance from '@/shared/utils/axiosConfig';
 import { useState } from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Container = styled.div`
   display: flex;
@@ -50,7 +50,13 @@ const Login = () => {
   return (
     <Container>
       <Link href="/">
-        <Logo />
+        <Image
+          width={128}
+          height={64}
+          src="/logoO.png"
+          style={{ borderRadius: '5px' }}
+          alt="logo"
+        />{' '}
       </Link>
       <Title>Вход</Title>
       <OAForm onSubmit={handleSubmit} error={error}>

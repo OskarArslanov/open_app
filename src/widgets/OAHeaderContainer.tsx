@@ -1,8 +1,8 @@
 'use client';
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
-import LogoIcon from '@/shared/assets/LogoIcon';
 import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
+import Image from 'next/image';
 import OANavbar from './OANavbar';
 import styled from 'styled-components';
 import PersonIcon from '@/shared/assets/PersonIcon';
@@ -36,27 +36,15 @@ const OAHeaderContainer: FC<PropsWithChildren> = (props) => {
   return (
     <Container>
       <Link href="/" shallow>
-        <LogoIcon />
+        <Image
+          width={96}
+          height={48}
+          style={{ borderRadius: '5px' }}
+          src="/logoO.png"
+          alt="logo"
+        />
       </Link>
       <OANavbar />
-      {logged?.jwt ? (
-        <Link href="/portfolio" shallow>
-          <OAButton
-            theme="primary"
-            variant="text"
-            size="small"
-            style={{ borderRadius: 0 }}
-          >
-            {logged.shortname}. <PersonIcon />
-          </OAButton>
-        </Link>
-      ) : (
-        <Link href="/auth/login" shallow style={{ textDecoration: 'none' }}>
-          <OAButton theme="primary" variant="outlined" size="small">
-            Войти
-          </OAButton>
-        </Link>
-      )}
     </Container>
   );
 };

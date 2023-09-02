@@ -17,6 +17,7 @@ const OACheckbox: FC<OACheckboxProps> = (props) => {
     <FormControlLabel
       label={props.label}
       labelPlacement={props.labelPlacements}
+      style={{ marginLeft: 0 }}
       control={
         <Checkbox
           content="1"

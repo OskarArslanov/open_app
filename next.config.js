@@ -8,7 +8,7 @@ const nextConfig = {
       fileName: false,
     },
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 };
 
 module.exports = nextConfig;

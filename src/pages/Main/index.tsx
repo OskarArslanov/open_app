@@ -65,7 +65,8 @@ const CardList = styled.ul`
 const Main = () => {
   return (
     <Container>
-      <InfoBlock>
+      developing...
+      {/* <InfoBlock>
         <OAMainOrder />
         <OAMainPhoto />
       </InfoBlock>
@@ -77,7 +78,7 @@ const Main = () => {
             key={item.title}
           />
         ))}
-      </CardList>
+      </CardList> */}
     </Container>
   );
 };

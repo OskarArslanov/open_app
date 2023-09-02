@@ -3,48 +3,56 @@
 import OALineChart from '@/shared/indicators/OALineChart';
 import OAColumnChart from '@/shared/indicators/OAColumnChart';
 import OACard from '@/shared/indicators/OACard';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
-const Container = styled.div`
-  margin-top: 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 70px;
-  width: 100%;
-`;
+const Container = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '70px',
+  width: '100%',
+});
 
-const Analytics = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
+const Analytics = styled.div({
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-between',
+});
 
-const AnalyticsTitle = styled.span`
-  font-size: var(--font-size_xxxl);
-  font-weight: var(--font-weight_xxl);
-  width: 100%;
-`;
+const AnalyticsTitle = styled.span({
+  fontSize: 'var(--font-size_xxxl)',
+  fontWeight: 'var(--font-weight_xxl)',
+  width: '100%',
+});
 
-const AnalyticsDescription = styled.span`
-  font-size: var(--font-size_l);
-  width: 100%;
-  align-self: flex-end;
-  max-width: 532px;
-`;
+const AnalyticsDescription = styled.span({
+  fontSize: 'var(--font-size_l)',
+  width: '100%',
+  alignSelf: 'flex-end',
+  maxWidth: '532px',
+});
 
-const Widgets = styled.span`
-  font-size: var(--font-size_l);
-  max-width: 533px;
-  margin-top: 20px;
-`;
-const Charts = styled.div`
-  display: flex;
-  gap: 30px;
-  & > * {
-    max-width: 50%;
-    max-height: 400px;
-  }
-`;
+const Widgets = styled.span({
+  fontSize: 'var(--font-size_l)',
+  maxWidth: '533px',
+  marginTop: '20px',
+});
+
+const Charts = styled.div({
+  display: 'flex',
+  gap: '30px',
+  '& > *': {
+    maxWidth: '50%',
+    maxHeight: '400px',
+  },
+  '@media screen and (max-width: 768px)': {
+    flexDirection: 'column',
+    padding: '30px 30px 30px 0px',
+    '& > *': {
+      maxWidth: '100%',
+      maxHeight: '400px',
+    },
+  },
+});
 
 const Platform = () => {
   return (

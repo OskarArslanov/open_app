@@ -11,8 +11,8 @@ const inter = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Huli d.o.o',
-  description: 'Huli d.o.o test task',
+  title: 'OskarArs',
+  description: 'OskarArs web page',
 };
 
 const RootLayout: FC<PropsWithChildren> = (props) => {

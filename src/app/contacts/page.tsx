@@ -27,7 +27,8 @@ const UserData = styled.div`
 const ContactsPage = () => {
   return (
     <UserList>
-      {MOCK_USERLIST.map((item) => (
+      developing...
+      {/* {MOCK_USERLIST.map((item) => (
         <User>
           <UserData>
             {item.user.name} - {item.user.shortName}
@@ -36,7 +37,7 @@ const ContactsPage = () => {
             {item.email} - {item.password}
           </UserData>
         </User>
-      ))}
+      ))} */}
     </UserList>
   );
 };

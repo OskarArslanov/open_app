@@ -28,7 +28,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
-const Input = styled(InputBase)<{ $isError: boolean }>`
+const BaseInput = styled(InputBase)<{ $isError: boolean }>`
   background: var(--text-color_not_primary);
   border-radius: 10px;
   padding: 8px 10px;
@@ -37,6 +37,7 @@ const Input = styled(InputBase)<{ $isError: boolean }>`
       ? 'border: 1px solid var(--color-error);'
       : 'border: 1px solid var(--border-color);'}
 `;
+
 const OAInput: FC<OAInputProps> = (props) => {
   const context = useFormContext();
   const [type, setType] = useState(props.type);
@@ -88,15 +89,16 @@ const OAInput: FC<OAInputProps> = (props) => {
       )}
       <Controller
         name={props.name}
-        control={context.control}
+        control={context?.control}
         rules={props.rules}
         render={({ field }) => {
           return (
-            <Input
+            <BaseInput
               {...field}
               $isError={invalid}
               placeholder={props.placeholder}
               type={type}
+              style={props.style}
               disabled={props.rules?.disabled}
               value={value}
               required={!!props.rules?.required}
