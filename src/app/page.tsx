@@ -1,6 +1,6 @@
 'use client';
 
-import OAButton from '@/shared/controls/OAButton';
+import OAButton from '@/features/controls/OAButton';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import Image from 'next/image';

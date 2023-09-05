@@ -1,10 +1,10 @@
 import { CSSProperties, FC, useEffect, useState } from 'react';
 import { IconButton, InputBase } from '@mui/material';
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
-import { handleErrors } from '../utils/errors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import styled from 'styled-components';
+import { handleErrors } from '@/shared/utils/errors';
 
 interface OAInputProps {
   onChange?: (data: string) => void;

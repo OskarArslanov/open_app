@@ -1,11 +1,9 @@
 'use client';
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
-import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
 import Image from 'next/image';
 import OANavbar from './OANavbar';
 import styled from 'styled-components';
-import PersonIcon from '@/shared/assets/PersonIcon';
 
 const Container = styled.section`
   display: flex;

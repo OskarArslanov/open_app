@@ -45,7 +45,7 @@ body {
   --plot-column: var(--color-pink_light);
   --plot-column_hover: var(--color-pink);
   --bg-shadow: var(--color-purple_light);
-  --border-color: var(--color-gray_light)
+  --border-color: var(--color-gray_light);
 }
 
 @media (min-width: 1320px) {
@@ -78,4 +78,27 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+p,
+b,
+span,
+div {
+  font-size: 14px;
 }

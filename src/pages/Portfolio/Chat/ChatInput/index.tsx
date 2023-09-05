@@ -3,10 +3,10 @@ import { FC, useEffect, useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import MailIcon from '@mui/icons-material/Mail';
 import { delay } from '@/shared/utils/delay';
-import OAInput from '@/shared/controls/OAInput';
-import OAForm from '@/shared/controls/OAForm';
-import OAButton from '@/shared/controls/OAButton';
 import { animate } from 'framer-motion';
+import OAButton from '@/features/controls/OAButton';
+import OAForm from '@/features/controls/OAForm';
+import OAInput from '@/features/controls/OAInput';
 
 interface ChatInputProps {
   onSend?: (data: string) => void;

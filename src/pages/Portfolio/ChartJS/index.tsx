@@ -1,15 +1,18 @@
 'use client';
 
-import OALineChart from '@/shared/indicators/OALineChart';
-import OAColumnChart from '@/shared/indicators/OAColumnChart';
-import OACard from '@/shared/indicators/OACard';
 import styled from '@emotion/styled';
 import { AnimateContainer } from '@/widgets/Animations';
+import OACard from '@/features/indicators/OACard';
+import OAColumnChart from '@/features/indicators/OAColumnChart';
+import OALineChart from '@/features/indicators/OALineChart';
 
 const Analytics = styled.div({
   display: 'flex',
   width: '100%',
   justifyContent: 'space-between',
+  '@media screen and (max-width: 768px)': {
+    flexDirection: 'column',
+  },
 });
 
 const AnalyticsTitle = styled.span({
@@ -23,6 +26,9 @@ const AnalyticsDescription = styled.span({
   width: '100%',
   alignSelf: 'flex-end',
   maxWidth: '532px',
+  '@media screen and (max-width: 768px)': {
+    alignSelf: 'flex-start',
+  },
 });
 
 const Widgets = styled.span({

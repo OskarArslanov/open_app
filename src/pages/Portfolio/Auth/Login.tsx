@@ -1,15 +1,15 @@
 'use client';
 
-import OAForm from '@/shared/controls/OAForm';
-import OAInput from '@/shared/controls/OAInput';
-import OAButton from '@/shared/controls/OAButton';
-import OACheckbox from '@/shared/controls/OACheckbox';
 import styled from 'styled-components';
 import axiosInstance from '@/shared/utils/axiosConfig';
 import { useState } from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { AnimateContainer } from '@/widgets/Animations';
+import OAButton from '@/features/controls/OAButton';
+import OACheckbox from '@/features/controls/OACheckbox';
+import OAForm from '@/features/controls/OAForm';
+import OAInput from '@/features/controls/OAInput';
 
 const Container = styled.div`
   display: flex;

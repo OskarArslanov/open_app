@@ -5,8 +5,8 @@ import Fuse from '@/pages/Portfolio/Fuse';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { ReactNode } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { ReactNode, useEffect } from 'react';
 import Chat from '../../pages/Portfolio/Chat';
 import Commercial from '../../pages/Portfolio/Commercial';
 import ChartJS from '../../pages/Portfolio/ChartJS';
@@ -70,10 +70,20 @@ const Content = styled.section({
 });
 
 const Portfolio = () => {
+  const router = useRouter();
   const params = useSearchParams();
   const currentJob = params?.get('job');
+
+  useEffect(() => {
+    if (params?.size) return;
+    const defaultParams = new URLSearchParams();
+    defaultParams.set('job', 'commercial');
+    const queryString = defaultParams.toString();
+    router.push(`?${queryString}`);
+  }, [currentJob]);
   return (
     <AnimateContainer>
+      <h1>Portfolio</h1>
       <Menu>
         {portfolio.map((item) => {
           const isCurrent = item.name === currentJob;

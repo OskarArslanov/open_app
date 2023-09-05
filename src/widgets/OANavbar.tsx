@@ -1,6 +1,5 @@
 'use client';
 
-import OAButton from '@/shared/controls/OAButton';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -12,6 +11,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
 import styled from '@emotion/styled';
+import OAButton from '@/features/controls/OAButton';
 
 const navbarData = [
   {
