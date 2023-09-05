@@ -23,10 +23,10 @@ const ChatInput: FC<ChatInputProps> = (props) => {
     await delay(500);
     setClicked(false);
   };
-  const send = document.getElementById('send');
-  const mail = document.getElementById('mail');
 
   useEffect(() => {
+    const send = document?.getElementById('send');
+    const mail = document?.getElementById('mail');
     if (!send || !mail) return;
     if (clicked) {
       animate([

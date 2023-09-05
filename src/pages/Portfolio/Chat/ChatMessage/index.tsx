@@ -5,12 +5,11 @@ import UserIcon from '@mui/icons-material/Person';
 import { ChatMessageType } from '../ChatArea';
 
 interface ChatMessageProps {
-  message: ChatMessageType;
+  message?: ChatMessageType;
   onStop?: () => void;
 }
 const ChatMessage: FC<ChatMessageProps> = (props) => {
-  const { message, owner, isGenerating } = props.message;
-  const isBot = owner === 'bot';
+  const isBot = props.message?.owner === 'bot';
   return (
     <li
       className={styles.Container}
@@ -33,8 +32,8 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
           position: 'relative',
         }}
       >
-        {message}
-        {isBot && isGenerating && (
+        {props.message?.message}
+        {isBot && props.message?.isGenerating && (
           <button
             className={styles.Container_BotGenerating}
             onClick={props.onStop}
