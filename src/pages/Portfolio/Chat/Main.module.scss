@@ -9,14 +9,14 @@
 .Container_Wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 761px; 
+  max-width: 761px;
   align-self: center;
   width: 100%;
   height: 100%;
   padding: 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 840px) {
   .Container_Wrapper {
     width: calc(100% - 40px);
   }

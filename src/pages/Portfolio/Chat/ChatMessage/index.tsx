@@ -19,14 +19,16 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
       {isBot && (
         <div
           className={styles.Container_Avatar}
-          style={{ backgroundColor: '#007AFE' }}
+          style={{ backgroundColor: 'var(--color-purple_dark)' }}
         >
-          <BotIcon />
+          <BotIcon style={{ color: 'white' }} />
         </div>
       )}
       <p
         style={{
-          backgroundColor: isBot ? 'rgba(34, 118, 245, 0.20)' : '#007AFE',
+          backgroundColor: isBot
+            ? 'rgba(34, 118, 245, 0.20)'
+            : 'var(--color-purple_dark)',
           color: isBot ? '#000' : '#FFF',
           position: 'relative',
         }}
@@ -44,9 +46,9 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
       {!isBot && (
         <div
           className={styles.Container_Avatar}
-          style={{ backgroundColor: '#D3E4FD' }}
+          style={{ backgroundColor: 'var(--color-purple_dark)'   }}
         >
-          <UserIcon style={{ width: '30px' }} />
+          <UserIcon style={{ width: '30px', color: 'white' }} />
         </div>
       )}
     </li>
