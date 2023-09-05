@@ -37,21 +37,19 @@ const Container = styled.nav`
   justify-content: space-between;
 `;
 
-const NavLink = styled(Link)<{ $isActive: boolean }>`
-  display: flex;
-  font-size: var(--font-size_m);
-  text-decoration: none;
-  color: var(--text-color_primary);
-  font-weight: var(--font-weight_m);
-  border-bottom: ${(props) =>
-    props.$isActive ? '1px solid var(--color-primary)' : 'undefined'};
-`;
+const NavLink = styled(Link)({
+  display: 'flex',
+  fontSize: 'var(--font-size_m)',
+  textDecoration: 'none',
+  color: 'var(--text-color_primary)',
+  fontWeight: 'var(--font-weight_m)',
+});
 
 const StyledSpeedDial = styled(SpeedDial)({
   '& .MuiButtonBase-root': {
-    backgroundColor: '#656EC2',
+    backgroundColor: 'var(--color-purple_dark)',
     '&:hover': {
-      backgroundColor: '#656EC2',
+      backgroundColor: 'var(--color-purple_dark)',
     },
   },
 });
@@ -65,11 +63,15 @@ const OANavbar = () => {
         const isActive = item.href === segments?.[0];
         return (
           <NavLink
-            $isActive={isActive}
             href={`/${item.href}`}
             shallow
             key={item.name}
             className="hide__S"
+            style={{
+              borderBottom: isActive
+                ? '1px solid var(--color-primary)'
+                : undefined,
+            }}
           >
             <OAButton
               size="normal"

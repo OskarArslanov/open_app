@@ -1,0 +1,11 @@
+.Container {
+  flex: 1 1 auto;
+  border-radius: 16px;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 17px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}

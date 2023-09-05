@@ -1,5 +1,5 @@
 import { CSSProperties, FC, useEffect, useState } from 'react';
-import { Icon, IconButton, InputBase } from '@mui/material';
+import { IconButton, InputBase } from '@mui/material';
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
 import { handleErrors } from '../utils/errors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -14,6 +14,7 @@ interface OAInputProps {
   label?: string;
   rules?: RegisterOptions;
   name: string;
+  fullWidth?: boolean;
   type: 'text' | 'number' | 'email' | 'password';
   defaultValue?: string | number;
   value?: number | string;
@@ -27,6 +28,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 `;
 const BaseInput = styled(InputBase)<{ $isError: boolean }>`
   background: var(--text-color_not_primary);
@@ -44,27 +46,17 @@ const OAInput: FC<OAInputProps> = (props) => {
 
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = props.type === 'password';
-  let endAdortment = props.endAdornment;
-  if (isPassword) {
-    endAdortment = showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />;
-  }
-
-  const handleClickEnd = () => {
-    if (isPassword) {
-      setShowPassword(!showPassword);
-      setType(type === 'password' ? 'text' : 'password');
-    }
-    props.onClickEndAdornment?.();
-  };
-  endAdortment = (props.endAdornment || isPassword) && (
-    <IconButton onClick={handleClickEnd} style={{ padding: '0' }}>
+  let endAdortment = showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />;
+  endAdortment = (
+    <IconButton
+      onClick={() => {
+        showPassword ? setType('password') : setType('text');
+        setShowPassword(!showPassword);
+      }}
+    >
       {endAdortment}
     </IconButton>
   );
-  const startAdornment = props.startAdornment && (
-    <IconButton style={{ padding: '0' }}>{props.startAdornment}</IconButton>
-  );
-
   const [value, setValue] = useState<string>('');
   const [invalid, setInvalid] = useState<boolean>(false);
   useEffect(() => {
@@ -102,12 +94,13 @@ const OAInput: FC<OAInputProps> = (props) => {
               disabled={props.rules?.disabled}
               value={value}
               required={!!props.rules?.required}
-              endAdornment={endAdortment}
-              startAdornment={startAdornment}
+              endAdornment={isPassword ? endAdortment : props.endAdornment}
+              startAdornment={props.startAdornment}
               onInput={(e) => {
                 // @ts-ignore
                 const changedValue = e.target.value;
                 setValue(changedValue);
+                props.onChange?.(changedValue);
                 const isValid = handleErrors(
                   context,
                   changedValue,

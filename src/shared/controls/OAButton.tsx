@@ -2,6 +2,7 @@
 
 import { FC } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface OAButtonProps {
   onClick?: () => void;
@@ -14,6 +15,7 @@ interface OAButtonProps {
   style?: React.CSSProperties;
   className?: string;
   fullwidth?: boolean;
+  id?: string;
 }
 
 const ButtonSize: Record<string, any> = {
@@ -64,10 +66,11 @@ const ButtonThemes: Record<string, any> = {
   `,
 };
 
-const Button = styled.button<{
+const Button = styled(motion.button)<{
   $variant?: string;
   $theme?: string;
   $size?: string;
+  $disabled?: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -77,13 +80,10 @@ const Button = styled.button<{
   gap: 8px;
   width: max-content;
   border: none;
-  cursor: pointer;
+  cursor: ${(props) => (props.$disabled ? 'auto' : 'pointer')};
+  opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
   transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s; /* Safari */
-  &:hover {
-    transition-duration: 0.1s;
-    opacity: 0.3;
-  };
   ${(props) => ButtonSize[props.$size || 'normal']}
   ${(props) => ButtonThemes[props.$theme || 'primary']}
   ${(props) => ButtonVariants[props.$variant || 'contained']}
@@ -91,15 +91,14 @@ const Button = styled.button<{
 const OAButton: FC<OAButtonProps> = (props) => {
   return (
     <Button
+      id={props.id}
       $variant={props.variant}
       $theme={props.theme}
       $size={props.size}
-      style={{
-        ...props.style,
-        width: props.fullwidth ? '100%' : undefined,
-      }}
+      style={props.style}
       type={props.type || 'button'}
       onClick={props.onClick}
+      $disabled={props.disabled}
       disabled={props.disabled}
     >
       {props.children}
