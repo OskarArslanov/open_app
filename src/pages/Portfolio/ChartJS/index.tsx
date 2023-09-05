@@ -1,69 +1,78 @@
 'use client';
 
-import Calls from '@/shared/assets/png/Calls.png';
-import Dashboard from '@/shared/assets/png/Dashboard.png';
-import Image from 'next/image';
-import styled from 'styled-components';
+import OALineChart from '@/shared/indicators/OALineChart';
+import OAColumnChart from '@/shared/indicators/OAColumnChart';
+import OACard from '@/shared/indicators/OACard';
+import styled from '@emotion/styled';
+import { AnimateContainer } from '@/widgets/Animations';
 
-const Container = styled.div`
-  background-color: var(--bg-shadow);
-  max-width: 1048px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 25%;
-`;
+const Analytics = styled.div({
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-between',
+});
 
-const Photos = styled.div`
-  position: relative;
-  & > img {
-    height: 100%;
-    max-width: 70%;
-  }
-`;
+const AnalyticsTitle = styled.span({
+  fontSize: 'var(--font-size_xxxl)',
+  fontWeight: 'var(--font-weight_xxl)',
+  width: '100%',
+});
 
-const ChartImage = styled(Image)`
-  position: absolute;
-  top: 50%;
-  left: 30%;
-`;
+const AnalyticsDescription = styled.span({
+  fontSize: 'var(--font-size_l)',
+  width: '100%',
+  alignSelf: 'flex-end',
+  maxWidth: '532px',
+});
 
-const Text = styled.span`
-  align-self: center;
-  align-items: center;
-  max-width: 496px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  text-align: center;
-`;
+const Widgets = styled.span({
+  fontSize: 'var(--font-size_l)',
+  maxWidth: '533px',
+  marginTop: '20px',
+});
 
-const Title = styled.span`
-  font-weight: var(--font-weight_xxl);
-  font-size: var(--font-size_l);
-`;
+const Charts = styled.div({
+  display: 'flex',
+  gap: '30px',
+  '& > *': {
+    maxWidth: '50%',
+    maxHeight: '400px',
+  },
+  '@media screen and (max-width: 768px)': {
+    flexDirection: 'column',
+    padding: '30px 30px 30px 0px',
+    '& > *': {
+      maxWidth: '100%',
+      maxHeight: '400px',
+    },
+  },
+});
 
-const Description = styled.span`
-  font-size: var(--font-size_s);
-`;
-
-const OAAuthCharts = () => {
+const ChartJS = () => {
   return (
-    <Container className={`hide__S`}>
-      <Photos>
-        <Image src={Calls} alt="calls" priority />
-        <ChartImage src={Dashboard} alt="dashboard" priority />
-      </Photos>
-      <Text>
-        <Title>Вся аналитика в одном кабинете</Title>
-        <Description>
-          Теперь просматривать аналитику и создавать отчёты можно без нашей
-          помощи
-        </Description>
-      </Text>
-    </Container>
+    <AnimateContainer>
+      <Analytics>
+        <AnalyticsTitle>
+          Вся аналитика <br /> в одном кабинете
+        </AnalyticsTitle>
+        <AnalyticsDescription>
+          Отслеживайте работу голосового ассистента <br /> в личном кабинете
+        </AnalyticsDescription>
+      </Analytics>
+      <Widgets>
+        Уникальные виджеты позволяют настроить <br /> дашборд под задачи
+        различных подразделений вашей компании
+      </Widgets>
+      <Charts>
+        <OACard title="Звонки">
+          <OALineChart />
+        </OACard>
+        <OACard title="Исходящие звонки">
+          <OAColumnChart />
+        </OACard>
+      </Charts>
+    </AnimateContainer>
   );
 };
 
-export default OAAuthCharts;
+export default ChartJS;

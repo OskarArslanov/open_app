@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import OAForm from '@/shared/controls/OAForm';
 import OAInput from '@/shared/controls/OAInput';
 import OAButton from '@/shared/controls/OAButton';
@@ -10,7 +9,7 @@ import axiosInstance from '@/shared/utils/axiosConfig';
 import { useState } from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { AnimateContainer } from '@/widgets/Animations';
 
 const Container = styled.div`
   display: flex;
@@ -53,39 +52,32 @@ const Login = () => {
       .catch((err: AxiosError) => setError(err.response?.data as string));
   };
   return (
-    <Container>
-      {/* <Link href="/">
-        <Image
-          width={128}
-          height={64}
-          src="/logoO.png"
-          style={{ borderRadius: '5px' }}
-          alt="logo"
-        />{' '}
-      </Link> */}
-      <Title>Вход</Title>
-      <OAForm onSubmit={handleSubmit} error={error}>
-        <OAInput
-          name="email"
-          placeholder="Email"
-          type="email"
-          rules={{ required: true, minLength: 6 }}
-        />
-        <OAInput
-          name="password"
-          placeholder="Пароль"
-          type="password"
-          rules={{ required: true, minLength: 6 }}
-        />
-        <RememberMe>
-          <OACheckbox name="remember" label="Запомнить меня" />
-          <OAButton variant="text">Забыли пароль?</OAButton>
-        </RememberMe>
-        <OAButton type="submit" fullwidth>
-          Войти
-        </OAButton>
-      </OAForm>
-    </Container>
+    <AnimateContainer>
+      <Container>
+        <Title>Вход</Title>
+        <OAForm onSubmit={handleSubmit} error={error}>
+          <OAInput
+            name="email"
+            placeholder="Email"
+            type="email"
+            rules={{ required: true, minLength: 6 }}
+          />
+          <OAInput
+            name="password"
+            placeholder="Пароль"
+            type="password"
+            rules={{ required: true, minLength: 6 }}
+          />
+          <RememberMe>
+            <OACheckbox name="remember" label="Запомнить меня" />
+            <OAButton variant="text">Забыли пароль?</OAButton>
+          </RememberMe>
+          <OAButton type="submit" fullwidth>
+            Войти
+          </OAButton>
+        </OAForm>
+      </Container>
+    </AnimateContainer>
   );
 };
 

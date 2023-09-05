@@ -15,17 +15,17 @@ import styled from '@emotion/styled';
 
 const navbarData = [
   {
-    name: 'Обо мне',
+    name: 'About',
     href: 'about',
     icon: <InfoOutlinedIcon style={{ color: '#FFF' }} />,
   },
   {
-    name: 'Портфолио',
+    name: 'Portfolio',
     href: 'portfolio',
     icon: <WorkOutlineIcon style={{ color: '#FFF' }} />,
   },
   {
-    name: 'Контакты',
+    name: 'Contacts',
     href: 'contacts',
     icon: <ContactPhoneOutlinedIcon style={{ color: '#FFF' }} />,
   },
@@ -80,6 +80,7 @@ const OANavbar = () => {
                 borderRadius: 0,
                 color: '#000000',
                 padding: 0,
+                fontWeight: 500
               }}
             >
               {item.name}

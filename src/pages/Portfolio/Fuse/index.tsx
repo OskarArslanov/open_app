@@ -1,5 +1,6 @@
 'use client';
 
+import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import { useDebounce } from '@uidotdev/usehooks';
 import axios from 'axios';
@@ -7,18 +8,10 @@ import format from 'date-fns/format';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-const Container = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '20px',
-  alignItems: 'center',
-  marginTop: '20px',
-  width: '100%',
-});
-
 const FuseController = styled.div({
   display: 'flex',
   flexDirection: 'column',
+  alignSelf: 'center',
   gap: '20px',
   width: '50%',
   '@media screen and (max-width: 768px)': {
@@ -109,7 +102,7 @@ const Fuse = () => {
     inputRef.current?.focus();
   }, []);
   return (
-    <Container>
+    <AnimateContainer>
       <FuseController>
         <FuseInput
           placeholder="Some value"
@@ -142,7 +135,7 @@ const Fuse = () => {
           );
         })}
       </JokesList>
-    </Container>
+    </AnimateContainer>
   );
 };
 

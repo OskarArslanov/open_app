@@ -3,6 +3,7 @@ import ChatArea, { ChatMessageType } from './ChatArea';
 import ChatInput from './ChatInput';
 import styles from './Main.module.scss';
 import { useState } from 'react';
+import { AnimateContainer } from '@/widgets/Animations';
 
 const Chat = () => {
   const url = 'http://185.46.8.130/api/v1/chat/send-message';
@@ -66,13 +67,13 @@ const Chat = () => {
   };
 
   return (
-    <div className={styles.Container}>
+    <AnimateContainer className={styles.Container}>
       <div className={styles.Container_Wrapper}>
         <Title />
         <ChatArea messages={messages} onStop={() => controller.abort()} />
         <ChatInput onSend={handleSend} />
       </div>
-    </div>
+    </AnimateContainer>
   );
 };
 
