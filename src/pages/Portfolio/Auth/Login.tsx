@@ -16,6 +16,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+  height: 100%;
+  align-self: center;
 `;
 
 const Title = styled.span`
@@ -49,7 +54,7 @@ const Login = () => {
   };
   return (
     <Container>
-      <Link href="/">
+      {/* <Link href="/">
         <Image
           width={128}
           height={64}
@@ -57,7 +62,7 @@ const Login = () => {
           style={{ borderRadius: '5px' }}
           alt="logo"
         />{' '}
-      </Link>
+      </Link> */}
       <Title>Вход</Title>
       <OAForm onSubmit={handleSubmit} error={error}>
         <OAInput

@@ -17,8 +17,6 @@ const ChatInput: FC<ChatInputProps> = (props) => {
   const [clicked, setClicked] = useState(false);
 
   const handleSend = async () => {
-    console.log(1);
-    if (!message.length) return;
     props.onSend?.(message);
     setMessage('');
     setClicked(true);
@@ -29,7 +27,6 @@ const ChatInput: FC<ChatInputProps> = (props) => {
   const mail = document.getElementById('mail');
 
   useEffect(() => {
-    console.log(clicked);
     if (!send || !mail) return;
     if (clicked) {
       animate([
@@ -46,7 +43,6 @@ const ChatInput: FC<ChatInputProps> = (props) => {
     }
   }, [clicked]);
 
-  console.log(!!message.length);
   return (
     <OAForm
       onSubmit={handleSend}
@@ -73,6 +69,7 @@ const ChatInput: FC<ChatInputProps> = (props) => {
               maxWidth: '40px',
               padding: 0,
               position: 'relative',
+              overflow: 'hidden',
             }}
           >
             <MailIcon id="mail" style={{ position: 'absolute', opacity: 0 }} />

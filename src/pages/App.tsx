@@ -16,6 +16,7 @@ const Container = styled.main<{ $isAuth: boolean }>`
   flex-flow: column;
   width: 100%;
   align-self: center;
+  position: relative;
   & > * {
     padding: ${(props) => (props.$isAuth ? '0px' : '0 20px')};
   }

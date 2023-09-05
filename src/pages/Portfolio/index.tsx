@@ -36,6 +36,7 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
 const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
   width: '100%',
   height: '100%',
 });
@@ -59,7 +60,7 @@ const MenuTab = styled(motion.div)({
 const Content = styled.section({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%'
+  height: '100%',
 });
 
 const Portfolio = () => {
