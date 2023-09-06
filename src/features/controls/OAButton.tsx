@@ -3,6 +3,7 @@
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface OAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
@@ -10,6 +11,7 @@ interface OAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'large' | 'medium' | 'small' | 'adaptive';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  href?: string;
 }
 
 const ButtonVariants: Record<string, any> = {
@@ -80,7 +82,23 @@ const StyledButton = styled(motion.button)<OAButtonProps>(
   }),
 );
 
+const LinkButton = styled(Link)({
+  display: 'flex',
+  justifyContent: 'center',
+});
+
 const OAButton: FC<OAButtonProps> = (props) => {
+  if (props.href) {
+    return (
+      <LinkButton href={props.href}>
+        <StyledButton {...props}>
+          {props.startIcon}
+          {props.children}
+          {props.endIcon}
+        </StyledButton>
+      </LinkButton>
+    );
+  }
   return (
     <StyledButton {...props}>
       {props.startIcon}

@@ -140,6 +140,7 @@ const ProjectList = styled.ul({
 
 const Project = styled.div({
   display: 'flex',
+  cursor: 'pointer',
   flexDirection: 'column',
   gap: '10px',
   boxShadow: '0px 7px 25px 0px rgba(100, 100, 111, 0.20)',
@@ -195,16 +196,14 @@ const Commercial = () => {
             }}
             key={item.id}
           >
-            <Link
-              href={item.href}
+            <h2
               style={{
                 fontSize: '24px',
-                textDecoration: 'underline',
                 color: 'var(--color-purple_dark)',
               }}
             >
               {item.name}
-            </Link>
+            </h2>
             <h3>{item.description}</h3>
             <ProjectStack>
               {item.stack.map((el) => (
@@ -224,7 +223,10 @@ const Commercial = () => {
       >
         <span style={{ fontSize: '20px' }}>
           Site is available on{' '}
-          <Link href={selected?.href!} style={{ textDecoration: 'underline' }}>
+          <Link
+            href={selected?.href!}
+            style={{ textDecoration: 'underline', wordWrap: 'break-word' }}
+          >
             {selected?.href}
           </Link>
         </span>

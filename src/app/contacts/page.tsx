@@ -1,16 +1,9 @@
 'use client';
 
 import OAButton from '@/features/controls/OAButton';
-import OAIconButton from '@/features/controls/OAIconButton';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
-import {
-  Email,
-  GitHub,
-  Instagram,
-  Telegram,
-  WhatsApp,
-} from '@mui/icons-material';
+import { Email, Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 
 const contacts = [
   // {
@@ -51,6 +44,7 @@ const ContactList = styled.ul({
   flexDirection: 'column',
   gap: '20px',
 });
+
 const ContactsPage = () => {
   return (
     <AnimateContainer>
@@ -58,7 +52,12 @@ const ContactsPage = () => {
       <ContactList>
         {contacts.map((item) => {
           return (
-            <OAButton startIcon={item.icon} key={item.id} variant='ghost'>
+            <OAButton
+              startIcon={item.icon}
+              key={item.id}
+              variant="ghost"
+              href={item.href}
+            >
               {item.name}
             </OAButton>
           );
