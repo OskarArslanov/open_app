@@ -118,6 +118,7 @@ const OAHeaderContainer = () => {
             style={{ borderRadius: '5px' }}
             src="/logoO.png"
             alt="logo"
+            priority
           />
         </Link>
         <NavMenu className="hide__S">
