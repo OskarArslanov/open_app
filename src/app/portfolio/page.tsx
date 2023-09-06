@@ -11,6 +11,7 @@ import Chat from '../../pages/Portfolio/Chat';
 import Commercial from '../../pages/Portfolio/Commercial';
 import ChartJS from '../../pages/Portfolio/ChartJS';
 import { AnimateContainer } from '@/widgets/Animations';
+import Todo from '@/pages/Portfolio/Todo';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -38,15 +39,12 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
     name: 'chat',
     content: <Chat />,
   },
+  {
+    id: 5,
+    name: 'todo',
+    content: <Todo />,
+  },
 ];
-
-const Container = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  width: '100%',
-  height: '100%',
-});
 
 const Menu = styled.menu({
   display: 'flex',

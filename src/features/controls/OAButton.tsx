@@ -12,6 +12,7 @@ interface OAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   href?: string;
+  query?: Record<string, string>;
 }
 
 const ButtonVariants: Record<string, any> = {
@@ -88,9 +89,12 @@ const LinkButton = styled(Link)({
 });
 
 const OAButton: FC<OAButtonProps> = (props) => {
-  if (props.href) {
+  if (props.href || props.query) {
     return (
-      <LinkButton href={props.href}>
+      <LinkButton
+        href={{ pathname: props.href, query: props.query }}
+        data-testid={props.id}
+      >
         <StyledButton {...props}>
           {props.startIcon}
           {props.children}
@@ -100,7 +104,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
     );
   }
   return (
-    <StyledButton {...props}>
+    <StyledButton {...props} data-testid={props.id}>
       {props.startIcon}
       {props.children}
       {props.endIcon}

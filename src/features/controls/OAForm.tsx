@@ -19,15 +19,20 @@ const Form = styled.form`
 const OAForm: FC<OAFormProps> = (props) => {
   const methods = useForm();
   const [error, setError] = useState<any[]>();
+  const [hasError, setHasError] = useState(false);
   const handleChange = () => {
     const errorFields = Object.values(methods.formState.errors);
     const errorsMessages = errorFields.map((item) => item?.message);
     setError(errorsMessages);
+    setHasError(!!errorsMessages.length);
     props.onChangeValues?.(methods.getValues());
   };
 
   useEffect(() => {
-    setError([props.error]);
+    if (props.error) {
+      setError([props.error]);
+      setHasError(!![props.error].length);
+    }
   }, [props.error]);
 
   return (
@@ -39,8 +44,15 @@ const OAForm: FC<OAFormProps> = (props) => {
         className={props.className}
       >
         {props.children}
-        {!!error?.length && (
-          <p style={{ color: 'red', fontSize: '12px' }}>{error[0]}</p>
+        {hasError && (
+          <p
+            style={{
+              color: 'red',
+              fontSize: '12px',
+            }}
+          >
+            {error?.[0]}
+          </p>
         )}
       </Form>
     </FormProvider>

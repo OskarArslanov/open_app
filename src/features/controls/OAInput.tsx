@@ -22,6 +22,7 @@ interface OAInputProps {
   onClickEndAdornment?: () => void;
   startAdornment?: React.ReactNode;
   onStartEndAdornment?: () => void;
+  id?: string;
 }
 
 const Container = styled.div`
@@ -87,6 +88,7 @@ const OAInput: FC<OAInputProps> = (props) => {
           return (
             <BaseInput
               {...field}
+              data-testid={props.id}
               $isError={invalid}
               placeholder={props.placeholder}
               type={type}
