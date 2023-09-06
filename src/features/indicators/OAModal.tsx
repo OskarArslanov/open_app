@@ -16,7 +16,6 @@ const Container = styled.div({
   maxWidth: '50%',
   minWidth: '240px',
   width: 'max-content',
-  maxHeight: '400px',
   padding: '20px',
   outline: 'none',
 });

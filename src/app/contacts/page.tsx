@@ -58,7 +58,7 @@ const ContactsPage = () => {
       <ContactList>
         {contacts.map((item) => {
           return (
-            <OAButton startIcon={item.icon} key={item.id} cVariant='ghost'>
+            <OAButton startIcon={item.icon} key={item.id} variant='ghost'>
               {item.name}
             </OAButton>
           );

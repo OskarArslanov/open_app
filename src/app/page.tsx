@@ -51,13 +51,14 @@ const Actions = styled.div({
 const ImgContainer = styled.div({
   position: 'relative',
   left: '-40px',
+  transition: '0.5',
   '& > *': {
-    width: '450px',
-    height: '460px',
+    width: '420px',
+    height: '430px',
     borderRadius: '10px',
     '@media screen and (max-width: 1200px)': {
-      width: '350px',
-      height: '360px',
+      width: '320px',
+      height: '330px',
     },
     '@media screen and (max-width: 900px)': {
       width: '150px',
@@ -90,14 +91,14 @@ const OAMainOrder = () => {
     <AnimateContainer>
       <Base>
         <BaseInfo>
-          <b style={{ width: '100%' }}>Frontend developer</b>
-          <b style={{ width: '100%', color: 'var(--color-purple_dark)' }}>
+          <b style={{ width: '80%' }}>Frontend developer</b>
+          <b style={{ width: '80%', color: 'var(--color-purple_dark)' }}>
             Oskar Arslanov
           </b>
         </BaseInfo>
         <ImgContainer>
           <ImgBg />
-          <Img src="/photo.png" width={450} height={460} priority alt="photo" />
+          <Img src="/photo.png" width={420} height={430} priority alt="photo" />
         </ImgContainer>
       </Base>
       <Info>
@@ -124,12 +125,12 @@ const OAMainOrder = () => {
 
       <Actions>
         <Link href="/about">
-          <OAButton cVariant="filled" fullWidth>
+          <OAButton variant="filled" fullWidth size='large'>
             About
           </OAButton>
         </Link>
         <Link href="/contacts">
-          <OAButton cVariant="filled" fullWidth>
+          <OAButton variant="filled" fullWidth size='large'>
             Contacts
           </OAButton>
         </Link>
