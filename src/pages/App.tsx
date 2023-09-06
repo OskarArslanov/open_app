@@ -11,15 +11,8 @@ import styled from '@emotion/styled';
 
 const Container = styled.main({
   height: '100%',
-  maxWidth: '1320px',
   display: 'flex',
   flexFlow: 'column',
-  width: '100%',
-  alignSelf: 'center',
-  position: 'relative',
-  '& > *': {
-    padding: '0 20px',
-  },
 });
 
 const App: FC<PropsWithChildren> = (props) => {

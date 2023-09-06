@@ -1,25 +1,92 @@
 'use client';
-import { FC, PropsWithChildren, useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import OANavbar from './OANavbar';
 import styled from 'styled-components';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
+import { usePathname } from 'next/navigation';
+import OAIconButton from '@/features/controls/OAIconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
 
-const Container = styled.section`
-  display: flex;
-  flex: 0 1 auto;
-  min-height: 48px;
-  margin-top: 10px;
-  justify-content: space-between;
-  align-items: center;
-`;
+const navbarData = [
+  {
+    name: 'About',
+    href: 'about',
+    icon: <InfoOutlinedIcon style={{ color: '#FFF' }} />,
+  },
+  {
+    name: 'Portfolio',
+    href: 'portfolio',
+    icon: <WorkOutlineIcon style={{ color: '#FFF' }} />,
+  },
+  {
+    name: 'Contacts',
+    href: 'contacts',
+    icon: <ContactPhoneOutlinedIcon style={{ color: '#FFF' }} />,
+  },
+];
 
-const OAHeaderContainer: FC<PropsWithChildren> = (props) => {
+const Container = styled.section({
+  display: 'flex',
+  flex: '0 1 auto',
+  minHeight: '48px',
+  justifyContent: 'space-between',
+  position: 'fixed',
+  width: '100%',
+  zIndex: 1,
+  top: 0,
+  background: 'var(--color-purple_dark)',
+  boxShadow: '5px 15px 10px -15px var(--color-purple_dark)',
+});
+
+const NavBar = styled.nav({
+  display: 'flex',
+  gap: '60px',
+  justifyContent: 'space-between',
+  padding: '0 40px',
+  alignItems: 'center',
+  width: '100%',
+  '@media screen and (max-width: 768px)': {
+    padding: '0 10px',
+  },
+});
+
+const NavMenu = styled.menu({
+  listStyle: 'none',
+  display: 'flex',
+  padding: 0,
+  height: '100%',
+  margin: 0,
+  background: 'var(--color-purple_dark)', 
+  '@media screen and (max-width: 768px)': {
+    flexDirection: 'column',
+    minWidth: '200px',
+  },
+});
+
+const NavLink = styled(Link)({
+  fontSize: 'var(--font-size_m)',
+  fontWeight: 'var(--font-weight_xl)',
+  height: '60px',
+  minWidth: '120px',
+  lineHeight: '60px',
+  textAlign: 'center',
+  transition: '0.25',
+});
+
+const OAHeaderContainer = () => {
   const [logged, setLogged] = useState<{
     jwt: string;
     fullanme: string;
     shortname: string;
   }>();
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const segments = usePathname()?.split('/').slice(1);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -33,16 +100,69 @@ const OAHeaderContainer: FC<PropsWithChildren> = (props) => {
 
   return (
     <Container>
-      <Link href="/" shallow>
-        <Image
-          width={96}
-          height={48}
-          style={{ borderRadius: '5px' }}
-          src="/logoO.png"
-          alt="logo"
-        />
-      </Link>
-      <OANavbar />
+      <NavBar>
+        <OAIconButton
+          className="hide__M hide__L"
+          style={{
+            maxHeight: '40px',
+            visibility: openDrawer ? 'hidden' : 'visible',
+          }}
+          onClick={() => setOpenDrawer(true)}
+        >
+          <MenuIcon />
+        </OAIconButton>
+        <Link href="/" shallow>
+          <Image
+            width={160}
+            height={40}
+            style={{ borderRadius: '5px' }}
+            src="/logoO.png"
+            alt="logo"
+          />
+        </Link>
+        <NavMenu className="hide__S">
+          {navbarData.map((item) => {
+            const isActive = item.href === segments?.[0];
+            return (
+              <NavLink
+                href={`/${item.href}`}
+                shallow
+                key={item.name}
+                style={{
+                  background: isActive ? '#fff' : 'var(--color-purple_dark)',
+                  color: isActive ? 'var(--color-purple_dark)' : '#fff',
+                }}
+              >
+                {item.name}
+              </NavLink>
+            );
+          })}
+        </NavMenu>
+      </NavBar>
+      <Drawer
+        anchor="left"
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+      >
+        <NavMenu>
+          {navbarData.map((item) => {
+            const isActive = item.href === segments?.[0];
+            return (
+              <NavLink
+                href={`/${item.href}`}
+                shallow
+                key={item.name}
+                style={{
+                  background: isActive ? '#fff' : 'var(--color-purple_dark)',
+                  color: isActive ? 'var(--color-purple_dark)' : '#fff',
+                }}
+              >
+                {item.name}
+              </NavLink>
+            );
+          })}
+        </NavMenu>
+      </Drawer>
     </Container>
   );
 };

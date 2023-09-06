@@ -1,5 +1,6 @@
 'use client';
 
+import OAButton from '@/features/controls/OAButton';
 import OAIconButton from '@/features/controls/OAIconButton';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
@@ -54,28 +55,15 @@ const ContactsPage = () => {
   return (
     <AnimateContainer>
       <h1>Contacts</h1>
-      {contacts.map((item) => {
-        return (
-          <OAIconButton
-            startIcon={item.icon}
-            content={item.name}
-            key={item.id}
-            href={item.href}
-          >
-            {item.name}
-          </OAIconButton>
-        );
-      })}
-      {/* {MOCK_USERLIST.map((item) => (
-        <User>
-          <UserData>
-            {item.user.name} - {item.user.shortName}
-          </UserData>
-          <UserData>
-            {item.email} - {item.password}
-          </UserData>
-        </User>
-      ))} */}
+      <ContactList>
+        {contacts.map((item) => {
+          return (
+            <OAButton startIcon={item.icon} key={item.id} cVariant='ghost'>
+              {item.name}
+            </OAButton>
+          );
+        })}
+      </ContactList>
     </AnimateContainer>
   );
 };
