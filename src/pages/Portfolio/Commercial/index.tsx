@@ -1,9 +1,26 @@
 import OACard from '@/features/indicators/OACard';
+import OAModal from '@/features/indicators/OAModal';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useState } from 'react';
 
-const exp = [
+interface ExpType {
+  id: number;
+  name: string;
+  project: string;
+  description: string;
+  stack: string[];
+  since: string;
+  untill: string;
+  achieves: string[];
+  href: string;
+  hrefSetup?: {
+    login: string;
+    password: string;
+  };
+}
+const exp: ExpType[] = [
   {
     id: 1,
     name: 'OOO Compressor',
@@ -124,7 +141,7 @@ const ProjectList = styled.ul({
 const Project = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
+  gap: '10px',
   boxShadow: '0px 7px 25px 0px rgba(100, 100, 111, 0.20)',
   color: '#282626',
   fontSize: '20px',
@@ -165,11 +182,19 @@ const ProjectStack = styled.ul({
 });
 
 const Commercial = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<ExpType>();
   return (
     <AnimateContainer>
       <ProjectList>
         {exp.map((item) => (
-          <Project>
+          <Project
+            onClick={() => {
+              setIsOpen(true);
+              setSelected(item);
+            }}
+            key={item.id}
+          >
             <Link
               href={item.href}
               style={{
@@ -183,12 +208,39 @@ const Commercial = () => {
             <h3>{item.description}</h3>
             <ProjectStack>
               {item.stack.map((el) => (
-                <li>{el}</li>
+                <li key={el}>{el}</li>
               ))}
             </ProjectStack>
           </Project>
         ))}
       </ProjectList>
+      <OAModal
+        isOpen={isOpen}
+        onClose={() => {
+          setSelected(undefined);
+          setIsOpen(false);
+        }}
+        title={`${selected?.name} | from ${selected?.since} to ${selected?.untill}`}
+      >
+        <span style={{ fontSize: '20px' }}>
+          Site is available on{' '}
+          <Link href={selected?.href!} style={{ textDecoration: 'underline' }}>
+            {selected?.href}
+          </Link>
+        </span>
+        {selected?.hrefSetup && (
+          <p>test info {JSON.stringify(selected.hrefSetup)}</p>
+        )}
+        <h4>Achieves: </h4>
+        <ol style={{ paddingLeft: '10px', marginTop: '-10px' }} type="1">
+          {selected?.achieves.map((item) => (
+            <li key={item} style={{ listStyleType: 'initial' }}>
+              {item}
+            </li>
+          ))}
+        </ol>
+        <span>{selected?.description}</span>
+      </OAModal>
     </AnimateContainer>
   );
 };

@@ -67,8 +67,8 @@ body {
 }
 
 a {
+  color: var(--color-purple_dark);
   text-decoration: none;
-  color: unset;
 }
 
 ul {
@@ -82,22 +82,25 @@ li {
 
 h1 {
   font-size: 30px;
+  margin: 0;
 }
 
 h2 {
   font-size: 24px;
+  margin: 0;
 }
 
 h3 {
   font-size: 18px;
+  margin: 0;
 }
 
 h4 {
   font-size: 16px;
+  margin: 0;
 }
 
 p,
-b,
 span,
 div {
   font-size: 14px;

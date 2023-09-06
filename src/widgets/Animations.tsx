@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FC, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 const FlexContainer = styled(motion.div)({
@@ -12,6 +12,7 @@ const FlexContainer = styled(motion.div)({
 interface AnimateContainerProps {
   className?: string;
   children?: ReactNode;
+  style?: CSSProperties;
 }
 export const AnimateContainer: FC<AnimateContainerProps> = (props) => {
   return (
@@ -21,6 +22,7 @@ export const AnimateContainer: FC<AnimateContainerProps> = (props) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       className={props.className}
+      style={props.style}
     >
       {props.children}
     </FlexContainer>

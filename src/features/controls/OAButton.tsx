@@ -71,6 +71,7 @@ const Button = styled(motion.button)<{
   $theme?: string;
   $size?: string;
   $disabled?: boolean;
+  $fullWidth?: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -78,7 +79,7 @@ const Button = styled(motion.button)<{
   align-items: center;
   border-radius: 10px;
   gap: 8px;
-  width: max-content;
+  width: ${(props) => (props.$fullWidth ? '100%' : 'max-content')};
   border: none;
   cursor: ${(props) => (props.$disabled ? 'auto' : 'pointer')};
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
@@ -100,6 +101,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
       onClick={props.onClick}
       $disabled={props.disabled}
       disabled={props.disabled}
+      $fullWidth={props.fullwidth}
     >
       {props.children}
     </Button>

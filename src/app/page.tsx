@@ -6,12 +6,6 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Container = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '50px',
-});
-
 const Base = styled.div({
   display: 'flex',
   width: '100%',
@@ -43,10 +37,16 @@ const Info = styled.span({
   },
 });
 
-const Actions = styled.div`
-  display: flex;
-  gap: 20px;
-`;
+const Actions = styled.div({
+  display: 'flex',
+  gap: '20px',
+  '& > *': {
+    width: '100%',
+  },
+  '@media screen and (max-width: 500px)': {
+    flexDirection: 'column',
+  },
+});
 
 const ImgContainer = styled.div({
   position: 'relative',
@@ -91,9 +91,9 @@ const OAMainOrder = () => {
       <Base>
         <BaseInfo>
           <b style={{ width: '100%' }}>Frontend developer</b>
-          <strong style={{ width: '100%', color: 'var(--color-purple_dark)' }}>
+          <b style={{ width: '100%', color: 'var(--color-purple_dark)' }}>
             Oskar Arslanov
-          </strong>
+          </b>
         </BaseInfo>
         <ImgContainer>
           <ImgBg />
@@ -124,12 +124,12 @@ const OAMainOrder = () => {
 
       <Actions>
         <Link href="/about">
-          <OAButton size="large" variant="contained">
+          <OAButton size="large" variant="contained" fullwidth>
             About
           </OAButton>
         </Link>
         <Link href="/contacts">
-          <OAButton size="large" variant="outlined">
+          <OAButton size="large" variant="outlined" fullwidth>
             Contacts
           </OAButton>
         </Link>
