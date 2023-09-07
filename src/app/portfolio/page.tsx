@@ -12,6 +12,7 @@ import Commercial from '../../pages/Portfolio/Commercial';
 import ChartJS from '../../pages/Portfolio/ChartJS';
 import { AnimateContainer } from '@/widgets/Animations';
 import Todo from '@/pages/Portfolio/Todo';
+import OAButton from '@/features/OAButton';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -81,24 +82,20 @@ const Portfolio = () => {
   }, [currentJob]);
   return (
     <AnimateContainer>
-      <h1>Portfolio</h1>
       <Menu>
         {portfolio.map((item) => {
           const isCurrent = item.name === currentJob;
           return (
-            <Link href={{ query: { job: item.name } }} key={item.id}>
-              <MenuTab
-                whileHover={{ opacity: 0.5 }}
-                style={{
-                  backgroundColor: isCurrent
-                    ? 'var(--color-purple_dark)'
-                    : 'var(--color-purple_light)',
-                  color: isCurrent ? '#fff' : '#000',
-                }}
-              >
-                {item.name}
-              </MenuTab>
-            </Link>
+            <OAButton
+              query={{ job: item.name }}
+              key={item.id}
+              size="medium"
+              style={{ height: '30px' }}
+              variant={isCurrent ? 'filled' : 'outlined'}
+              shallow
+            >
+              {item.name}
+            </OAButton>
           );
         })}
       </Menu>

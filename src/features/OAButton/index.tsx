@@ -13,6 +13,7 @@ interface OAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   endIcon?: ReactNode;
   href?: string;
   query?: Record<string, string>;
+  shallow?: boolean;
 }
 
 const ButtonVariants: Record<string, any> = {
@@ -100,6 +101,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
       <LinkButton
         href={{ pathname: props.href, query: props.query }}
         data-testid={props.id}
+        shallow={props.shallow}
       >
         <StyledButton {...props}>
           {props.startIcon}

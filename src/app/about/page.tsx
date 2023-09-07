@@ -18,7 +18,7 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 1,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -35,7 +35,6 @@ const ImageContainer = styled.div({
 const AboutPage = () => {
   return (
     <AnimateContainer>
-      <h1>About</h1>
       <h2>
         Hello! My name is Oskar Arslanov and here i would like to share my life
         experience
@@ -115,7 +114,7 @@ const AboutPage = () => {
         secured my first job as a programmer in September 2022. In October, I
         moved to Kazakhstan with my wife.
       </p>
-      <Carousel responsive={responsive} showDots>
+      <Carousel responsive={responsive} showDots ssr>
         {images.map((item, index) => {
           const path = `${item}/${index}.jpg`;
           return (

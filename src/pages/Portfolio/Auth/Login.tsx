@@ -70,7 +70,7 @@ const Login = () => {
           />
           <RememberMe>
             <OACheckbox name="remember" label="Запомнить меня" />
-            <OAButton variant='outlined' >Забыли пароль?</OAButton>
+            <OAButton variant='ghost' >Забыли пароль?</OAButton>
           </RememberMe>
           <OAButton type="submit" fullWidth>
             Войти

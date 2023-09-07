@@ -48,7 +48,6 @@ const ContactList = styled.ul({
 const ContactsPage = () => {
   return (
     <AnimateContainer>
-      <h1>Contacts</h1>
       <ContactList>
         {contacts.map((item) => {
           return (

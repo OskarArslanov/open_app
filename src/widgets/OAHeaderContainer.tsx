@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import OAIconButton from '@/features/OAIconButton';
+import OAButton from '@/features/OAButton';
 
 const navbarData = [
   {
@@ -61,7 +62,7 @@ const NavMenu = styled.menu({
   padding: 0,
   height: '100%',
   margin: 0,
-  background: 'var(--color-purple_dark)', 
+  background: 'var(--color-purple_dark)',
   '@media screen and (max-width: 768px)': {
     flexDirection: 'column',
     minWidth: '200px',
@@ -125,17 +126,20 @@ const OAHeaderContainer = () => {
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];
             return (
-              <NavLink
-                href={`/${item.href}`}
-                shallow
+              <OAButton
                 key={item.name}
                 style={{
-                  background: isActive ? '#fff' : 'var(--color-purple_dark)',
-                  color: isActive ? 'var(--color-purple_dark)' : '#fff',
+                  height: '100%',
+                  border: 'none',
+                  borderRadius: 0,
+                  minWidth: '120px',
                 }}
+                size="large"
+                href={`/${item.href}`}
+                variant={isActive ? 'outlined' : 'filled'}
               >
                 {item.name}
-              </NavLink>
+              </OAButton>
             );
           })}
         </NavMenu>
