@@ -1,8 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Todo from '.';
-import { delay } from '@/shared/utils/delay';
+import Todo from '@/pages/Portfolio/Todo';
 
 describe('Todo', () => {
   test('Create todo item and it is in document', () => {
