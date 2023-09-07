@@ -2,9 +2,9 @@
 
 import styled from '@emotion/styled';
 import { AnimateContainer } from '@/widgets/Animations';
-import OACard from '@/features/indicators/OACard';
-import OAColumnChart from '@/features/indicators/OAColumnChart';
-import OALineChart from '@/features/indicators/OALineChart';
+import OACard from '@/features/OACard';
+import OAColumnChart from '@/features/OAColumnChart';
+import OALineChart from '@/features/OALineChart';
 
 const Analytics = styled.div({
   display: 'flex',

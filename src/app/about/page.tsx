@@ -115,7 +115,7 @@ const AboutPage = () => {
         secured my first job as a programmer in September 2022. In October, I
         moved to Kazakhstan with my wife.
       </p>
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} showDots>
         {images.map((item, index) => {
           const path = `${item}/${index}.jpg`;
           return (

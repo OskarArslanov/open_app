@@ -1,6 +1,6 @@
 'use client';
 
-import OAButton from '@/features/controls/OAButton';
+import OAButton from '@/features/OAButton';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import { Email, Instagram, Telegram, WhatsApp } from '@mui/icons-material';

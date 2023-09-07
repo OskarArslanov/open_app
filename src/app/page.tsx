@@ -1,6 +1,6 @@
 'use client';
 
-import OAButton from '@/features/controls/OAButton';
+import OAButton from '@/features/OAButton';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import Image from 'next/image';
@@ -117,7 +117,7 @@ const OAMainOrder = () => {
         in Mobile Robotics (LabVIEW and Java)
         <br /> <br /> A lot of different awards on WorldSkills National
         Competitions, such as China, Japan, India, South Korea, Belarus, Hong
-        Kong. <br /> Member of Russia National team from 2015 to 2019 <br />{' '}
+        Kong. <br /> Member of Russia National team from 2016 to 2019 <br />{' '}
         <br />
         Migrated from Russia to Kazahstan and going to Serbia in Winter 2023{' '}
         <br />

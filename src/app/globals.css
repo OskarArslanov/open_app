@@ -65,6 +65,11 @@ body {
   }
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
+}
+
 a {
   color: var(--color-purple_dark);
   text-decoration: none;

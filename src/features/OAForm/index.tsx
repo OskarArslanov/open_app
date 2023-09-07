@@ -9,6 +9,7 @@ interface OAFormProps {
   onSubmit: (data: any) => void;
   onChangeValues?: (data: any) => void;
   error?: string;
+  id?: string;
 }
 
 const Form = styled.form`
@@ -42,6 +43,7 @@ const OAForm: FC<OAFormProps> = (props) => {
         onSubmit={methods.handleSubmit(props.onSubmit)}
         onChange={handleChange}
         className={props.className}
+        data-testId={props.id}
       >
         {props.children}
         {hasError && (

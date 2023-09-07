@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Modal from '@mui/material/Modal';
 import ClearIcon from '@mui/icons-material/Clear';
 import { FC, ReactNode } from 'react';
-import OAIconButton from '../controls/OAIconButton';
+import OAIconButton from '../OAIconButton';
 
 const Container = styled.div({
   position: 'absolute',

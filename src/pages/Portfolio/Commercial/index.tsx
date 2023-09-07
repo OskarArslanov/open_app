@@ -1,5 +1,4 @@
-import OACard from '@/features/indicators/OACard';
-import OAModal from '@/features/indicators/OAModal';
+import OAModal from '@/features/OAModal';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import Link from 'next/link';

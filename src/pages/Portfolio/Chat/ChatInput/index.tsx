@@ -4,9 +4,9 @@ import SendIcon from '@mui/icons-material/Send';
 import MailIcon from '@mui/icons-material/Mail';
 import { delay } from '@/shared/utils/delay';
 import { animate } from 'framer-motion';
-import OAButton from '@/features/controls/OAButton';
-import OAForm from '@/features/controls/OAForm';
-import OAInput from '@/features/controls/OAInput';
+import OAButton from '@/features/OAButton';
+import OAForm from '@/features/OAForm';
+import OAInput from '@/features/OAInput';
 
 interface ChatInputProps {
   onSend?: (data: string) => void;

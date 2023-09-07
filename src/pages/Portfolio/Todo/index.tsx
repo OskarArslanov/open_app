@@ -1,13 +1,13 @@
 'use client';
 
-import OAButton from '@/features/controls/OAButton';
-import OAForm from '@/features/controls/OAForm';
-import OAInput from '@/features/controls/OAInput';
 import Checkbox from '@mui/material/Checkbox';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import OAButton from '@/features/OAButton';
+import OAForm from '@/features/OAForm';
+import OAInput from '@/features/OAInput';
 
 const filters = [
   {
@@ -72,9 +72,9 @@ const Todo = () => {
   const params = useSearchParams();
   const currentFilter = params?.get('filter');
 
-  const handleSubmit = (e: any) => {
+  const handleAddTodo = () => {
     const newTodo: TodoType = {
-      name: e.name,
+      name,
       done: false,
       id: todos.length,
     };
@@ -101,34 +101,50 @@ const Todo = () => {
     setTodos(updatedTodos);
   };
 
-  const uncheckedTodos = todos.filter((item) => item.done).length;
+  const uncheckedTodos = todos.filter((item) => !item.done).length;
   return (
     <Container>
-      <OAForm onSubmit={handleSubmit} style={{ flexDirection: 'row' }}>
-        <OAInput type="text" name="name" value={name} onChange={setName} />
-        <OAButton type="submit" style={{ height: '100%' }}>
+      <div style={{ flexDirection: 'row', display: 'flex', gap: '5px' }}>
+        <OAInput
+          type="text"
+          name="name"
+          value={name}
+          onChange={setName}
+          id="input"
+        />
+        <OAButton
+          style={{ height: '100%' }}
+          id="create"
+          disabled={!name.length}
+          onClick={handleAddTodo}
+        >
           Create
         </OAButton>
-      </OAForm>
+      </div>
       <TodoList>
         {filteredTodos.map((item) => (
           <TodoItem key={item.id}>
             <Checkbox
               checked={item.done}
               onChange={(e, state) => handleDone(item, state)}
-              data-testid={`checkbox-${item.name}`}
+              inputProps={{
+                // @ts-ignore
+                'data-testid': `checkbox-${item.name}`,
+              }}
             />
             {item.name}
           </TodoItem>
         ))}
       </TodoList>
       <TodoWidgets>
-        <p>{uncheckedTodos} items left</p>
+        <p>
+          <b data-testid="items-left">{uncheckedTodos}</b> items left
+        </p>
         <TodoWidgetFilter>
           {filters.map((item) => (
             <OAButton
               key={item.id}
-              variant="outlined"
+              variant={currentFilter === item.slug ? 'filled' : 'outlined'}
               size="small"
               query={{ job: 'todo', filter: item.slug }}
               id={item.slug}
