@@ -35,6 +35,9 @@ const ButtonVariants: Record<string, any> = {
     backgroundColor: 'var(--text-color_not_primary)',
     border: '1px solid var(--color-purple_dark)',
     color: 'var(--color-purple_dark)',
+    '&:hover': {
+      backgroundColor: 'var(--color-purple_light)',
+    },
   },
   text: {
     backgroundColor: 'var(--text-color_not_primary)',
@@ -75,6 +78,7 @@ const StyledButton = styled(motion.button)<OAButtonProps>(
     background: 'transparent',
     borderRadius: '5px',
     cursor: 'pointer',
+    transition: '0.25s',
   },
   (props) => ({
     width: props.fullWidth ? '100%' : 'auto',
