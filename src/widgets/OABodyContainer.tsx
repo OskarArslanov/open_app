@@ -8,7 +8,7 @@ const Container = styled.section({
   backgroundColor: 'var(--text-color-not_primary)',
   color: 'var(--text-color-primary)',
   '@media screen and (max-width: 768px)': {
-    padding: '20px',
+    padding: '80px 40px',
   },
 });
 const OABodyContainer: FC<PropsWithChildren> = (props) => {

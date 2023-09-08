@@ -141,7 +141,7 @@ const OAHeaderContainer = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <NavMenu>
+        <NavMenu data-theme="dark">
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];
             return (
@@ -153,6 +153,7 @@ const OAHeaderContainer = () => {
                   borderRadius: 0,
                   minWidth: '120px',
                 }}
+                fullwidth
                 size="large"
                 href={`/${item.href}`}
                 variant={isActive ? 'outlined' : 'filled'}

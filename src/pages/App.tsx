@@ -17,7 +17,7 @@ const Container = styled.main({
 });
 
 const App: FC<PropsWithChildren> = (props) => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   return (
     <StyledComponentsProvider>
       <ThemeProvider onChange={setTheme}>
