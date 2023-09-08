@@ -18,6 +18,7 @@ interface OAButtonProps {
   id?: string;
   type?: 'submit' | 'reset' | 'button';
   style?: CSSProperties;
+  disabled?: boolean;
 }
 
 const ButtonVariants: Record<string, any> = {
@@ -33,7 +34,7 @@ const ButtonVariants: Record<string, any> = {
   ghost: {
     color: 'var(--color-purple_dark)',
     '&:hover': {
-      background: 'var(--color-purple_light)',
+      backgroundColor: 'var(--color-purple_light)',
     },
   },
   outlined: {
@@ -87,10 +88,16 @@ const StyledButton = styled(motion.button)<OAButtonProps>(
   },
   (props) => ({
     width: props.fullwidth ? '100%' : 'auto',
-    opacity: props.disabled ? 0.5 : 1,
-    zIndex: props.disabled ? -1 : 0,
     ...ButtonSizes[props.size || 'medium'],
     ...ButtonVariants[props.variant || 'filled'],
+    '&:disabled': {
+      opacity: 0.5,
+      zIndex: 1,
+      cursor: 'auto',
+      backgroundColor: 'var(--color-gray_light)',
+      color: 'var(--color-gray_dark)',
+      borderColor: 'var(--color-gray_dark)',
+    },
   }),
 );
 
