@@ -89,7 +89,7 @@ const Portfolio = () => {
               key={item.id}
               size="medium"
               style={{ height: '30px' }}
-              variant={isCurrent ? 'filled' : 'outlined'}
+              variant={isCurrent ? 'outlined' : 'filled'}
               shallow
             >
               {item.name}

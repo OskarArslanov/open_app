@@ -1,11 +1,16 @@
 import {
   FC,
-  PropsWithChildren,
+  ReactNode,
   createContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
+
+interface ThemeProviderProps {
+  onChange?: (theme: string) => void;
+  children: ReactNode;
+}
 
 export const ThemeContext = createContext<{
   theme: string;
@@ -15,7 +20,7 @@ export const ThemeContext = createContext<{
   onChangeTheme: () => {},
 });
 
-const ThemeProvider: FC<PropsWithChildren> = (props) => {
+const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const [theme, setTheme] = useState<string>('light');
 
   useEffect(() => {
@@ -25,7 +30,10 @@ const ThemeProvider: FC<PropsWithChildren> = (props) => {
   const onChangeTheme = useMemo(
     () => (newTheme: string) => {
       setTheme(newTheme);
+      props.onChange?.(newTheme);
+      localStorage.setItem('theme', newTheme);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 

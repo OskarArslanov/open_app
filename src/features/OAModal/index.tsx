@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Modal from '@mui/material/Modal';
 import ClearIcon from '@mui/icons-material/Clear';
 import { FC, ReactNode } from 'react';
-import OAIconButton from '../OAIconButton';
+import OAButton from '../OAButton';
 
 const Container = styled.div({
   position: 'absolute',
@@ -32,13 +32,13 @@ const OAModal: FC<OAModalProps> = (props) => {
   return (
     <Modal open={props.isOpen} onClose={props.onClose}>
       <Container>
-        <OAIconButton
+        <OAButton
           style={{ alignSelf: 'flex-end' }}
           onClick={props.onClose}
           id={`close-${props.id}`}
         >
           <ClearIcon />
-        </OAIconButton>
+        </OAButton>
         {props.title && <h1>{props.title}</h1>}
         {props.children}
       </Container>

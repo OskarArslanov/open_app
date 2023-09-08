@@ -12,7 +12,6 @@ export interface ChatMessageType {
 
 interface ChatMessageProps {
   message?: ChatMessageType;
-  onStop?: () => void;
 }
 const ChatMessage: FC<ChatMessageProps> = (props) => {
   const isBot = props.message?.owner === 'bot';
@@ -32,14 +31,16 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
       <p
         style={{
           backgroundColor: isBot
-            ? 'rgba(34, 118, 245, 0.20)'
+            ? 'var(--color-purple_light)'
             : 'var(--color-purple_dark)',
-          color: isBot ? '#000' : '#FFF',
           position: 'relative',
+          color: isBot
+            ? 'var(--color-purple_dark)'
+            : 'var(--color-purple_light)',
         }}
       >
         {props.message?.message}
-        {isBot && props.message?.isGenerating && (
+        {/* {isBot && props.message?.isGenerating && (
           <button
             className={styles.Container_BotGenerating}
             onClick={props.onStop}
@@ -47,7 +48,7 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
           >
             stop generating
           </button>
-        )}
+        )} */}
       </p>
       {!isBot && (
         <div

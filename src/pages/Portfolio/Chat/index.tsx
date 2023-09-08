@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-loop-func */
 import { useState } from 'react';
 import { AnimateContainer } from '@/widgets/Animations';
+import { delay } from '@/shared/utils/delay';
 import Title from './Title';
 import ChatArea from './ChatArea';
 import ChatInput from './ChatInput';
@@ -9,9 +10,6 @@ import styles from './Main.module.scss';
 import { ChatMessageType } from './ChatMessage';
 
 const Chat = () => {
-  const url = 'http://185.46.8.130/api/v1/chat/send-message';
-  const controller = new AbortController();
-  const signal = controller.signal;
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -21,60 +19,35 @@ const Chat = () => {
     const userMessage = { message: e, owner: 'user' } as ChatMessageType;
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-
-    await fetch(url, {
-      signal,
-      method: 'POST',
-      body: JSON.stringify({ message: e }),
-      headers: {
-        Accept: 'text/event-stream',
-        'Content-Type': 'application/json',
-      },
-    }).then(async (response) => {
-      const reader = response.body?.getReader();
-      const decoder = new TextDecoder();
-      const botMessagePos = newMessages.length;
-      let isDone = false;
-      let message = '';
-      while (!isDone) {
-        // eslint-disable-next-line no-await-in-loop
-        const { value } = await reader!.read();
-        const chunk = decoder.decode(value);
-        const jsonStrings = chunk.replace(/}\s*{/g, '}\n{').split('\n');
-        jsonStrings.forEach((item) => {
-          try {
-            const obj = JSON.parse(item);
-            isDone = obj.status === 'done';
-
-            if (isDone) {
-              newMessages[botMessagePos] = {
-                ...newMessages[botMessagePos],
-                isGenerating: false,
-              };
-              return;
-            }
-            message += obj.value;
-            newMessages[botMessagePos] = {
-              message,
-              owner: 'bot',
-              isGenerating: true,
-            };
-            setBotMessage(message);
-            setMessages(newMessages);
-          } catch (err) {
-            console.log('PARSING ERROR! BAD CHUNK: ', item);
-            console.log(chunk);
-          }
-        });
-      }
-    });
+    await delay(1000);
+    const botResponse = {
+      message: 'some response',
+      owner: 'bot',
+      isGenerating: true,
+    } as ChatMessageType;
+    setBotMessage(botResponse.message);
+    const withBotMessage = [...newMessages, botResponse];
+    setMessages(withBotMessage);
+    // const response = (
+    //   await axios.get(url, {
+    //     params: {
+    //       length: '3',
+    //       count: '3',
+    //     },
+    //     headers: {
+    //       'X-RapidAPI-Key':
+    //         'c8a04fd763msh1df2097123a9b01p1cd44ejsnc7cfc52e0435',
+    //       'X-RapidAPI-Host': 'montanaflynn-lorem-text-generator.p.rapidapi.com',
+    //     },
+    //   })
+    // ).data;
   };
 
   return (
     <AnimateContainer className={styles.Container}>
       <div className={styles.Container_Wrapper}>
         <Title />
-        <ChatArea messages={messages} onStop={() => controller.abort()} />
+        <ChatArea messages={messages} />
         <ChatInput onSend={handleSend} />
       </div>
     </AnimateContainer>

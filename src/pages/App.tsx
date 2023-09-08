@@ -3,23 +3,25 @@
 import OAFooterContainer from '@/widgets/OAFooterContainer';
 import OAHeaderContainer from '@/widgets/OAHeaderContainer';
 import OABodyContainer from '@/widgets/OABodyContainer';
-import { FC, PropsWithChildren, useContext } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
 import StyledComponentsProvider from '@/shared/providers/StyledComponentsProvider';
-import ThemeProvider, { ThemeContext } from '@/shared/providers/ThemeProvider';
+import ThemeProvider from '@/shared/providers/ThemeProvider';
 import styled from '@emotion/styled';
 
 const Container = styled.main({
   height: '100%',
   display: 'flex',
   flexFlow: 'column',
+  backgroundColor: 'var(--text-color-not_primary)',
+  color: 'var(--text-color-primary)',
 });
 
 const App: FC<PropsWithChildren> = (props) => {
-  const themeContext = useContext(ThemeContext);
+  const [theme, setTheme] = useState('dark');
   return (
     <StyledComponentsProvider>
-      <ThemeProvider>
-        <Container data-theme={themeContext.theme}>
+      <ThemeProvider onChange={setTheme}>
+        <Container data-theme={theme}>
           <OAHeaderContainer />
           <OABodyContainer>{props.children}</OABodyContainer>
           <OAFooterContainer />

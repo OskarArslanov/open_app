@@ -20,34 +20,37 @@ interface OAButtonProps {
   style?: CSSProperties;
   disabled?: boolean;
   onClick?: () => void;
+  className?: string;
+  circled?: boolean;
 }
 
 const ButtonVariants: Record<string, any> = {
   filled: {
-    backgroundColor: 'var(--color-purple_dark)',
-    color: '#fff',
-    border: '1px solid var(--color-purple_dark)',
+    backgroundColor: 'var(--color-primary)',
+    color: 'var(--color-not_primary)',
+    border: '1px solid var(--color-primary)',
     '&:hover': {
-      color: 'var(--color-purple_dark)',
-      backgroundColor: 'var(--color-purple_light)',
+      color: 'var(--color-primary)',
+      backgroundColor: 'var(--color-not_primary)',
     },
   },
   ghost: {
-    color: 'var(--color-purple_dark)',
+    color: 'var(--color-not_primary)',
     '&:hover': {
-      backgroundColor: 'var(--color-purple_light)',
+      backgroundColor: 'var(--color-primary)',
     },
   },
   outlined: {
-    backgroundColor: 'var(--text-color_not_primary)',
-    border: '1px solid var(--color-purple_dark)',
-    color: 'var(--color-purple_dark)',
+    backgroundColor: 'var(--color-not_primary)',
+    border: '1px solid var(--color-primary)',
+    color: 'var(--color-primary)',
     '&:hover': {
-      backgroundColor: 'var(--color-purple_light)',
+      backgroundColor: 'var(--color-primary)',
+      color: 'var(--color-not_primary)',
     },
   },
   text: {
-    backgroundColor: 'var(--text-color_not_primary)',
+    backgroundColor: 'var(--color-primary)',
   },
 };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -10,10 +10,8 @@ import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
 import { usePathname } from 'next/navigation';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
-import OAIconButton from '@/features/OAIconButton';
 import OAButton from '@/features/OAButton';
-import OASwitch from '@/features/OASwitch';
-import { ThemeContext } from '@/shared/providers/ThemeProvider';
+import OAThemeSwitch from '@/features/OASwitch/OAThemeSwitch';
 
 const navbarData = [
   {
@@ -42,8 +40,8 @@ const Container = styled.section({
   width: '100%',
   zIndex: 1,
   top: 0,
-  background: 'var(--color-purple_dark)',
-  boxShadow: '5px 15px 10px -15px var(--color-purple_dark)',
+  background: 'var(--color-primary)',
+  boxShadow: '5px 15px 10px -15px var(--color-primary)',
 });
 
 const NavBar = styled.nav({
@@ -65,41 +63,12 @@ const NavMenu = styled.menu({
   padding: 0,
   height: '100%',
   margin: 0,
-  background: 'var(--color-purple_dark)',
+  background: 'var(--color-primary)',
   '@media screen and (max-width: 768px)': {
     flexDirection: 'column',
     minWidth: '200px',
   },
 });
-
-const NavLink = styled(Link)({
-  fontSize: 'var(--font-size_m)',
-  fontWeight: 'var(--font-weight_xl)',
-  height: '60px',
-  minWidth: '120px',
-  lineHeight: '60px',
-  textAlign: 'center',
-  transition: '0.25',
-});
-
-const variantsToggle = {
-  active: {
-    backgroundColor: '#d8f9ff',
-  },
-  inactive: {
-    backgroundColor: '#ffdf22',
-    right: 0,
-  },
-};
-
-const variantsBg = {
-  active: {
-    backgroundColor: '#000',
-  },
-  inactive: {
-    backgroundColor: '#fff',
-  },
-};
 
 const OAHeaderContainer = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -110,7 +79,6 @@ const OAHeaderContainer = () => {
   }>();
   const [openDrawer, setOpenDrawer] = useState(false);
   const segments = usePathname()?.split('/').slice(1);
-  const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -125,7 +93,7 @@ const OAHeaderContainer = () => {
   return (
     <Container>
       <NavBar>
-        <OAIconButton
+        <OAButton
           className="hide__M hide__L"
           style={{
             maxHeight: '40px',
@@ -134,7 +102,7 @@ const OAHeaderContainer = () => {
           onClick={() => setOpenDrawer(true)}
         >
           <MenuIcon />
-        </OAIconButton>
+        </OAButton>
         <Link href="/" shallow>
           <Image
             width={160}
@@ -145,12 +113,7 @@ const OAHeaderContainer = () => {
             priority
           />
         </Link>
-        <OASwitch
-          variantsBg={variantsBg}
-          variantsToggle={variantsToggle}
-          state={themeContext.theme === 'dark'}
-          onChange={(e) => themeContext.onChangeTheme(e ? 'dark' : 'light')}
-        />
+        <OAThemeSwitch />
         <NavMenu className="hide__S">
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];
@@ -182,17 +145,20 @@ const OAHeaderContainer = () => {
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];
             return (
-              <NavLink
-                href={`/${item.href}`}
-                shallow
+              <OAButton
                 key={item.name}
                 style={{
-                  background: isActive ? '#fff' : 'var(--color-purple_dark)',
-                  color: isActive ? 'var(--color-purple_dark)' : '#fff',
+                  height: '100%',
+                  border: 'none',
+                  borderRadius: 0,
+                  minWidth: '120px',
                 }}
+                size="large"
+                href={`/${item.href}`}
+                variant={isActive ? 'outlined' : 'filled'}
               >
                 {item.name}
-              </NavLink>
+              </OAButton>
             );
           })}
         </NavMenu>

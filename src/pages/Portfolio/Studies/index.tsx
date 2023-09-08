@@ -82,8 +82,8 @@ const Project = styled.div({
   cursor: 'pointer',
   flexDirection: 'column',
   gap: '10px',
-  boxShadow: '0px 7px 25px 0px rgba(100, 100, 111, 0.20)',
-  color: '#282626',
+  boxShadow: '0px 3px 15px 0px var(--color-not_primary)',
+  color: 'var(--text-color-primary)',
   fontSize: '20px',
   fontStyle: 'normal',
   lineHeight: '30px',
@@ -113,7 +113,9 @@ const ProjectStack = styled.ul({
   gap: '10px',
   flexWrap: 'wrap',
   '& > li': {
-    border: '1px solid var(--color-purple_dark)',
+    border: '1px solid var(--color-not_primary)',
+    backgroundColor: 'var(--text-color-not_primary)',
+    color: 'var(--text-color-primary)',
     borderRadius: '10px',
     padding: '2px 6px',
     fontSize: '12px',
@@ -138,7 +140,7 @@ const Studies = () => {
             <h2
               style={{
                 fontSize: '24px',
-                color: 'var(--color-purple_dark)',
+                color: 'var(--color-not_primary)',
               }}
             >
               {item.name}

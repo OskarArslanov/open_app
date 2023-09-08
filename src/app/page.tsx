@@ -68,7 +68,7 @@ const ImgContainer = styled.div({
 });
 
 const ImgBg = styled.div`
-  background: var(--bg-shadow);
+  background: var(--color-primary);
   content: '';
 `;
 
@@ -92,7 +92,7 @@ const OAMainOrder = () => {
       <Base>
         <BaseInfo>
           <b style={{ width: '80%' }}>Frontend developer</b>
-          <b style={{ width: '80%', color: 'var(--color-purple_dark)' }}>
+          <b style={{ width: '80%', color: 'var(--color-not_primary)' }}>
             Oskar Arslanov
           </b>
         </BaseInfo>

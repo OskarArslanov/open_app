@@ -1,15 +1,10 @@
 .Container {
   display: flex;
-  background-color: var(--color-purple_dark);
-  border-radius: 16px;
   flex: 0 1 auto;
   margin-top: 18px;
   justify-content: space-between;
 }
 
-.Container > p {
-  display: none;
-}
 @media screen and (max-width: 768px) {
 
 }

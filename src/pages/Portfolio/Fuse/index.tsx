@@ -31,7 +31,7 @@ const FuseInput = styled.input({
 });
 
 const FoundJokes = styled.span({
-  color: '#282626',
+  color: 'var(--text-color-primary)',
   fontSize: '16px',
   paddingLeft: '36px',
 });
@@ -49,8 +49,10 @@ const Joke = styled(Link)({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  boxShadow: '0px 7px 25px 0px rgba(100, 100, 111, 0.20)',
-  color: '#282626',
+  boxShadow: '0px 3px 15px 0px var(--color-not_primary)',
+  border: '1px solid var(--color-not_primary)',
+  backgroundColor: 'var(--text-color-not_primary)',
+  color: 'var(--text-color-primary)',
   fontSize: '20px',
   fontStyle: 'normal',
   lineHeight: '30px',
@@ -122,7 +124,7 @@ const Fuse = () => {
               <span>{item.value}</span>
               <div
                 style={{
-                  color: '#767676',
+                  color: 'var(--text-color-primary)',
                   fontSize: '14px',
                   display: 'flex',
                   justifyContent: 'space-between',

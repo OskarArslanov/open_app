@@ -4,7 +4,6 @@ import ChatMessage, { ChatMessageType } from '../ChatMessage';
 
 interface ChatAreaProps {
   messages?: ChatMessageType[];
-  onStop?: () => void;
 }
 const ChatArea: FC<ChatAreaProps> = (props) => {
   const scrollRef = useRef(null);
@@ -17,7 +16,7 @@ const ChatArea: FC<ChatAreaProps> = (props) => {
     <ul className={styles.Container}>
       {props.messages?.map((item, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <ChatMessage message={item} key={index} onStop={props.onStop} />
+        <ChatMessage message={item} key={index} />
       ))}
       <span ref={scrollRef} />
     </ul>

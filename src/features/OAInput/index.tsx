@@ -37,14 +37,15 @@ const InputContainer = styled.div<{ $isError: boolean }>(
   {
     display: 'flex',
     justifyContent: 'space-between',
-    background: 'var(--text-color_not_primary)',
     borderRadius: '10px',
     height: '40px',
+    backgroundColor: 'var(--color-white)',
+    color: 'var(--color-black)',
   },
   (props) =>
     props.$isError
       ? 'border: 1px solid var(--color-error);'
-      : 'border: 1px solid var(--border-color);',
+      : 'border: 1px solid var(--color-primary);',
 );
 
 const BaseInput = styled(motion.input)({
@@ -52,6 +53,7 @@ const BaseInput = styled(motion.input)({
   border: 'none',
   padding: '8px 10px',
   borderRadius: '10px',
+  background: 'transparent',
   width: '100%',
 });
 

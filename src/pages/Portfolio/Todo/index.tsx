@@ -54,7 +54,7 @@ const TodoItem = styled.li({
 });
 
 const Container = styled(AnimateContainer)({
-  border: '1px solid var(--color-purple_dark)',
+  border: '1px solid var(--color-not_primary)',
   padding: '10px',
   borderRadius: '5px',
   maxWidth: '768px',
