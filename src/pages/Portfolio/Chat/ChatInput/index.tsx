@@ -56,6 +56,7 @@ const ChatInput: FC<ChatInputProps> = (props) => {
         value={message}
         name="message"
         onChange={setMessage}
+        style={{ padding: '4px' }}
         endAdornment={
           <OAButton
             id="send-button"
