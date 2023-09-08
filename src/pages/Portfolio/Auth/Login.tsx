@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import axiosInstance from '@/shared/utils/axiosConfig';
 import { useState } from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useRouter } from 'next/navigation';
 import { AnimateContainer } from '@/widgets/Animations';
 import OAButton from '@/features/OAButton';
 import OACheckbox from '@/features/OACheckbox';
@@ -36,7 +35,6 @@ const RememberMe = styled.div`
 `;
 
 const Login = () => {
-  const router = useRouter();
   const [error, setError] = useState<string>();
   const handleSubmit = async (data: Record<string, any>) => {
     axiosInstance
@@ -47,7 +45,6 @@ const Login = () => {
       .then((resp: AxiosResponse) => {
         localStorage.setItem('jwt', resp.data.jwt);
         localStorage.setItem('user', JSON.stringify(resp.data.user));
-        router.push('/platform');
       })
       .catch((err: AxiosError) => setError(err.response?.data as string));
   };

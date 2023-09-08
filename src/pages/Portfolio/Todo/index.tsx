@@ -8,6 +8,7 @@ import { useSearchParams } from 'next/navigation';
 import OAButton from '@/features/OAButton';
 import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
+import OACheckbox from '@/features/OACheckbox';
 
 const filters = [
   {
@@ -124,13 +125,10 @@ const Todo = () => {
       <TodoList>
         {filteredTodos.map((item) => (
           <TodoItem key={item.id}>
-            <Checkbox
+            <OACheckbox
               checked={item.done}
-              onChange={(e, state) => handleDone(item, state)}
-              inputProps={{
-                // @ts-ignore
-                'data-testid': `checkbox-${item.name}`,
-              }}
+              onChange={(state) => handleDone(item, state)}
+              id={`checkbox-${item.name}`}
             />
             {item.name}
           </TodoItem>
