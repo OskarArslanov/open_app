@@ -157,6 +157,7 @@ const OAHeaderContainer = () => {
                 size="large"
                 href={`/${item.href}`}
                 variant={isActive ? 'outlined' : 'filled'}
+                onClick={() => setOpenDrawer(false)}
               >
                 {item.name}
               </OAButton>
