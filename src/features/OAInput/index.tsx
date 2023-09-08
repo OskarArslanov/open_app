@@ -1,5 +1,5 @@
 import { CSSProperties, FC, useEffect, useState } from 'react';
-import { IconButton, InputBase } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -65,7 +65,7 @@ const OAInput: FC<OAInputProps> = (props) => {
   endAdortment = (
     <IconButton
       onClick={() => {
-        showPassword ? setType('password') : setType('text');
+        setType(showPassword ? 'password' : 'text');
         setShowPassword(!showPassword);
       }}
     >
@@ -78,6 +78,7 @@ const OAInput: FC<OAInputProps> = (props) => {
     if (props.defaultValue !== undefined) {
       setValue(props.defaultValue as string);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

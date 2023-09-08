@@ -3,7 +3,6 @@
 import Login from '@/pages/Portfolio/Auth/Login';
 import Fuse from '@/pages/Portfolio/Fuse';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
 import { AnimateContainer } from '@/widgets/Animations';
@@ -76,6 +75,7 @@ const Portfolio = () => {
     defaultParams.set('job', 'commercial');
     const queryString = defaultParams.toString();
     router.push(`?${queryString}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentJob]);
 
   return (

@@ -31,7 +31,7 @@ const OAAlert: FC<OAAlertProps> = (props) => {
     >
       <Alert
         severity={props.type}
-        variant='filled'
+        variant="filled"
         action={
           <IconButton
             aria-label="close"

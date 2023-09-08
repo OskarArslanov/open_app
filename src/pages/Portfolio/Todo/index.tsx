@@ -1,12 +1,10 @@
 'use client';
 
-import Checkbox from '@mui/material/Checkbox';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import OAButton from '@/features/OAButton';
-import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
 import OACheckbox from '@/features/OACheckbox';
 
@@ -93,6 +91,7 @@ const Todo = () => {
       updatedTodos = updatedTodos.filter((item) => item.done);
     }
     setFilteredTodos(updatedTodos);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(todos), currentFilter]);
 
   const handleDone = (todo: TodoType, state: boolean) => {
@@ -151,7 +150,7 @@ const Todo = () => {
             </OAButton>
           ))}
         </TodoWidgetFilter>
-        {!!todos.length ? (
+        {todos.length ? (
           <OAButton size="small" onClick={() => setTodos([])} id="clear">
             Clear
           </OAButton>

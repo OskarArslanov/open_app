@@ -9,6 +9,7 @@ module.exports = {
     'airbnb/rules/react',
     'airbnb-typescript',
     'plugin:prettier/recommended',
+    "prettier",
   ],
   parser: '@typescript-eslint/parser',
   overrides: [],

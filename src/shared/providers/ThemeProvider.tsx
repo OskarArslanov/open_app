@@ -3,12 +3,13 @@ import {
   PropsWithChildren,
   createContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 
 const ThemeContext = createContext<{ theme: string; onChangeTheme: any }>({
   theme: 'light',
-  onChangeTheme: (theme: string) => {},
+  onChangeTheme: () => {},
 });
 
 const ThemeProvider: FC<PropsWithChildren> = (props) => {
@@ -18,12 +19,23 @@ const ThemeProvider: FC<PropsWithChildren> = (props) => {
     setTheme(localStorage.getItem('theme') || 'light');
   }, []);
 
-  const onChangeTheme = (theme: string) => {
-    setTheme(theme);
-  };
+  const onChangeTheme = useMemo(
+    () => (newTheme: string) => {
+      setTheme(newTheme);
+    },
+    [],
+  );
+
+  const providerData = useMemo(
+    () => ({
+      theme,
+      onChangeTheme,
+    }),
+    [onChangeTheme, theme],
+  );
 
   return (
-    <ThemeContext.Provider value={{ theme, onChangeTheme }}>
+    <ThemeContext.Provider value={providerData}>
       {props.children}
     </ThemeContext.Provider>
   );

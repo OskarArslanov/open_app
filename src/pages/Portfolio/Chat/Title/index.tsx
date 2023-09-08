@@ -1,5 +1,4 @@
-import styles from "./Title.module.scss";
-
+import styles from './Title.module.scss';
 
 const Title = () => {
   return (

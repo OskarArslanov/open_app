@@ -1,9 +1,12 @@
-import Title from './Title';
-import ChatArea, { ChatMessageType } from './ChatArea';
-import ChatInput from './ChatInput';
-import styles from './Main.module.scss';
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-loop-func */
 import { useState } from 'react';
 import { AnimateContainer } from '@/widgets/Animations';
+import Title from './Title';
+import ChatArea from './ChatArea';
+import ChatInput from './ChatInput';
+import styles from './Main.module.scss';
+import { ChatMessageType } from './ChatMessage';
 
 const Chat = () => {
   const url = 'http://185.46.8.130/api/v1/chat/send-message';
@@ -34,6 +37,7 @@ const Chat = () => {
       let isDone = false;
       let message = '';
       while (!isDone) {
+        // eslint-disable-next-line no-await-in-loop
         const { value } = await reader!.read();
         const chunk = decoder.decode(value);
         const jsonStrings = chunk.replace(/}\s*{/g, '}\n{').split('\n');

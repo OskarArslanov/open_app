@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useEffect, useState } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import OAAlert, { OAAlertProps } from '../OAAlert';
@@ -20,29 +20,21 @@ const Form = styled.form`
 `;
 const OAForm: FC<OAFormProps> = (props) => {
   const methods = useForm();
-  const [error, setError] = useState<any[]>();
-  const [hasError, setHasError] = useState(false);
   const [alert, setAlert] = useState<OAAlertProps>();
   const handleChange = () => {
     const errorFields = Object.values(methods.formState.errors);
     const errorsMessages = errorFields.map((item) => item?.message);
-    setError(errorsMessages);
-    setHasError(!!errorsMessages.length);
+    if (errorsMessages.length) {
+      setAlert({ type: 'error', message: errorsMessages[0]?.toString() });
+    }
     props.onChangeValues?.(methods.getValues());
   };
-
-  useEffect(() => {
-    if (props.error) {
-      setError([props.error]);
-      setHasError(!![props.error].length);
-    }
-  }, [props.error]);
 
   return (
     <FormProvider {...methods}>
       <OAAlert
-        message={error?.[0]}
-        // onClose={() => setAlert(undefined)}
+        message={alert?.message}
+        onClose={() => setAlert(undefined)}
         type="error"
       />
       <Form

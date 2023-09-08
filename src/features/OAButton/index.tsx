@@ -19,6 +19,7 @@ interface OAButtonProps {
   type?: 'submit' | 'reset' | 'button';
   style?: CSSProperties;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 const ButtonVariants: Record<string, any> = {

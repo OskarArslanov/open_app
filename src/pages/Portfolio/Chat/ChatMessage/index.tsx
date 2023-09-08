@@ -1,8 +1,14 @@
+/* eslint-disable import/no-cycle */
 import { FC } from 'react';
-import styles from './ChatMessage.module.scss';
 import BotIcon from '@mui/icons-material/SmartToy';
 import UserIcon from '@mui/icons-material/Person';
-import { ChatMessageType } from '../ChatArea';
+import styles from './ChatMessage.module.scss';
+
+export interface ChatMessageType {
+  message: string;
+  owner: 'bot' | 'user';
+  isGenerating?: boolean;
+}
 
 interface ChatMessageProps {
   message?: ChatMessageType;
@@ -37,6 +43,7 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
           <button
             className={styles.Container_BotGenerating}
             onClick={props.onStop}
+            type="button"
           >
             stop generating
           </button>
@@ -45,7 +52,7 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
       {!isBot && (
         <div
           className={styles.Container_Avatar}
-          style={{ backgroundColor: 'var(--color-purple_dark)'   }}
+          style={{ backgroundColor: 'var(--color-purple_dark)' }}
         >
           <UserIcon style={{ width: '30px', color: 'white' }} />
         </div>

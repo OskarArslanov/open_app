@@ -5,7 +5,6 @@ import OAInput from '.';
 
 describe('OAInput', () => {
   test('Add =', async () => {
-    const handleClick = jest.fn();
     const handleChange = jest.fn();
 
     render(

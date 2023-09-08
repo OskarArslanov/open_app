@@ -24,8 +24,6 @@ export const MOCK_USERLIST = [
   },
 ];
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.body);
-
   if (req.method === 'POST') {
     const { login, password } = req.body;
     const user = MOCK_USERLIST.find((item) => item.email === login);
@@ -36,9 +34,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         process.env.NEXT_PUBLIC_SECRET,
       );
       return res.status(200).send({ jwt: generatedJwt, user: user?.user });
-    } else {
-      return res.status(404).send('Email или пароль не верный');
     }
+    return res.status(404).send('Email или пароль не верный');
   }
 
   return res.status(200).end();

@@ -32,7 +32,11 @@ const OAModal: FC<OAModalProps> = (props) => {
   return (
     <Modal open={props.isOpen} onClose={props.onClose}>
       <Container>
-        <OAIconButton style={{ alignSelf: 'flex-end' }} onClick={props.onClose}>
+        <OAIconButton
+          style={{ alignSelf: 'flex-end' }}
+          onClick={props.onClose}
+          id={`close-${props.id}`}
+        >
           <ClearIcon />
         </OAIconButton>
         {props.title && <h1>{props.title}</h1>}

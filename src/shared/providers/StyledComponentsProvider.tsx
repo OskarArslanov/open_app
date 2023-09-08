@@ -10,10 +10,10 @@ const StyledComponentsProvider: FC<PropsWithChildren> = (props) => {
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
-    return <>{styles}</>;
+    return styles;
   });
 
-  if (typeof window !== 'undefined') return <>{props.children}</>;
+  if (typeof window !== 'undefined') return props.children;
 
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>

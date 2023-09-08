@@ -9,7 +9,7 @@ const Container = styled.section({
   '@media screen and (max-width: 768px)': {
     padding: '20px',
   },
-})
+});
 const OABodyContainer: FC<PropsWithChildren> = (props) => {
   return <Container>{props.children}</Container>;
 };

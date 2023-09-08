@@ -1,4 +1,3 @@
-import styles from './ChatInput.module.scss';
 import { FC, useEffect, useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import MailIcon from '@mui/icons-material/Mail';
@@ -7,6 +6,7 @@ import { animate } from 'framer-motion';
 import OAButton from '@/features/OAButton';
 import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
+import styles from './ChatInput.module.scss';
 
 interface ChatInputProps {
   onSend?: (data: string) => void;

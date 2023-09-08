@@ -32,6 +32,7 @@ const OACheckbox: FC<OACheckboxProps> = (props) => {
 
   useEffect(() => {
     props.onChange?.(checked);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
   if (!context) {

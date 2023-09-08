@@ -80,6 +80,7 @@ const NavLink = styled(Link)({
 });
 
 const OAHeaderContainer = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [logged, setLogged] = useState<{
     jwt: string;
     fullanme: string;

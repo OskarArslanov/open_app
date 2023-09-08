@@ -1,12 +1,6 @@
-import { FC, useEffect, useRef } from "react";
-import styles from "./ChatArea.module.scss";
-import ChatMessage from "../ChatMessage";
-
-export interface ChatMessageType {
-  message: string;
-  owner: "bot" | "user";
-  isGenerating?: boolean;
-}
+import { FC, useEffect, useRef } from 'react';
+import styles from './ChatArea.module.scss';
+import ChatMessage, { ChatMessageType } from '../ChatMessage';
 
 interface ChatAreaProps {
   messages?: ChatMessageType[];
@@ -22,6 +16,7 @@ const ChatArea: FC<ChatAreaProps> = (props) => {
   return (
     <ul className={styles.Container}>
       {props.messages?.map((item, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <ChatMessage message={item} key={index} onStop={props.onStop} />
       ))}
       <span ref={scrollRef} />

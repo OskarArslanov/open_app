@@ -1,10 +1,8 @@
 import './globals.css';
 import { Noto_Sans } from 'next/font/google';
-import app from './app.module.css';
 import { FC, PropsWithChildren } from 'react';
 import App from '@/pages/App';
 import { Metadata } from 'next';
-import styled from '@emotion/styled';
 
 const inter = Noto_Sans({
   subsets: ['latin'],
