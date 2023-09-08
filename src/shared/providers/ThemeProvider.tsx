@@ -7,7 +7,10 @@ import {
   useState,
 } from 'react';
 
-const ThemeContext = createContext<{ theme: string; onChangeTheme: any }>({
+export const ThemeContext = createContext<{
+  theme: string;
+  onChangeTheme: any;
+}>({
   theme: 'light',
   onChangeTheme: () => {},
 });

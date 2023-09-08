@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -12,6 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import OAIconButton from '@/features/OAIconButton';
 import OAButton from '@/features/OAButton';
+import OASwitch from '@/features/OASwitch';
+import { ThemeContext } from '@/shared/providers/ThemeProvider';
 
 const navbarData = [
   {
@@ -53,6 +55,7 @@ const NavBar = styled.nav({
   width: '100%',
   '@media screen and (max-width: 768px)': {
     padding: '0 10px',
+    gap: '0',
   },
 });
 
@@ -79,6 +82,25 @@ const NavLink = styled(Link)({
   transition: '0.25',
 });
 
+const variantsToggle = {
+  active: {
+    backgroundColor: '#d8f9ff',
+  },
+  inactive: {
+    backgroundColor: '#ffdf22',
+    right: 0,
+  },
+};
+
+const variantsBg = {
+  active: {
+    backgroundColor: '#000',
+  },
+  inactive: {
+    backgroundColor: '#fff',
+  },
+};
+
 const OAHeaderContainer = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [logged, setLogged] = useState<{
@@ -87,8 +109,8 @@ const OAHeaderContainer = () => {
     shortname: string;
   }>();
   const [openDrawer, setOpenDrawer] = useState(false);
-
   const segments = usePathname()?.split('/').slice(1);
+  const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -123,6 +145,12 @@ const OAHeaderContainer = () => {
             priority
           />
         </Link>
+        <OASwitch
+          variantsBg={variantsBg}
+          variantsToggle={variantsToggle}
+          state={themeContext.theme === 'dark'}
+          onChange={(e) => themeContext.onChangeTheme(e ? 'dark' : 'light')}
+        />
         <NavMenu className="hide__S">
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];

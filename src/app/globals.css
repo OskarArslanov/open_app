@@ -31,14 +31,15 @@ body {
   --font-weight_m: 400;
 }
 
-[data-theme='default'] {
+[data-theme='light'] {
   --color-primary: var(--color-purple_dark);
+  --color-not_primary: var(--color-purple_light);
   --color-secondary: var(--color-pink);
   --color-warning: var(--color-orange);
   --color-error: var(--color-red);
-  --text-color_primary: var(--color-black);
-  --text-color_not_primary: var(--color-white);
-  --text-color_secondary: var(--color-gray_dark);
+  --text-color-primary: var(--color-black);
+  --text-color-not_primary: var(--color-white);
+  --text-color-secondary: var(--color-gray_dark);
   --plot-line_1: var(--color-purple_dark);
   --plot-line_2: var(--color-orange);
   --plot-column: var(--color-pink_light);

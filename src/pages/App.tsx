@@ -3,9 +3,9 @@
 import OAFooterContainer from '@/widgets/OAFooterContainer';
 import OAHeaderContainer from '@/widgets/OAHeaderContainer';
 import OABodyContainer from '@/widgets/OABodyContainer';
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useContext } from 'react';
 import StyledComponentsProvider from '@/shared/providers/StyledComponentsProvider';
-import ThemeProvider from '@/shared/providers/ThemeProvider';
+import ThemeProvider, { ThemeContext } from '@/shared/providers/ThemeProvider';
 import styled from '@emotion/styled';
 
 const Container = styled.main({
@@ -15,10 +15,11 @@ const Container = styled.main({
 });
 
 const App: FC<PropsWithChildren> = (props) => {
+  const themeContext = useContext(ThemeContext);
   return (
     <StyledComponentsProvider>
       <ThemeProvider>
-        <Container>
+        <Container data-theme={themeContext.theme}>
           <OAHeaderContainer />
           <OABodyContainer>{props.children}</OABodyContainer>
           <OAFooterContainer />
