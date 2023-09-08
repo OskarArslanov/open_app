@@ -21,67 +21,50 @@ interface ExpType {
 }
 const exp: ExpType[] = [
   {
-    id: 1,
-    name: 'OOO Compressor',
-    project: 'ChooseDoctor',
-    description:
-      'Medicine marketplace for doctors/clinics/patients. Patients can make an online appointment to doctors or offline to clinics. Every role has personal cabinet to keep finance, communicate to each other due to include chat',
+    id: 3,
+    name: 'Studying React (frontend) and integrating with Spring Framework (backend)',
+    project: 'Self studying',
+    description: 'Self studying typescript and React',
     stack: [
-      'NextJS (12.3)',
       'ReactJS (18)',
       'Typescript(5.1.6)',
-      'Redux',
-      'Docker',
-      'Nginx',
-      'Gitlab CI/CD',
-      'Lighthouse',
-      'MUI',
-      'testing/library',
-      'jest',
-      'playwright',
-      'CSS3',
-      'SCSS',
-      'css modules',
+      'Spring boot 2',
+      'Java 11',
+      'lombok',
+      'Spring Security',
+      'JPA',
+      'PostgresQL',
+      'OpenAPI',
     ],
-    since: '01.09.2022',
-    untill: 'today',
+    since: '01.07.2022',
+    untill: '01.09.2022',
     achieves: [
-      'Set up gitlab ci/cd',
-      'Improved goals up to 95 using Lighthouse',
-      'Developer personal cabinets',
-      'Set up authentication (using next auth)',
+      'Set up authentication (access token and refresh token) updates as Set-Cookie on backend',
     ],
-    href: 'https://выбери-врача.рф',
-    hrefSetup: undefined,
+    href: 'https://github.com/OskarArslanov/SouthBeach_pet_project',
   },
   {
-    id: 2,
-    name: 'OOO RGK',
-    project: 'RGK Info',
-    description:
-      'Vehicles monitoring system. Tables, charts, excel reports. Report and monitoring system SPA for transport company',
+    id: 4,
+    name: 'Java 11',
+    project: 'Self studying',
+    description: 'Self studying Java and Spring framework',
     stack: [
-      'ReactJS (18)',
-      'Typescript(5.1.6)',
-      'Mobx',
-      'Webpack',
-      'Ant Design',
-      'Ant Design Charts',
-      'ESLint',
-      'CSS3',
-      'css modules',
+      'Spring boot 2',
+      'Java 11',
+      'lombok',
+      'Spring Security',
+      'JPA',
+      'PostgresQL',
+      'OpenAPI',
     ],
-    since: '01.04.2023',
-    untill: '01.08.2023',
+    since: '01.09.2021',
+    untill: '01.06.2022',
     achieves: [
-      'Set up authentication (access token and refresh token)',
-      'Set up prettier, webpack, eslint',
+      '17 lvl JavaRush',
+      '1st place in WorldSkills 2022 on Russia National Competition (Mobile Robotics - Juniors)',
+      '2nd place in WorldSkills 2022 on Russia National Competition (Mobile Robotics)',
     ],
-    href: 'http://78.24.223.121:4000/rgk24',
-    hrefSetup: {
-      login: 'tkdar',
-      password: 'test_tkdar',
-    },
+    href: 'https://github.com/OskarArslanov/Core-Java-WS_project',
   },
 ];
 
@@ -138,7 +121,7 @@ const ProjectStack = styled.ul({
   },
 });
 
-const Commercial = () => {
+const Studies = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<ExpType>();
   return (
@@ -203,4 +186,4 @@ const Commercial = () => {
   );
 };
 
-export default Commercial;
+export default Studies;

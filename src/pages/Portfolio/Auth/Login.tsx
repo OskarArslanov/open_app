@@ -69,7 +69,7 @@ const Login = () => {
             <OACheckbox name="remember" label="Запомнить меня" />
             <OAButton variant='ghost' >Забыли пароль?</OAButton>
           </RememberMe>
-          <OAButton type="submit" fullWidth>
+          <OAButton type="submit" fullwidth>
             Войти
           </OAButton>
         </OAForm>

@@ -1,12 +1,12 @@
 'use client';
 
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import { FC, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import styled from '@emotion/styled';
 
-interface OAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  fullWidth?: boolean;
+interface OAButtonProps {
+  fullwidth?: boolean;
   variant?: 'filled' | 'outlined' | 'shadow' | 'ghost' | 'text';
   size?: 'large' | 'medium' | 'small' | 'adaptive';
   startIcon?: ReactNode;
@@ -14,6 +14,8 @@ interface OAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   query?: Record<string, string>;
   shallow?: boolean;
+  children?: ReactNode;
+  id?: string;
 }
 
 const ButtonVariants: Record<string, any> = {
@@ -82,7 +84,7 @@ const StyledButton = styled(motion.button)<OAButtonProps>(
     transition: '0.25s',
   },
   (props) => ({
-    width: props.fullWidth ? '100%' : 'auto',
+    width: props.fullwidth ? '100%' : 'auto',
     opacity: props.disabled ? 0.5 : 1,
     zIndex: props.disabled ? -1 : 0,
     ...ButtonSizes[props.size || 'medium'],
@@ -112,7 +114,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
     );
   }
   return (
-    <StyledButton {...props} data-testid={props.id}>
+    <StyledButton data-testid={props.id} {...props}>
       {props.startIcon}
       {props.children}
       {props.endIcon}

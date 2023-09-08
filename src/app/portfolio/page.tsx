@@ -4,15 +4,15 @@ import Login from '@/pages/Portfolio/Auth/Login';
 import Fuse from '@/pages/Portfolio/Fuse';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
-import Chat from '../../pages/Portfolio/Chat';
-import Commercial from '../../pages/Portfolio/Commercial';
-import ChartJS from '../../pages/Portfolio/ChartJS';
 import { AnimateContainer } from '@/widgets/Animations';
 import Todo from '@/pages/Portfolio/Todo';
 import OAButton from '@/features/OAButton';
+import Studies from '@/pages/Portfolio/Studies';
+import ChartJS from '@/pages/Portfolio/ChartJS';
+import Commercial from '@/pages/Portfolio/Commercial';
+import { Chat } from '@mui/icons-material';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -22,26 +22,31 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
   },
   {
     id: 1,
+    name: 'studies',
+    content: <Studies />,
+  },
+  {
+    id: 2,
     name: 'chartjs',
     content: <ChartJS />,
   },
   {
-    id: 2,
+    id: 3,
     name: 'fuse8',
     content: <Fuse />,
   },
   {
-    id: 3,
+    id: 4,
     name: 'login',
     content: <Login />,
   },
   {
-    id: 4,
+    id: 5,
     name: 'chat',
     content: <Chat />,
   },
   {
-    id: 5,
+    id: 6,
     name: 'todo',
     content: <Todo />,
   },

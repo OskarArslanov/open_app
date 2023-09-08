@@ -109,7 +109,7 @@ const OAInput: FC<OAInputProps> = (props) => {
                   type={type}
                   disabled={props.rules?.disabled}
                   value={value}
-                  data-testId={props.id}
+                  data-testid={props.id}
                   required={!!props.rules?.required}
                   onInput={(e) => {
                     // @ts-ignore

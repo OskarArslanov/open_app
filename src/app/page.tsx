@@ -125,12 +125,12 @@ const OAMainOrder = () => {
 
       <Actions>
         <Link href="/about">
-          <OAButton variant="filled" fullWidth size='large'>
+          <OAButton variant="filled" fullwidth size='large'>
             About
           </OAButton>
         </Link>
         <Link href="/contacts">
-          <OAButton variant="filled" fullWidth size='large'>
+          <OAButton variant="filled" fullwidth size='large'>
             Contacts
           </OAButton>
         </Link>
