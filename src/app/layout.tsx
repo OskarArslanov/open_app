@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = (props) => {
   return (
-    <html style={{ height: '100%' }}>
+    <html style={{ height: '100%' }} data-theme="default">
       <body className={inter.className} style={{ height: '100%' }}>
         <App>{props.children}</App>
       </body>
