@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import styled from '@emotion/styled';
@@ -16,6 +16,8 @@ interface OAButtonProps {
   shallow?: boolean;
   children?: ReactNode;
   id?: string;
+  type?: 'submit' | 'reset' | 'button';
+  style?: CSSProperties;
 }
 
 const ButtonVariants: Record<string, any> = {

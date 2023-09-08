@@ -71,7 +71,7 @@ const Chat = () => {
       <div className={styles.Container_Wrapper}>
         <Title />
         <ChatArea messages={messages} onStop={() => controller.abort()} />
-        {/* <ChatInput onSend={handleSend} /> */}
+        <ChatInput onSend={handleSend} />
       </div>
     </AnimateContainer>
   );

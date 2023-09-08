@@ -1,6 +1,7 @@
 import { CSSProperties, FC, useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import OAAlert, { OAAlertProps } from '../OAAlert';
 
 interface OAFormProps {
   className?: string;
@@ -21,6 +22,7 @@ const OAForm: FC<OAFormProps> = (props) => {
   const methods = useForm();
   const [error, setError] = useState<any[]>();
   const [hasError, setHasError] = useState(false);
+  const [alert, setAlert] = useState<OAAlertProps>();
   const handleChange = () => {
     const errorFields = Object.values(methods.formState.errors);
     const errorsMessages = errorFields.map((item) => item?.message);
@@ -38,6 +40,11 @@ const OAForm: FC<OAFormProps> = (props) => {
 
   return (
     <FormProvider {...methods}>
+      <OAAlert
+        message={error?.[0]}
+        // onClose={() => setAlert(undefined)}
+        type="error"
+      />
       <Form
         style={props.style}
         onSubmit={methods.handleSubmit(props.onSubmit)}
@@ -46,16 +53,6 @@ const OAForm: FC<OAFormProps> = (props) => {
         data-testId={props.id}
       >
         {props.children}
-        {hasError && (
-          <p
-            style={{
-              color: 'red',
-              fontSize: '12px',
-            }}
-          >
-            {error?.[0]}
-          </p>
-        )}
       </Form>
     </FormProvider>
   );

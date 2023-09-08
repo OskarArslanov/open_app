@@ -12,7 +12,7 @@ import OAButton from '@/features/OAButton';
 import Studies from '@/pages/Portfolio/Studies';
 import ChartJS from '@/pages/Portfolio/ChartJS';
 import Commercial from '@/pages/Portfolio/Commercial';
-import { Chat } from '@mui/icons-material';
+import Chat from '@/pages/Portfolio/Chat';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -59,14 +59,6 @@ const Menu = styled.menu({
   padding: 0,
 });
 
-const MenuTab = styled(motion.div)({
-  padding: '5px 15px',
-  border: '1px solid var(--color-purple_dark)',
-  borderRadius: '5px',
-  cursor: 'pointer',
-  color: '#000',
-});
-
 const Content = styled.section({
   display: 'flex',
   flexDirection: 'column',
@@ -85,6 +77,7 @@ const Portfolio = () => {
     const queryString = defaultParams.toString();
     router.push(`?${queryString}`);
   }, [currentJob]);
+
   return (
     <AnimateContainer>
       <Menu>
@@ -107,14 +100,7 @@ const Portfolio = () => {
       {portfolio.map((item) => {
         const isShow = currentJob === item.name;
         if (!isShow) return null;
-        return (
-          <Content
-            key={item.id}
-            style={{ display: currentJob === item.name ? 'flex' : 'none' }}
-          >
-            {item.content}
-          </Content>
-        );
+        return <Content key={item.id}>{item.content}</Content>;
       })}
     </AnimateContainer>
   );
