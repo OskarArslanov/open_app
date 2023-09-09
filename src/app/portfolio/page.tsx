@@ -12,6 +12,7 @@ import Studies from '@/pages/Portfolio/Studies';
 import ChartJS from '@/pages/Portfolio/ChartJS';
 import Commercial from '@/pages/Portfolio/Commercial';
 import Chat from '@/pages/Portfolio/Chat';
+import Link from 'next/link';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -81,6 +82,15 @@ const Portfolio = () => {
 
   return (
     <AnimateContainer>
+      <h1>
+        App code available{' '}
+        <Link
+          href="https://github.com/OskarArslanov/open_app"
+          style={{ textDecoration: 'underline' }}
+        >
+          here
+        </Link>
+      </h1>
       <Menu>
         {portfolio.map((item) => {
           const isCurrent = item.name === currentJob;
