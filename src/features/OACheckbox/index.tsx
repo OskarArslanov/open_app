@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
-import { useFormContext } from 'react-hook-form';
+import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
 import { FormControlLabel } from '@mui/material';
 import styled from '@emotion/styled';
 
@@ -9,10 +9,11 @@ interface OACheckboxProps {
   onChange?: (data: boolean) => void;
   defaultChecked?: boolean;
   checked?: boolean;
-  name?: string;
-  label?: string;
+  name: string;
+  label?: ReactNode;
   labelPlacements?: 'top' | 'start' | 'bottom' | 'end';
   id?: string;
+  rules?: RegisterOptions;
 }
 
 const StyledCheckbox = styled(Checkbox)({
@@ -22,6 +23,11 @@ const StyledCheckbox = styled(Checkbox)({
   },
 });
 
+const StyledFormControlLabel = styled(FormControlLabel)({
+  '& .MuiTypography-root': {
+    fontSize: '12px',
+  },
+});
 const OACheckbox: FC<OACheckboxProps> = (props) => {
   const context = useFormContext();
   const [checked, setChecked] = useState(props.defaultChecked || false);
@@ -50,23 +56,33 @@ const OACheckbox: FC<OACheckboxProps> = (props) => {
     );
   }
   return (
-    <FormControlLabel
-      label={props.label}
-      labelPlacement={props.labelPlacements}
-      style={{ marginLeft: 0 }}
-      control={
-        <StyledCheckbox
-          content="1"
-          // @ts-ignore
-          inputProps={{ 'data-testid': props.id }}
-          checked={checked}
-          onClick={() => {
-            setChecked(!checked);
-            props.onClick?.();
-            context.setValue(props.name || 'check', !checked);
-          }}
-        />
-      }
+    <Controller
+      name={props.name}
+      control={context?.control}
+      rules={props.rules}
+      render={({ field }) => {
+        return (
+          <StyledFormControlLabel
+            {...field}
+            label={props.label}
+            labelPlacement={props.labelPlacements}
+            style={{ marginLeft: 0 }}
+            control={
+              <StyledCheckbox
+                content="1"
+                // @ts-ignore
+                inputProps={{ 'data-testid': props.id }}
+                checked={checked}
+                onClick={() => {
+                  setChecked(!checked);
+                  props.onClick?.();
+                  context.setValue(props.name || 'check', !checked);
+                }}
+              />
+            }
+          />
+        );
+      }}
     />
   );
 };

@@ -1,9 +1,14 @@
-import { CSSProperties, FC, useEffect, useState } from 'react';
+import {
+  CSSProperties,
+  FC,
+  HTMLInputTypeAttribute,
+  useEffect,
+  useState,
+} from 'react';
 import { IconButton } from '@mui/material';
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { handleErrors } from '@/shared/utils/errors';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
@@ -16,7 +21,7 @@ interface OAInputProps {
   rules?: RegisterOptions;
   name: string;
   fullWidth?: boolean;
-  type: 'text' | 'number' | 'email' | 'password';
+  type: HTMLInputTypeAttribute;
   defaultValue?: string | number;
   value?: number | string;
   endAdornment?: React.ReactNode;
@@ -33,7 +38,7 @@ const Container = styled.div({
   width: '100%',
 });
 
-const InputContainer = styled.div<{ $isError: boolean }>(
+const InputContainer = styled.div<{ isError: boolean }>(
   {
     display: 'flex',
     justifyContent: 'space-between',
@@ -42,10 +47,11 @@ const InputContainer = styled.div<{ $isError: boolean }>(
     backgroundColor: 'var(--color-white)',
     color: 'var(--color-black)',
   },
-  (props) =>
-    props.$isError
-      ? 'border: 1px solid var(--color-error);'
-      : 'border: 1px solid var(--color-primary);',
+  (props) => ({
+    border: props.isError
+      ? '1px solid var(--color-red)'
+      : '1px solid var(--color-primary)',
+  }),
 );
 
 const BaseInput = styled(motion.input)({
@@ -59,10 +65,11 @@ const BaseInput = styled(motion.input)({
 
 const OAInput: FC<OAInputProps> = (props) => {
   const context = useFormContext();
-  const [type, setType] = useState(props.type);
-
+  const [type, setType] = useState<HTMLInputTypeAttribute>(props.type);
+  const [value, setValue] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = props.type === 'password';
+
   let endAdortment = showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />;
   endAdortment = (
     <IconButton
@@ -74,8 +81,7 @@ const OAInput: FC<OAInputProps> = (props) => {
       {endAdortment}
     </IconButton>
   );
-  const [value, setValue] = useState<string>('');
-  const [invalid, setInvalid] = useState<boolean>(false);
+
   useEffect(() => {
     if (props.defaultValue !== undefined) {
       setValue(props.defaultValue as string);
@@ -89,6 +95,7 @@ const OAInput: FC<OAInputProps> = (props) => {
     }
   }, [props.value]);
 
+  const isInvalid = !!context?.formState.errors[props.name];
   return (
     <Container>
       {props.label && (
@@ -104,7 +111,7 @@ const OAInput: FC<OAInputProps> = (props) => {
           rules={props.rules}
           render={({ field }) => {
             return (
-              <InputContainer $isError={invalid} style={props.style}>
+              <InputContainer isError={isInvalid} style={props.style}>
                 {props.startAdornment}
                 <BaseInput
                   {...field}
@@ -114,19 +121,12 @@ const OAInput: FC<OAInputProps> = (props) => {
                   value={value}
                   data-testid={props.id}
                   required={!!props.rules?.required}
-                  onInput={(e) => {
+                  onChange={(e) => {
+                    field.onChange(e);
                     // @ts-ignore
                     const changedValue = e.target.value;
                     setValue(changedValue);
                     props.onChange?.(changedValue);
-                    const isValid = handleErrors(
-                      context,
-                      changedValue,
-                      props.name,
-                      props.label || props.placeholder,
-                      props.rules,
-                    );
-                    setInvalid(!isValid);
                   }}
                 />
                 {isPassword ? endAdortment : props.endAdornment}
@@ -135,7 +135,7 @@ const OAInput: FC<OAInputProps> = (props) => {
           }}
         />
       ) : (
-        <InputContainer $isError={invalid} style={props.style}>
+        <InputContainer isError={isInvalid} style={props.style}>
           {props.startAdornment}
           <BaseInput
             placeholder={props.placeholder}

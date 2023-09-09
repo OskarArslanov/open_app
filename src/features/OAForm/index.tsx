@@ -1,7 +1,7 @@
 import { CSSProperties, FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import OAAlert, { OAAlertProps } from '../OAAlert';
+import OAAlert, { OAAlertType } from '../OAAlert';
 
 interface OAFormProps {
   className?: string;
@@ -20,26 +20,26 @@ const Form = styled.form`
 `;
 const OAForm: FC<OAFormProps> = (props) => {
   const methods = useForm();
-  const [alert, setAlert] = useState<OAAlertProps>();
+  const [alert, setAlert] = useState<OAAlertType>();
   const handleChange = () => {
+    props.onChangeValues?.(methods.getValues());
+  };
+
+  const handleSubmit = (data: any) => {
     const errorFields = Object.values(methods.formState.errors);
     const errorsMessages = errorFields.map((item) => item?.message);
     if (errorsMessages.length) {
       setAlert({ type: 'error', message: errorsMessages[0]?.toString() });
     }
-    props.onChangeValues?.(methods.getValues());
+    methods.handleSubmit(props.onSubmit)(data);
   };
 
   return (
     <FormProvider {...methods}>
-      <OAAlert
-        message={alert?.message}
-        onClose={() => setAlert(undefined)}
-        type="error"
-      />
+      <OAAlert onClose={() => setAlert(undefined)} alert={alert} />
       <Form
         style={props.style}
-        onSubmit={methods.handleSubmit(props.onSubmit)}
+        onSubmit={handleSubmit}
         onChange={handleChange}
         className={props.className}
         data-testId={props.id}

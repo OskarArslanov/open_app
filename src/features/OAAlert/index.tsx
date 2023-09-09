@@ -4,9 +4,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FC, useEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 
-export interface OAAlertProps {
+export interface OAAlertType {
   type: 'error' | 'info' | 'warning' | 'success';
   message?: string;
+}
+interface OAAlertProps {
+  alert?: OAAlertType;
   onClose?: () => void;
 }
 
@@ -19,9 +22,8 @@ const OAAlert: FC<OAAlertProps> = (props) => {
   };
 
   useEffect(() => {
-    setOpen(!!props.message);
-  }, [props.message]);
-
+    setOpen(!!props.alert);
+  }, [props.alert]);
   return (
     <Snackbar
       open={open}
@@ -30,7 +32,7 @@ const OAAlert: FC<OAAlertProps> = (props) => {
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
       <Alert
-        severity={props.type}
+        severity={props.alert?.type}
         variant="filled"
         action={
           <IconButton
@@ -44,7 +46,7 @@ const OAAlert: FC<OAAlertProps> = (props) => {
         }
         sx={{ mb: 2 }}
       >
-        {props.message}
+        {props.alert?.message}
       </Alert>
     </Snackbar>
   );

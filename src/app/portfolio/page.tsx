@@ -13,6 +13,7 @@ import ChartJS from '@/pages/Portfolio/ChartJS';
 import Commercial from '@/pages/Portfolio/Commercial';
 import Chat from '@/pages/Portfolio/Chat';
 import Link from 'next/link';
+import Registration from '@/pages/Portfolio/Auth/Registration';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -49,6 +50,11 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
     id: 6,
     name: 'todo',
     content: <Todo />,
+  },
+  {
+    id: 7,
+    name: 'registration',
+    content: <Registration />,
   },
 ];
 

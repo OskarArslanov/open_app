@@ -86,7 +86,7 @@ const OAHeaderContainer = () => {
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     const user = localStorage.getItem('user');
-    if (user !== null && jwt !== null) {
+    if (user && user !== null && jwt !== null) {
       const shortname = JSON.parse(user).shortName;
       const fullname = JSON.parse(user).name;
       setLogged({ jwt, shortname, fullanme: fullname });
