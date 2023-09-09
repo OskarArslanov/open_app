@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import OAButton from '@/features/OAButton';
 import OAThemeSwitch from '@/features/OASwitch/OAThemeSwitch';
+import { ThemeContext } from '@/shared/providers/ThemeProvider';
 
 const navbarData = [
   {
@@ -80,6 +81,8 @@ const OAHeaderContainer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const segments = usePathname()?.split('/').slice(1);
 
+  const themeContext = useContext(ThemeContext);
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     const user = localStorage.getItem('user');
@@ -141,7 +144,7 @@ const OAHeaderContainer = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <NavMenu data-theme="dark">
+        <NavMenu data-theme={themeContext.theme}>
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];
             return (

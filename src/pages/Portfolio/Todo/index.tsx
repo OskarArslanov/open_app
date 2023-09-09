@@ -29,6 +29,11 @@ const TodoWidgets = styled.div({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  '@media screen and (max-width: 500px)': {
+    flexDirection: 'column',
+    gap: '10px',
+    alignItems: 'flex-start',
+  },
 });
 
 const TodoWidgetFilter = styled.ul({
@@ -55,8 +60,8 @@ const TodoItem = styled.li({
 
 const Container = styled(AnimateContainer)({
   border: '1px solid var(--color-not_primary)',
-  padding: '10px',
-  borderRadius: '5px',
+  padding: '5px',
+  borderRadius: '10px',
   maxWidth: '768px',
 });
 interface TodoType {
@@ -103,7 +108,7 @@ const Todo = () => {
 
   const uncheckedTodos = todos.filter((item) => !item.done).length;
   return (
-    <Container>
+    <Container style={{ width: 'auto' }}>
       <div style={{ flexDirection: 'row', display: 'flex', gap: '5px' }}>
         <OAInput
           type="text"
@@ -121,18 +126,20 @@ const Todo = () => {
           Create
         </OAButton>
       </div>
-      <TodoList>
-        {filteredTodos.map((item) => (
-          <TodoItem key={item.id}>
-            <OACheckbox
-              checked={item.done}
-              onChange={(state) => handleDone(item, state)}
-              id={`checkbox-${item.name}`}
-            />
-            {item.name}
-          </TodoItem>
-        ))}
-      </TodoList>
+      {!!filteredTodos.length && (
+        <TodoList>
+          {filteredTodos.map((item) => (
+            <TodoItem key={item.id}>
+              <OACheckbox
+                checked={item.done}
+                onChange={(state) => handleDone(item, state)}
+                id={`checkbox-${item.name}`}
+              />
+              {item.name}
+            </TodoItem>
+          ))}
+        </TodoList>
+      )}
       <TodoWidgets>
         <p>
           <b data-testid="items-left">{uncheckedTodos}</b> items left

@@ -3,7 +3,7 @@
 import OAFooterContainer from '@/widgets/OAFooterContainer';
 import OAHeaderContainer from '@/widgets/OAHeaderContainer';
 import OABodyContainer from '@/widgets/OABodyContainer';
-import { FC, PropsWithChildren, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import StyledComponentsProvider from '@/shared/providers/StyledComponentsProvider';
 import ThemeProvider from '@/shared/providers/ThemeProvider';
 import styled from '@emotion/styled';
@@ -18,6 +18,12 @@ const Container = styled.main({
 
 const App: FC<PropsWithChildren> = (props) => {
   const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const defaultTheme = localStorage.getItem('theme') || 'light';
+    setTheme(defaultTheme);
+  }, []);
+
   return (
     <StyledComponentsProvider>
       <ThemeProvider onChange={setTheme}>

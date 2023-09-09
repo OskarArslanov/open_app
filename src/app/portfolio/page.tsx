@@ -53,9 +53,10 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
 
 const Menu = styled.menu({
   display: 'flex',
-  flexWrap: 'wrap',
+  overflowX: 'auto',
+  padding: '10px',
   gap: '20px',
-  padding: 0,
+  margin: 0,
 });
 
 const Content = styled.section({

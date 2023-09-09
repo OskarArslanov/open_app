@@ -44,7 +44,7 @@ const Chat = () => {
   };
 
   return (
-    <AnimateContainer className={styles.Container}>
+    <AnimateContainer className={styles.Container} style={{ gap: 0 }}>
       <div className={styles.Container_Wrapper}>
         <Title />
         <ChatArea messages={messages} />
