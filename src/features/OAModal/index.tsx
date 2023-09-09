@@ -1,25 +1,51 @@
 import styled from '@emotion/styled';
 import Modal from '@mui/material/Modal';
 import ClearIcon from '@mui/icons-material/Clear';
-import { FC, ReactNode, useContext } from 'react';
+import { CSSProperties, FC, ReactNode, useContext } from 'react';
 import { ThemeContext } from '@/shared/providers/ThemeProvider';
 import OAButton from '../OAButton';
 
-const Container = styled.div({
+const ModalPos = styled.div({
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+});
+
+const Title = styled.div({
+  display: 'flex',
+  background: 'var(--text-color-not_primary)',
+  color: 'var(--text-color-primary)',
+  // padding: '20px',
+  justifyContent: 'space-between',
+});
+
+const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   gap: '20px',
   background: 'var(--text-color-not_primary)',
   color: 'var(--text-color-primary)',
-  maxWidth: '50%',
-  minWidth: '240px',
-  width: 'max-content',
   padding: '20px',
   outline: 'none',
+  width: '50vw',
+  height: '50vh',
+  '@media screen and (max-width: 500px)': {
+    width: '80vw',
+    height: '80vh',
+  },
+});
+
+const Content = styled.div({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '20px',
+  justifyContent: 'space-between',
+  background: 'var(--text-color-not_primary)',
+  color: 'var(--text-color-primary)',
+  height: '100%',
+  width: '100%',
 });
 
 interface OAModalProps {
@@ -28,6 +54,7 @@ interface OAModalProps {
   title?: string;
   children?: ReactNode;
   id?: string;
+  style?: CSSProperties;
 }
 
 const OAModal: FC<OAModalProps> = (props) => {
@@ -37,19 +64,23 @@ const OAModal: FC<OAModalProps> = (props) => {
       open={props.isOpen}
       onClose={props.onClose}
       data-theme={themeContext.theme}
+      style={props.style}
     >
-      <Container>
-        <OAButton
-          style={{ alignSelf: 'flex-end' }}
-          onClick={props.onClose}
-          variant="text"
-          id={`close-${props.id}`}
-        >
-          <ClearIcon />
-        </OAButton>
-        {props.title && <h1>{props.title}</h1>}
-        {props.children}
-      </Container>
+      <ModalPos>
+        <Container>
+          <Title>
+            <h1>{props.title || ''}</h1>
+            <OAButton
+              onClick={props.onClose}
+              variant="text"
+              id={`close-${props.id}`}
+            >
+              <ClearIcon />
+            </OAButton>
+          </Title>
+          <Content>{props.children}</Content>
+        </Container>
+      </ModalPos>
     </Modal>
   );
 };

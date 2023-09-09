@@ -14,6 +14,7 @@ import Commercial from '@/pages/Portfolio/Commercial';
 import Chat from '@/pages/Portfolio/Chat';
 import Link from 'next/link';
 import Registration from '@/pages/Portfolio/Auth/Registration';
+import Files from '@/pages/Portfolio/Files';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -55,6 +56,11 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
     id: 7,
     name: 'registration',
     content: <Registration />,
+  },
+  {
+    id: 8,
+    name: 'files',
+    content: <Files />,
   },
 ];
 
