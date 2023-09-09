@@ -39,6 +39,7 @@ const CropImage: FC<CropImageProps> = (props) => {
         viewMode={1}
         guides
         responsive
+        height={300}
         minCropBoxWidth={50}
         minCropBoxHeight={50}
         checkOrientation={false} // https://github.com/fengyuanchen/cropperjs/issues/671

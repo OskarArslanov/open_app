@@ -29,10 +29,9 @@ const Container = styled.div({
   padding: '20px',
   outline: 'none',
   width: '50vw',
-  height: '50vh',
+  height: '100%',
   '@media screen and (max-width: 500px)': {
     width: '80vw',
-    height: '80vh',
   },
 });
 

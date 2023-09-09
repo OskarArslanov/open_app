@@ -63,8 +63,8 @@ const Files = () => {
         <Image
           alt="bigImg"
           src={openImage!}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          fill
+          sizes="(max-width: 768px) 8vw, (max-width: 1200px) 50vw, 33vw"
+          // fill
           style={{ objectFit: 'contain', alignSelf: 'center' }}
         />
       </OAModal>
