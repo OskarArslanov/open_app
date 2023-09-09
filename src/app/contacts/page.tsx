@@ -28,7 +28,7 @@ const contacts = [
     id: 3,
     name: 'WhatsApp',
     icon: <WhatsApp />,
-    href: 'https://api.whatsapp.com/send?phone=799963359210',
+    href: 'https://wa.me/79963359210',
   },
   {
     id: 4,
