@@ -7,6 +7,10 @@ import { useSearchParams } from 'next/navigation';
 import OAButton from '@/features/OAButton';
 import OAInput from '@/features/OAInput';
 import OACheckbox from '@/features/OACheckbox';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import DeleteIcon from '@mui/icons-material/Delete';
+import OAConfirmModal from '@/features/OAModal/OAConfirmModal';
+import OAAlert, { OAAlertType } from '@/features/OAAlert';
 
 const filters = [
   {
@@ -51,11 +55,17 @@ const TodoWidgetFilter = styled.ul({
 const TodoList = styled.ul({
   padding: 0,
   margin: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '5px',
 });
 
 const TodoItem = styled.li({
   display: 'flex',
   alignItems: 'center',
+  border: '1px solid var(--color-primary)',
+  borderRadius: '5px',
+  justifyContent: 'space-between',
 });
 
 const Container = styled(AnimateContainer)({
@@ -70,11 +80,40 @@ interface TodoType {
   done: boolean;
 }
 const Todo = () => {
+  const [openDelete, setOpenDelete] = useState<TodoType>();
+  const [openEdit, setOpenEdit] = useState<TodoType>();
   const [todos, setTodos] = useState<TodoType[]>([]);
   const [filteredTodos, setFilteredTodos] = useState<TodoType[]>([]);
   const [name, setName] = useState<string>('');
+  const [rename, setRename] = useState<string>('');
+  const [alert, setAlert] = useState<OAAlertType>();
   const params = useSearchParams();
   const currentFilter = params?.get('filter');
+
+  const handleDone = (todo: TodoType, state: boolean) => {
+    const updatedTodos = todos.map((item) =>
+      item.id === todo.id ? { ...item, done: state } : item,
+    );
+    setTodos(updatedTodos);
+  };
+
+  const handleEdit = () => {
+    if (!rename) {
+      setAlert({ type: 'error', message: 'Описание не должно быть пустым' });
+      return;
+    }
+    const updatedTodoes = todos.map((item) =>
+      item.id === openEdit?.id ? { ...item, name: rename } : item,
+    );
+    setTodos(updatedTodoes);
+    setOpenEdit(undefined);
+  };
+
+  const handleDelete = () => {
+    const updatedTodoes = todos.filter((item) => item.id !== openDelete?.id);
+    setTodos(updatedTodoes);
+    setOpenDelete(undefined);
+  };
 
   const handleAddTodo = () => {
     const newTodo: TodoType = {
@@ -99,16 +138,10 @@ const Todo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(todos), currentFilter]);
 
-  const handleDone = (todo: TodoType, state: boolean) => {
-    const updatedTodos = [...todos].map((item) =>
-      item.id === todo.id ? { ...item, done: state } : item,
-    );
-    setTodos(updatedTodos);
-  };
-
   const uncheckedTodos = todos.filter((item) => !item.done).length;
   return (
     <Container style={{ width: 'auto' }}>
+      <OAAlert alert={alert} onClose={() => setAlert(undefined)} />
       <div style={{ flexDirection: 'row', display: 'flex', gap: '5px' }}>
         <OAInput
           type="text"
@@ -131,11 +164,28 @@ const Todo = () => {
           {filteredTodos.map((item) => (
             <TodoItem key={item.id}>
               <OACheckbox
+                name={item.name}
                 checked={item.done}
                 onChange={(state) => handleDone(item, state)}
                 id={`checkbox-${item.name}`}
               />
               {item.name}
+              <div style={{ display: 'flex' }}>
+                <OAButton
+                  circled
+                  variant="text"
+                  onClick={() => setOpenEdit(item)}
+                >
+                  <BorderColorIcon />
+                </OAButton>
+                <OAButton
+                  circled
+                  variant="text"
+                  onClick={() => setOpenDelete(item)}
+                >
+                  <DeleteIcon />
+                </OAButton>
+              </div>
             </TodoItem>
           ))}
         </TodoList>
@@ -165,6 +215,25 @@ const Todo = () => {
           <p>Clear completed</p>
         )}
       </TodoWidgets>
+      <OAConfirmModal
+        onReject={() => setOpenDelete(undefined)}
+        onConfirm={() => handleDelete()}
+        state={!!openDelete}
+      >
+        Вы действительно хотите удалить {openDelete?.name}?
+      </OAConfirmModal>
+      <OAConfirmModal
+        onReject={() => setOpenEdit(undefined)}
+        onConfirm={() => handleEdit()}
+        state={!!openEdit}
+      >
+        <OAInput
+          name="rename"
+          type="text"
+          onChange={setRename}
+          value={openEdit?.name || rename}
+        />
+      </OAConfirmModal>
     </Container>
   );
 };
