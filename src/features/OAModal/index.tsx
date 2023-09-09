@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import Modal from '@mui/material/Modal';
 import ClearIcon from '@mui/icons-material/Clear';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useContext } from 'react';
 import OAButton from '../OAButton';
+import { ThemeContext } from '@/shared/providers/ThemeProvider';
 
 const Container = styled.div({
   position: 'absolute',
@@ -12,7 +13,8 @@ const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   gap: '20px',
-  background: '#FFF',
+  background: 'var(--text-color-not_primary)',
+  color: 'var(--text-color-primary)',
   maxWidth: '50%',
   minWidth: '240px',
   width: 'max-content',
@@ -29,12 +31,18 @@ interface OAModalProps {
 }
 
 const OAModal: FC<OAModalProps> = (props) => {
+  const themeContext = useContext(ThemeContext);
   return (
-    <Modal open={props.isOpen} onClose={props.onClose}>
+    <Modal
+      open={props.isOpen}
+      onClose={props.onClose}
+      data-theme={themeContext.theme}
+    >
       <Container>
         <OAButton
           style={{ alignSelf: 'flex-end' }}
           onClick={props.onClose}
+          variant="text"
           id={`close-${props.id}`}
         >
           <ClearIcon />

@@ -50,7 +50,8 @@ const ButtonVariants: Record<string, any> = {
     },
   },
   text: {
-    backgroundColor: 'var(--color-primary)',
+    backgroundColor: 'transparent',
+    color: 'var(--color-primary)',
   },
 };
 
