@@ -30,14 +30,13 @@ const ButtonVariants: Record<string, any> = {
     color: 'var(--color-not_primary)',
     border: '1px solid var(--color-primary)',
     '&:hover': {
-      color: 'var(--color-primary)',
-      backgroundColor: 'var(--color-not_primary)',
+      opacity: 0.5,
     },
   },
   ghost: {
     color: 'var(--color-not_primary)',
     '&:hover': {
-      backgroundColor: 'var(--color-primary)',
+      opacity: 0.5,
     },
   },
   outlined: {
@@ -45,8 +44,7 @@ const ButtonVariants: Record<string, any> = {
     border: '1px solid var(--color-primary)',
     color: 'var(--color-primary)',
     '&:hover': {
-      backgroundColor: 'var(--color-primary)',
-      color: 'var(--color-not_primary)',
+      opacity: 0.5,
     },
   },
   text: {

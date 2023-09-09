@@ -94,6 +94,7 @@ const Portfolio = () => {
       <Menu>
         {portfolio.map((item) => {
           const isCurrent = item.name === currentJob;
+          console.log(isCurrent, item.name);
           return (
             <OAButton
               query={{ job: item.name }}
