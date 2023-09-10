@@ -3,7 +3,13 @@
 import OAButton from '@/features/OAButton';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
-import { Email, Instagram, Telegram, WhatsApp } from '@mui/icons-material';
+import {
+  Email,
+  Instagram,
+  Telegram,
+  WhatsApp,
+  LinkedIn,
+} from '@mui/icons-material';
 
 const contacts = [
   // {
@@ -32,6 +38,12 @@ const contacts = [
   },
   {
     id: 4,
+    name: 'LinkedIn',
+    icon: <LinkedIn />,
+    href: 'https://www.linkedin.com/in/oskar-arslanov-2b3362255/',
+  },
+  {
+    id: 5,
     name: 'oskararslanov@gmail.com',
     icon: <Email />,
     href: 'mailto: oskararslanov@gmail.com',

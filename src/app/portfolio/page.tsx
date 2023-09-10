@@ -14,7 +14,7 @@ import Commercial from '@/pages/Portfolio/Commercial';
 import Chat from '@/pages/Portfolio/Chat';
 import Link from 'next/link';
 import Registration from '@/pages/Portfolio/Auth/Registration';
-import Files from '@/pages/Portfolio/Files';
+import ImageCropper from '@/pages/Portfolio/ImageCropper';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -60,7 +60,7 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
     id: 8,
     name: 'files',
-    content: <Files />,
+    content: <ImageCropper />,
   },
 ];
 

@@ -14,7 +14,7 @@ const StyledImageList = styled.ul({
   borderRadius: '5px',
   flexWrap: 'wrap',
 });
-const Files = () => {
+const ImageCropper = () => {
   const [file, setFile] = useState<File>();
   const [openCrop, setOpenCrop] = useState(false);
   const [images, setImages] = useState<File[]>([]);
@@ -72,4 +72,4 @@ const Files = () => {
   );
 };
 
-export default Files;
+export default ImageCropper;
