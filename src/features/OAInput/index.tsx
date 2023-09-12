@@ -5,15 +5,15 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { IconButton } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import OABaseInput from './OABaseInput';
 
 interface OAInputProps {
   onChange?: (data: string) => void;
+  onClick?: () => void;
   style?: CSSProperties;
   className?: string;
   placeholder?: string;
@@ -25,43 +25,10 @@ interface OAInputProps {
   defaultValue?: string | number;
   value?: number | string;
   endAdornment?: React.ReactNode;
-  onClickEndAdornment?: () => void;
   startAdornment?: React.ReactNode;
-  onStartEndAdornment?: () => void;
   id?: string;
+  disableFocus?: boolean;
 }
-
-const Container = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '10px',
-  width: '100%',
-});
-
-const InputContainer = styled.div<{ isError: boolean }>(
-  {
-    display: 'flex',
-    justifyContent: 'space-between',
-    borderRadius: '10px',
-    height: '40px',
-    backgroundColor: 'var(--color-white)',
-    color: 'var(--color-black)',
-  },
-  (props) => ({
-    border: props.isError
-      ? '1px solid var(--color-red)'
-      : '1px solid var(--color-primary)',
-  }),
-);
-
-const BaseInput = styled(motion.input)({
-  outline: 'none',
-  border: 'none',
-  padding: '8px 10px',
-  borderRadius: '10px',
-  background: 'transparent',
-  width: '100%',
-});
 
 const OAInput: FC<OAInputProps> = (props) => {
   const context = useFormContext();
@@ -96,65 +63,61 @@ const OAInput: FC<OAInputProps> = (props) => {
   }, [props.value]);
 
   const isInvalid = !!context?.formState.errors[props.name];
-  return (
-    <Container>
-      {props.label && (
-        <label>
-          {props.label}
-          {props.rules?.required && <span style={{ color: 'red' }}>*</span>}
-        </label>
-      )}
-      {context?.control ? (
-        <Controller
-          name={props.name}
-          control={context?.control}
-          rules={props.rules}
-          render={({ field }) => {
-            return (
-              <InputContainer isError={isInvalid} style={props.style}>
-                {props.startAdornment}
-                <BaseInput
-                  {...field}
-                  placeholder={props.placeholder}
-                  type={type}
-                  disabled={props.rules?.disabled}
-                  value={value}
-                  data-testid={props.id}
-                  required={!!props.rules?.required}
-                  onChange={(e) => {
-                    field.onChange(e);
-                    // @ts-ignore
-                    const changedValue = e.target.value;
-                    setValue(changedValue);
-                    props.onChange?.(changedValue);
-                  }}
-                />
-                {isPassword ? endAdortment : props.endAdornment}
-              </InputContainer>
-            );
-          }}
-        />
-      ) : (
-        <InputContainer isError={isInvalid} style={props.style}>
-          {props.startAdornment}
-          <BaseInput
+  return context?.control ? (
+    <Controller
+      name={props.name}
+      control={context?.control}
+      rules={props.rules}
+      render={({ field }) => {
+        return (
+          <OABaseInput
+            {...field}
+            label={props.label}
+            isInvalid={isInvalid}
+            style={props.style}
             placeholder={props.placeholder}
             type={type}
             disabled={props.rules?.disabled}
             value={value}
             data-testid={props.id}
             required={!!props.rules?.required}
+            onClick={props.onClick}
             onChange={(e) => {
+              field.onChange(e);
               // @ts-ignore
               const changedValue = e.target.value;
               setValue(changedValue);
               props.onChange?.(changedValue);
             }}
+            disableFocus={props.disableFocus}
+            startAdornment={props.startAdornment}
+            endAdornment={isPassword ? endAdortment : props.endAdornment}
           />
-          {isPassword ? endAdortment : props.endAdornment}
-        </InputContainer>
-      )}
-    </Container>
+        );
+      }}
+    />
+  ) : (
+    <OABaseInput
+      label={props.label}
+      isInvalid={isInvalid}
+      style={props.style}
+      placeholder={props.placeholder}
+      type={type}
+      disabled={props.rules?.disabled}
+      value={value}
+      data-testid={props.id}
+      required={!!props.rules?.required}
+      onClick={props.onClick}
+      onChange={(e) => {
+        // @ts-ignore
+        const changedValue = e.target.value;
+        setValue(changedValue);
+        props.onChange?.(changedValue);
+      }}
+      disableFocus={props.disableFocus}
+      startAdornment={props.startAdornment}
+      endAdornment={isPassword ? endAdortment : props.endAdornment}
+    />
   );
 };
 

@@ -13,6 +13,7 @@ import Drawer from '@mui/material/Drawer';
 import OAButton from '@/features/OAButton';
 import OAThemeSwitch from '@/features/OASwitch/OAThemeSwitch';
 import { ThemeContext } from '@/shared/providers/ThemeProvider';
+import OASelect from '@/features/OASelect';
 
 const navbarData = [
   {
@@ -117,6 +118,12 @@ const OAHeaderContainer = () => {
           />
         </Link>
         <OAThemeSwitch />
+        <OASelect
+          values={[
+            { id: 1, value: 'ENG' },
+            { id: 2, value: 'RUS' },
+          ]}
+        />
         <NavMenu className="hide__S">
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];

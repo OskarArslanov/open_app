@@ -126,7 +126,7 @@ const OAButton: FC<OAButtonProps> = (props) => {
     );
   }
   return (
-    <StyledButton data-testid={props.id} {...props}>
+    <StyledButton data-testid={props.id} id={props.id} {...props}>
       {props.startIcon}
       {props.children}
       {props.endIcon}
