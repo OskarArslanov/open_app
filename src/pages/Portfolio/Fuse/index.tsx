@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { useDebounce } from '@uidotdev/usehooks';
 import axios from 'axios';
 import format from 'date-fns/format';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
@@ -87,6 +88,7 @@ interface JokeType {
 
 const Fuse = () => {
   const [jokes, setJokes] = useState<{ total: number; result: JokeType[] }>();
+  const t = useTranslations('Portfolio.fuse');
   const [search, setSearch] = useState<string>('');
   const deffered = useDebounce(search, 300);
   const inputRef = useRef(null);
@@ -107,14 +109,16 @@ const Fuse = () => {
     <AnimateContainer>
       <FuseController>
         <FuseInput
-          placeholder="Some value"
+          placeholder={t('placeholder')}
           name="search"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           ref={inputRef}
         />
-        <FoundJokes>Found jokes: {jokes?.total || 0}</FoundJokes>
+        <FoundJokes>
+          {t('found')}: {jokes?.total || 0}
+        </FoundJokes>
       </FuseController>
 
       <JokesList>

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import OAModal from '@/features/OAModal';
 import CropImage from '@/features/OAFiles/CropImage';
 import LoadFile from '@/features/OAFiles/LoadFile';
+import { useTranslations } from 'next-intl';
 
 const StyledImageList = styled.ul({
   display: 'flex',
@@ -16,6 +17,7 @@ const StyledImageList = styled.ul({
 });
 const ImageCropper = () => {
   const [file, setFile] = useState<File>();
+  const t = useTranslations('Portfolio.file');
   const [openCrop, setOpenCrop] = useState(false);
   const [images, setImages] = useState<File[]>([]);
   const [openImage, setOpenImage] = useState<string>();
@@ -34,7 +36,7 @@ const ImageCropper = () => {
         }}
       >
         <OAButton type="button" variant="ghost">
-          Загрузить
+          {t('load')}
           <FileUploadIcon />
         </OAButton>
       </LoadFile>

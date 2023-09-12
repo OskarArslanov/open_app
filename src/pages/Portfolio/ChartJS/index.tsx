@@ -5,6 +5,7 @@ import { AnimateContainer } from '@/widgets/Animations';
 import OACard from '@/features/OACard';
 import OAColumnChart from '@/features/OAColumnChart';
 import OALineChart from '@/features/OALineChart';
+import { useTranslations } from 'next-intl';
 
 const Analytics = styled.div({
   display: 'flex',
@@ -55,25 +56,19 @@ const Charts = styled.div({
 });
 
 const ChartJS = () => {
+  const t = useTranslations('Portfolio.chartjs');
   return (
     <AnimateContainer>
       <Analytics>
-        <AnalyticsTitle>
-          Вся аналитика <br /> в одном кабинете
-        </AnalyticsTitle>
-        <AnalyticsDescription>
-          Отслеживайте работу голосового ассистента <br /> в личном кабинете
-        </AnalyticsDescription>
+        <AnalyticsTitle>{t('title')}</AnalyticsTitle>
+        <AnalyticsDescription>{t('track')}</AnalyticsDescription>
       </Analytics>
-      <Widgets>
-        Уникальные виджеты позволяют настроить <br /> дашборд под задачи
-        различных подразделений вашей компании
-      </Widgets>
+      <Widgets>{t('uniq')}</Widgets>
       <Charts>
-        <OACard title="Звонки">
+        <OACard title={t('calls')}>
           <OALineChart />
         </OACard>
-        <OACard title="Исходящие звонки">
+        <OACard title={t('outgoingCalls')}>
           <OAColumnChart />
         </OACard>
       </Charts>

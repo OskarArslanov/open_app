@@ -15,6 +15,7 @@ import Chat from '@/pages/Portfolio/Chat';
 import Link from 'next/link';
 import Registration from '@/pages/Portfolio/Auth/Registration';
 import ImageCropper from '@/pages/Portfolio/ImageCropper';
+import { useTranslations } from 'next-intl';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -82,6 +83,7 @@ const Portfolio = () => {
   const router = useRouter();
   const params = useSearchParams();
   const currentJob = params?.get('job');
+  const t = useTranslations('Portfolio');
 
   useEffect(() => {
     if (params?.size) return;
@@ -94,15 +96,12 @@ const Portfolio = () => {
 
   return (
     <AnimateContainer>
-      <h1>
-        App code available{' '}
-        <Link
-          href="https://github.com/OskarArslanov/open_app"
-          style={{ textDecoration: 'underline' }}
-        >
-          here
-        </Link>
-      </h1>
+      <Link
+        href="https://github.com/OskarArslanov/open_app"
+        style={{ textDecoration: 'underline' }}
+      >
+        <h1>{t('code')}</h1>
+      </Link>
       <Menu>
         {portfolio.map((item) => {
           const isCurrent = item.name === currentJob;

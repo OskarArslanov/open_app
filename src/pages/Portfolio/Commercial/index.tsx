@@ -1,18 +1,23 @@
 import OAModal from '@/features/OAModal';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { useState } from 'react';
 
 interface ExpType {
   id: number;
   name: string;
+  nameRu?: string;
   project: string;
+  projectRu?: string;
   description: string;
+  descriptionRu?: string;
   stack: string[];
   since: string;
   untill: string;
   achieves: string[];
+  achievesRu?: string[];
   href: string;
   hrefSetup?: {
     login: string;
@@ -23,9 +28,13 @@ const exp: ExpType[] = [
   {
     id: 1,
     name: 'OOO Compressor',
+    nameRu: 'ООО Компрессор',
     project: 'ChooseDoctor',
+    projectRu: 'ВыбериВрача',
     description:
       'Medicine marketplace for doctors/clinics/patients. Patients can make an online appointment to doctors or offline to clinics. Every role has personal cabinet to keep finance, communicate to each other due to include chat',
+    descriptionRu:
+      'Маркетплейс по оказанию медицинских услуг для врачей/клиник/пациенто. Пациенты могу записаться на онлайн прием или оффлайн в клинике. У каждого пользователя есть личный кабинет с финансами, чатами с другими участниками ресурса и другое',
     stack: [
       'NextJS (12.3)',
       'ReactJS (18)',
@@ -48,8 +57,14 @@ const exp: ExpType[] = [
     achieves: [
       'Set up gitlab ci/cd',
       'Improved goals up to 95 using Lighthouse',
-      'Developer personal cabinets',
+      'Developed personal cabinets',
       'Set up authentication (using next auth)',
+    ],
+    achievesRu: [
+      'Настроил gitlab ci/cd',
+      'Улучшил показания по Lighthouse до 95',
+      'Разработал личные кабинеты',
+      'Настроил авторизацию и аутентификацию(с помощью next auth)',
     ],
     href: 'https://выбери-врача.рф',
     hrefSetup: undefined,
@@ -60,6 +75,8 @@ const exp: ExpType[] = [
     project: 'RGK Info',
     description:
       'Vehicles monitoring system. Tables, charts, excel reports. Report and monitoring system SPA for transport company',
+    descriptionRu:
+      'Система мониторинга транспортных средств. Таблицы, графики, отчеты в экселе. SPA для мониторинга показателей машин: топливо, местоположение, пробег и прочее',
     stack: [
       'ReactJS (18)',
       'Typescript(5.1.6)',
@@ -76,6 +93,10 @@ const exp: ExpType[] = [
     achieves: [
       'Set up authentication (access token and refresh token)',
       'Set up prettier, webpack, eslint',
+    ],
+    achievesRu: [
+      'Настроил авторизацию и аутентификаци с помощью токена авторизации и рефреш токена',
+      'Настроил prettier, webpack, eslint',
     ],
     href: 'http://78.24.223.121:4000/rgk24',
     hrefSetup: {
@@ -143,6 +164,8 @@ const ProjectStack = styled.ul({
 const Commercial = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<ExpType>();
+  const locale = useLocale();
+  const isEng = locale === 'en';
   return (
     <AnimateContainer>
       <ProjectList>
@@ -160,9 +183,9 @@ const Commercial = () => {
                 color: 'var(--color-not_primary)',
               }}
             >
-              {item.name}
+              {isEng ? item.name : item.nameRu}
             </h2>
-            <h3>{item.description}</h3>
+            <h3>{isEng ? item.description : item.descriptionRu}</h3>
             <ProjectStack>
               {item.stack.map((el) => (
                 <li key={el}>{el}</li>
@@ -177,10 +200,12 @@ const Commercial = () => {
           setSelected(undefined);
           setIsOpen(false);
         }}
-        title={`${selected?.name} | from ${selected?.since} to ${selected?.untill}`}
+        title={`${isEng ? selected?.name : selected?.nameRu} | from ${
+          selected?.since
+        } to ${selected?.untill}`}
       >
         <span style={{ fontSize: '20px' }}>
-          Site is available on{' '}
+          {isEng ? 'Site is available on ' : 'Сайт доступен'}
           <Link
             href={selected?.href!}
             style={{ textDecoration: 'underline', wordWrap: 'break-word' }}
@@ -191,15 +216,15 @@ const Commercial = () => {
         {selected?.hrefSetup && (
           <p>test info {JSON.stringify(selected.hrefSetup)}</p>
         )}
-        <h4>Achieves: </h4>
+        <h4>{isEng ? 'Achieves: ' : 'Достижения: '} </h4>
         <ol style={{ paddingLeft: '10px', marginTop: '-10px' }} type="1">
-          {selected?.achieves.map((item) => (
+          {selected?.achieves.map((item, index) => (
             <li key={item} style={{ listStyleType: 'initial' }}>
-              {item}
+              {isEng ? item : selected?.achievesRu?.[index]}
             </li>
           ))}
         </ol>
-        <span>{selected?.description}</span>
+        <span>{isEng ? selected?.description : selected?.descriptionRu}</span>
       </OAModal>
     </AnimateContainer>
   );

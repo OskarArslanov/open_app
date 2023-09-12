@@ -1,26 +1,6 @@
+import { PropsWithChildren } from 'react';
 import './globals.css';
-import { Noto_Sans } from 'next/font/google';
-import { FC, PropsWithChildren } from 'react';
-import App from '@/pages/App';
-import { Metadata } from 'next';
 
-const inter = Noto_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-});
-
-export const metadata: Metadata = {
-  title: 'OskarArs',
-  description: 'OskarArs web page',
-};
-
-const RootLayout: FC<PropsWithChildren> = (props) => {
-  return (
-    <html style={{ height: '100%' }}>
-      <body className={inter.className} style={{ height: '100%' }}>
-        <App>{props.children}</App>
-      </body>
-    </html>
-  );
-};
-export default RootLayout;
+export default function RootLayout({ children }: PropsWithChildren) {
+  return children;
+}

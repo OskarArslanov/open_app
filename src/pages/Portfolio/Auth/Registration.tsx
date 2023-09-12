@@ -9,6 +9,7 @@ import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
 import OAModal from '@/features/OAModal';
 import OAAlert, { OAAlertType } from '@/features/OAAlert';
+import { useTranslations } from 'next-intl';
 
 const Container = styled.div`
   display: flex;
@@ -30,12 +31,12 @@ const Title = styled.span`
 const Registration = () => {
   const [openAlert, setOpenAlert] = useState<OAAlertType>();
   const [openModal, setOpenModal] = useState(false);
-
+  const t = useTranslations('Portfolio.registration');
   const handleSubmit = async (data: Record<string, any>) => {
     if (data.password === data.confirm_password) {
-      setOpenAlert({ type: 'success', message: 'Запрос отправлен' });
+      setOpenAlert({ type: 'success', message: t('success') });
     } else {
-      setOpenAlert({ type: 'error', message: 'Пароли должны совпадать' });
+      setOpenAlert({ type: 'error', message: t('error') });
     }
     console.log(data);
   };
@@ -44,14 +45,14 @@ const Registration = () => {
     <AnimateContainer>
       <OAAlert alert={openAlert} onClose={() => setOpenAlert(undefined)} />
       <OAButton variant="ghost" query={{ job: 'login' }}>
-        Уже зарегестрированы?
+        {t('already')}?
       </OAButton>
       <Container>
-        <Title>Регистрация</Title>
+        <Title>{t('title')}</Title>
         <OAForm onSubmit={handleSubmit}>
           <OAInput
             name="name"
-            placeholder="Имя"
+            placeholder={t('name')}
             type="text"
             rules={{
               required: 'Поле Имя обязательно к заполнению',
@@ -75,7 +76,7 @@ const Registration = () => {
           />
           <OAInput
             name="phone"
-            placeholder="Телефон"
+            placeholder={t('phone')}
             type="number"
             rules={{
               required: 'Поле Телефон обязательно к заполнению',
@@ -93,7 +94,7 @@ const Registration = () => {
           />
           <OAInput
             name="password"
-            placeholder="Пароль"
+            placeholder={t('password')}
             type="password"
             rules={{
               required: 'Поле Пароль обязательно к заполнению',
@@ -105,7 +106,7 @@ const Registration = () => {
           />
           <OAInput
             name="confirm_password"
-            placeholder="Подтвердить пароль"
+            placeholder={t('confirm')}
             type="password"
             rules={{
               required: 'Поле Подтвердить пароль обязательно к заполнению',
@@ -125,8 +126,7 @@ const Registration = () => {
               <span
                 style={{ fontSize: '12px', color: 'var(--text-color-primary)' }}
               >
-                Нажимая &apos;Зарегистрироваться&apos; вы соглашаетесь с
-                пользовательским{' '}
+                {t('policyText')}
                 <button
                   onClick={() => setOpenModal(true)}
                   type="button"
@@ -138,13 +138,13 @@ const Registration = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  соглашением
+                  {t('policyButton')}
                 </button>
               </span>
             }
           />
           <OAButton type="submit" fullwidth>
-            Зарегестрироваться
+            {t('register')}
           </OAButton>
         </OAForm>
       </Container>

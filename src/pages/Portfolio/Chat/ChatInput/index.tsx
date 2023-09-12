@@ -6,6 +6,7 @@ import { animate } from 'framer-motion';
 import OAButton from '@/features/OAButton';
 import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
+import { useTranslations } from 'next-intl';
 import styles from './ChatInput.module.scss';
 
 interface ChatInputProps {
@@ -15,7 +16,7 @@ interface ChatInputProps {
 const ChatInput: FC<ChatInputProps> = (props) => {
   const [message, setMessage] = useState<string>('');
   const [clicked, setClicked] = useState(false);
-
+  const t = useTranslations('Portfolio.chat');
   const handleSend = async () => {
     props.onSend?.(message);
     setMessage('');
@@ -52,7 +53,7 @@ const ChatInput: FC<ChatInputProps> = (props) => {
       <OAInput
         type="text"
         fullWidth
-        placeholder="Start typing here..."
+        placeholder={t('placeholder')}
         value={message}
         name="message"
         onChange={setMessage}

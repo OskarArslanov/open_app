@@ -13,25 +13,8 @@ import Drawer from '@mui/material/Drawer';
 import OAButton from '@/features/OAButton';
 import OAThemeSwitch from '@/features/OASwitch/OAThemeSwitch';
 import { ThemeContext } from '@/shared/providers/ThemeProvider';
-import OASelect from '@/features/OASelect';
-
-const navbarData = [
-  {
-    name: 'About',
-    href: 'about',
-    icon: <InfoOutlinedIcon style={{ color: '#FFF' }} />,
-  },
-  {
-    name: 'Portfolio',
-    href: 'portfolio',
-    icon: <WorkOutlineIcon style={{ color: '#FFF' }} />,
-  },
-  {
-    name: 'Contacts',
-    href: 'contacts',
-    icon: <ContactPhoneOutlinedIcon style={{ color: '#FFF' }} />,
-  },
-];
+import OALangSelect from '@/features/OASelect/OALangSelect';
+import { useTranslations } from 'next-intl';
 
 const Container = styled.section({
   display: 'flex',
@@ -79,9 +62,10 @@ const OAHeaderContainer = () => {
     fullanme: string;
     shortname: string;
   }>();
+
   const [openDrawer, setOpenDrawer] = useState(false);
   const segments = usePathname()?.split('/').slice(1);
-
+  const t = useTranslations('Header');
   const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
@@ -93,6 +77,24 @@ const OAHeaderContainer = () => {
       setLogged({ jwt, shortname, fullanme: fullname });
     }
   }, []);
+
+  const navbarData = [
+    {
+      name: t('about'),
+      href: 'about',
+      icon: <InfoOutlinedIcon style={{ color: '#FFF' }} />,
+    },
+    {
+      name: t('portfolio'),
+      href: 'portfolio',
+      icon: <WorkOutlineIcon style={{ color: '#FFF' }} />,
+    },
+    {
+      name: t('contacts'),
+      href: 'contacts',
+      icon: <ContactPhoneOutlinedIcon style={{ color: '#FFF' }} />,
+    },
+  ];
 
   return (
     <Container>
@@ -118,12 +120,7 @@ const OAHeaderContainer = () => {
           />
         </Link>
         <OAThemeSwitch />
-        <OASelect
-          values={[
-            { id: 1, value: 'ENG' },
-            { id: 2, value: 'RUS' },
-          ]}
-        />
+        <OALangSelect />
         <NavMenu className="hide__S">
           {navbarData.map((item) => {
             const isActive = item.href === segments?.[0];

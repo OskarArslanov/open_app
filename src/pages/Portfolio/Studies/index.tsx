@@ -1,18 +1,23 @@
 import OAModal from '@/features/OAModal';
 import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { useState } from 'react';
 
 interface ExpType {
   id: number;
   name: string;
+  nameRu?: string;
   project: string;
+  projectRu?: string;
   description: string;
+  descriptionRu?: string;
   stack: string[];
   since: string;
   untill: string;
   achieves: string[];
+  achievesRu?: string[];
   href: string;
   hrefSetup?: {
     login: string;
@@ -23,8 +28,11 @@ const exp: ExpType[] = [
   {
     id: 3,
     name: 'Studying React (frontend) and integrating with Spring Framework (backend)',
+    nameRu: 'Фуллстек (знакомство с фронтом) React + Spring',
     project: 'Self studying',
+    projectRu: 'Самодеятельность',
     description: 'Self studying typescript and React',
+    descriptionRu: 'Обучение typescript и React',
     stack: [
       'ReactJS (18)',
       'Typescript(5.1.6)',
@@ -41,13 +49,18 @@ const exp: ExpType[] = [
     achieves: [
       'Set up authentication (access token and refresh token) updates as Set-Cookie on backend',
     ],
+    achievesRu: [
+      'Настроил аутентификацию и авторизацию (access токен и refsresh) со стороны бэка через Set-Cookie',
+    ],
     href: 'https://github.com/OskarArslanov/SouthBeach_pet_project',
   },
   {
     id: 4,
     name: 'Java 11',
+    nameRu: 'Java 11',
     project: 'Self studying',
-    description: 'Self studying Java and Spring framework',
+    projectRu: 'Самодеятельность',
+    description: 'Обучение Java и Spring Framework',
     stack: [
       'Spring boot 2',
       'Java 11',
@@ -63,6 +76,11 @@ const exp: ExpType[] = [
       '17 lvl JavaRush',
       '1st place in WorldSkills 2022 on Russia National Competition (Mobile Robotics - Juniors)',
       '2nd place in WorldSkills 2022 on Russia National Competition (Mobile Robotics)',
+    ],
+    achievesRu: [
+      '17 уровень JavaRush',
+      '1st место на чемпонате WorldSkills Competition (Mobile Robotics - Juniors) 2022',
+      '2nd место на чемпонате WorldSkills Competition (Mobile Robotics) 2022',
     ],
     href: 'https://github.com/OskarArslanov/Core-Java-WS_project',
   },
@@ -126,6 +144,8 @@ const ProjectStack = styled.ul({
 const Studies = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<ExpType>();
+  const locale = useLocale();
+  const isEng = locale === 'en';
   return (
     <AnimateContainer>
       <ProjectList>
@@ -143,7 +163,7 @@ const Studies = () => {
                 color: 'var(--color-not_primary)',
               }}
             >
-              {item.name}
+              {isEng ? item.name : item.nameRu}
             </h2>
             <h3>{item.description}</h3>
             <ProjectStack>
@@ -160,10 +180,12 @@ const Studies = () => {
           setSelected(undefined);
           setIsOpen(false);
         }}
-        title={`${selected?.name} | from ${selected?.since} to ${selected?.untill}`}
+        title={`${isEng ? selected?.name : selected?.nameRu} | from ${
+          selected?.since
+        } to ${selected?.untill}`}
       >
         <span style={{ fontSize: '20px' }}>
-          Site is available on{' '}
+          {isEng ? 'Code is available on ' : 'Код доступен по ссылке '}
           <Link
             href={selected?.href!}
             style={{ textDecoration: 'underline', wordWrap: 'break-word' }}
@@ -174,15 +196,15 @@ const Studies = () => {
         {selected?.hrefSetup && (
           <p>test info {JSON.stringify(selected.hrefSetup)}</p>
         )}
-        <h4>Achieves: </h4>
+        <h4>{isEng ? 'Achieves: ' : 'Достижения: '} </h4>
         <ol style={{ paddingLeft: '10px', marginTop: '-10px' }} type="1">
-          {selected?.achieves.map((item) => (
+          {selected?.achieves.map((item, index) => (
             <li key={item} style={{ listStyleType: 'initial' }}>
-              {item}
+              {isEng ? item : selected?.achievesRu?.[index]}
             </li>
           ))}
         </ol>
-        <span>{selected?.description}</span>
+        <span>{isEng ? selected?.description : selected?.descriptionRu}</span>
       </OAModal>
     </AnimateContainer>
   );

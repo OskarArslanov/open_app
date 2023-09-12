@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from '@emotion/styled';
 import { FC, useEffect, useRef, useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -13,6 +14,7 @@ interface OASelectProps {
   name?: string;
   id?: string;
   placeholder?: string;
+  onChange?: (data?: IdValue) => void;
 }
 
 const Container = styled.div({
@@ -81,12 +83,15 @@ const OASelect: FC<OASelectProps> = (props) => {
 
   useEffect(() => {
     setValue(props.defaultValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setValue(props.value);
-  }, [props.value]);
+  }, [props.value?.id]);
+
+  useEffect(() => {
+    props.onChange?.(value);
+  }, [value?.id]);
 
   return (
     <Container ref={ref}>

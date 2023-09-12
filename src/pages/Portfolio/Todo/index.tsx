@@ -11,24 +11,8 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
 import OAConfirmModal from '@/features/OAModal/OAConfirmModal';
 import OAAlert, { OAAlertType } from '@/features/OAAlert';
+import { useTranslations } from 'next-intl';
 
-const filters = [
-  {
-    id: 0,
-    name: 'All',
-    slug: 'all',
-  },
-  {
-    id: 1,
-    name: 'Active',
-    slug: 'active',
-  },
-  {
-    id: 2,
-    name: 'Completed',
-    slug: 'completed',
-  },
-];
 const TodoWidgets = styled.div({
   display: 'flex',
   justifyContent: 'space-between',
@@ -80,6 +64,7 @@ interface TodoType {
   done: boolean;
 }
 const Todo = () => {
+  const t = useTranslations('Portfolio.todo');
   const [openDelete, setOpenDelete] = useState<TodoType>();
   const [openEdit, setOpenEdit] = useState<TodoType>();
   const [todos, setTodos] = useState<TodoType[]>([]);
@@ -139,6 +124,25 @@ const Todo = () => {
   }, [JSON.stringify(todos), currentFilter]);
 
   const uncheckedTodos = todos.filter((item) => !item.done).length;
+
+  const filters = [
+    {
+      id: 0,
+      name: t('all'),
+      slug: 'all',
+    },
+    {
+      id: 1,
+      name: t('active'),
+      slug: 'active',
+    },
+    {
+      id: 2,
+      name: t('completed'),
+      slug: 'completed',
+    },
+  ];
+
   return (
     <Container style={{ width: 'auto' }}>
       <OAAlert alert={alert} onClose={() => setAlert(undefined)} />
@@ -156,7 +160,7 @@ const Todo = () => {
           disabled={!name.length}
           onClick={handleAddTodo}
         >
-          Create
+          {t('create')}
         </OAButton>
       </div>
       {!!filteredTodos.length && (
@@ -192,7 +196,7 @@ const Todo = () => {
       )}
       <TodoWidgets>
         <p>
-          <b data-testid="items-left">{uncheckedTodos}</b> items left
+          <b data-testid="items-left">{uncheckedTodos}</b> {t('left')}
         </p>
         <TodoWidgetFilter>
           {filters.map((item) => (
@@ -209,10 +213,10 @@ const Todo = () => {
         </TodoWidgetFilter>
         {todos.length ? (
           <OAButton size="small" onClick={() => setTodos([])} id="clear">
-            Clear
+            {t('clear')}
           </OAButton>
         ) : (
-          <p>Clear completed</p>
+          <p>{t('clearCompleted')}</p>
         )}
       </TodoWidgets>
       <OAConfirmModal
@@ -220,7 +224,7 @@ const Todo = () => {
         onConfirm={() => handleDelete()}
         state={!!openDelete}
       >
-        Вы действительно хотите удалить {openDelete?.name}?
+        {t('delete')} {openDelete?.name}?
       </OAConfirmModal>
       <OAConfirmModal
         onReject={() => setOpenEdit(undefined)}

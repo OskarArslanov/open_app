@@ -9,6 +9,7 @@ import OAButton from '@/features/OAButton';
 import OACheckbox from '@/features/OACheckbox';
 import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
+import { useTranslations } from 'next-intl';
 
 const Container = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const RememberMe = styled.div`
 
 const Login = () => {
   const [error, setError] = useState<string>();
+  const t = useTranslations('Portfolio.login');
   const handleSubmit = async (data: Record<string, any>) => {
     axiosInstance
       .post('/auth/login', {
@@ -51,7 +53,7 @@ const Login = () => {
   return (
     <AnimateContainer>
       <Container>
-        <Title>Вход</Title>
+        <Title>{t('title')}</Title>
         <OAForm onSubmit={handleSubmit} error={error}>
           <OAInput
             name="email"
@@ -61,16 +63,16 @@ const Login = () => {
           />
           <OAInput
             name="password"
-            placeholder="Пароль"
+            placeholder={t('pass')}
             type="password"
             rules={{ required: true, minLength: 6 }}
           />
           <RememberMe>
-            <OACheckbox name="remember" label="Запомнить меня" />
-            <OAButton variant="ghost">Забыли пароль?</OAButton>
+            <OACheckbox name="remember" label={t('remember')} />
+            <OAButton variant="ghost">{t('forget')}?</OAButton>
           </RememberMe>
           <OAButton type="submit" fullwidth>
-            Войти
+            {t('title')}
           </OAButton>
         </OAForm>
       </Container>
