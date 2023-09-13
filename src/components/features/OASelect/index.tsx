@@ -47,7 +47,6 @@ const OASelect: FC<OASelectProps> = (props) => {
   useEffect(() => {
     const list = document.getElementById(`${props.id}-list`);
     const arrow = document.getElementById(`${props.id}-arrow`);
-    console.log(isOpen, arrow);
     if (!list || !arrow) return;
     animate(
       list,
