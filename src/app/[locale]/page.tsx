@@ -12,6 +12,10 @@ const Base = styled.div({
   width: '100%',
   justifyContent: 'space-between',
   alignItems: 'center',
+  '@media (max-width: 900px)': {
+    flexDirection: 'column-reverse',
+    gap: '40px',
+  },
 });
 
 const BaseInfo = styled.span({
@@ -94,9 +98,7 @@ const OAMainOrder = () => {
       <Base>
         <BaseInfo>
           <b style={{ width: '80%' }}>{t('job')}</b>
-          <b style={{ width: '80%', color: 'var(--color-not_primary)' }}>
-            {t('name')}
-          </b>
+          <b style={{ color: 'var(--color-not_primary)' }}>{t('name')}</b>
         </BaseInfo>
         <ImgContainer>
           <ImgBg />
