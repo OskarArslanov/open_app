@@ -1,11 +1,11 @@
 'use client';
 
-import { AnimateContainer } from '@/widgets/Animations';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { AnimateContainer } from '@/components/widgets/Animations';
 
 const responsive = {
   superLargeDesktop: {

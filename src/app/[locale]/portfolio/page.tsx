@@ -1,21 +1,20 @@
 'use client';
 
-import Login from '@/pages/Portfolio/Auth/Login';
-import Fuse from '@/pages/Portfolio/Fuse';
 import styled from '@emotion/styled';
+import { Login, Chat } from '@mui/icons-material';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
-import { AnimateContainer } from '@/widgets/Animations';
-import Todo from '@/pages/Portfolio/Todo';
-import OAButton from '@/features/OAButton';
-import Studies from '@/pages/Portfolio/Studies';
-import ChartJS from '@/pages/Portfolio/ChartJS';
-import Commercial from '@/pages/Portfolio/Commercial';
-import Chat from '@/pages/Portfolio/Chat';
-import Link from 'next/link';
-import Registration from '@/pages/Portfolio/Auth/Registration';
-import ImageCropper from '@/pages/Portfolio/ImageCropper';
-import { useTranslations } from 'next-intl';
+import OAButton from '@/components/features/OAButton';
+import { AnimateContainer } from '@/components/widgets/Animations';
+import Registration from '@/components/widgets/Portfolio/Auth/Registration';
+import ChartJS from '@/components/widgets/Portfolio/ChartJS';
+import Commercial from '@/components/widgets/Portfolio/Commercial';
+import Fuse from '@/components/widgets/Portfolio/Fuse';
+import ImageCropper from '@/components/widgets/Portfolio/ImageCropper';
+import Studies from '@/components/widgets/Portfolio/Studies';
+import Todo from '@/components/widgets/Portfolio/Todo';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {

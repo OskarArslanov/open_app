@@ -1,7 +1,7 @@
 'use client';
 
-import OAButton from '@/features/OAButton';
-import { AnimateContainer } from '@/widgets/Animations';
+import OAButton from '@/components/features/OAButton';
+import { AnimateContainer } from '@/components/widgets/Animations';
 import styled from '@emotion/styled';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';

@@ -1,9 +1,9 @@
 import { Noto_Sans } from 'next/font/google';
 import { FC, ReactNode } from 'react';
-import App from '@/pages/App';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { Metadata } from 'next';
+import App from '@/components/layout/App';
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ru' }];
