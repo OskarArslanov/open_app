@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, useEffect, useState } from 'react';
-import Link from 'next/link';
+import Link from 'next-intl/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -123,7 +123,7 @@ const OAHeaderContainer = () => {
         <OALangSelect />
         <NavMenu className="hide__S">
           {navbarData.map((item) => {
-            const isActive = item.href === segments?.[0];
+            const isActive = segments?.join('').includes(item.href);
             return (
               <OAButton
                 key={item.name}
@@ -150,7 +150,7 @@ const OAHeaderContainer = () => {
       >
         <NavMenu data-theme={themeContext.theme}>
           {navbarData.map((item) => {
-            const isActive = item.href === segments?.[0];
+            const isActive = segments?.join('').includes(item.href);
             return (
               <OAButton
                 key={item.name}

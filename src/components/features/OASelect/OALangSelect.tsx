@@ -1,5 +1,3 @@
-'use client';
-
 import { useLocale } from 'next-intl';
 import { IdValue } from 'components/entities/functional';
 import { usePathname, useRouter } from 'next-intl/client';

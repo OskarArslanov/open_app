@@ -2,7 +2,7 @@
 
 import { CSSProperties, FC, ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Link from 'next-intl/link';
 import styled from '@emotion/styled';
 
 interface OAButtonProps {
