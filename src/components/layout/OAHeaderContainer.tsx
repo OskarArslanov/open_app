@@ -120,7 +120,11 @@ const OAHeaderContainer = () => {
           />
         </Link>
         <OAThemeSwitch />
-        <OALangSelect />
+        <OALangSelect
+          className="hide__S"
+          style={{ maxWidth: '100px' }}
+          id="desktop"
+        />
         <NavMenu className="hide__S">
           {navbarData.map((item) => {
             const isActive = segments?.join('').includes(item.href);
@@ -170,6 +174,7 @@ const OAHeaderContainer = () => {
               </OAButton>
             );
           })}
+          <OALangSelect className="hide__L hide__M" id="mobile" />
         </NavMenu>
       </Drawer>
     </Container>

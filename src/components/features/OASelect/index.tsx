@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from '@emotion/styled';
-import { FC, useEffect, useRef, useState } from 'react';
+import { CSSProperties, FC, useEffect, useRef, useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { IdValue } from 'components/entities/functional';
 import { animate, motion } from 'framer-motion';
@@ -15,6 +15,8 @@ interface OASelectProps {
   id?: string;
   placeholder?: string;
   onChange?: (data?: IdValue) => void;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const Container = styled.div({
@@ -43,8 +45,9 @@ const OASelect: FC<OASelectProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const list = document.getElementById('list');
-    const arrow = document.getElementById('arrow');
+    const list = document.getElementById(`${props.id}-list`);
+    const arrow = document.getElementById(`${props.id}-arrow`);
+    console.log(isOpen, arrow);
     if (!list || !arrow) return;
     animate(
       list,
@@ -94,7 +97,7 @@ const OASelect: FC<OASelectProps> = (props) => {
   }, [value?.id]);
 
   return (
-    <Container ref={ref}>
+    <Container ref={ref} style={props.style} className={props.className}>
       <OAInput
         type="text"
         name={props.name || 'select'}
@@ -108,13 +111,13 @@ const OASelect: FC<OASelectProps> = (props) => {
             circled
             variant="ghost"
             onClick={() => setIsOpen(!isOpen)}
-            id="arrow"
+            id={`${props.id}-arrow`}
           >
             <ExpandMoreIcon />
           </OAButton>
         }
       />
-      <StyledMenu id="list">
+      <StyledMenu id={`${props.id}-list`}>
         {props.values?.map((item) => (
           <li
             key={item.id}

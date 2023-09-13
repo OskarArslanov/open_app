@@ -1,6 +1,7 @@
 import { useLocale } from 'next-intl';
 import { IdValue } from 'components/entities/functional';
 import { usePathname, useRouter } from 'next-intl/client';
+import { CSSProperties, FC } from 'react';
 import OASelect from '.';
 
 const langs = [
@@ -13,7 +14,13 @@ const langs = [
     value: 'EN',
   },
 ];
-const OALangSelect = () => {
+
+interface OALangSelectProps {
+  className?: string;
+  style?: CSSProperties;
+  id?: string;
+}
+const OALangSelect: FC<OALangSelectProps> = (props) => {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -25,9 +32,12 @@ const OALangSelect = () => {
 
   return (
     <OASelect
+      className={props.className}
       values={langs}
       value={langs.find((item) => item.value.toLocaleLowerCase() === locale)}
       onChange={handleChangeLang}
+      style={props.style}
+      id={props.id}
     />
   );
 };
