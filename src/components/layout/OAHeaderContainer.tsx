@@ -36,7 +36,7 @@ const NavBar = styled.nav({
   padding: '0 40px',
   alignItems: 'center',
   width: '100%',
-  '@media screen and (max-width: 768px)': {
+  '@media screen and (max-width: 1080px)': {
     padding: '0 10px',
     gap: '0',
   },
@@ -122,7 +122,7 @@ const OAHeaderContainer = () => {
         <OAThemeSwitch />
         <OALangSelect
           className="hide__S"
-          style={{ maxWidth: '100px' }}
+          style={{ minWidth: '100px', maxWidth: '100px' }}
           id="desktop"
         />
         <NavMenu className="hide__S">

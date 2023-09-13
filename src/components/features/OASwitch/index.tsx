@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import { FC, useEffect, useState } from 'react';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 
 const SwitchBg = styled(motion.div)({
   position: 'relative',
@@ -48,6 +48,7 @@ interface OASwitchProps {
   defaultState?: boolean;
   variantsBg?: Record<string, any>;
   variantsToggle?: Record<string, any>;
+  style?: CSSProperties;
 }
 const OASwitch: FC<OASwitchProps> = (props) => {
   const [state, setState] = useState(!!props.defaultState);
@@ -68,6 +69,7 @@ const OASwitch: FC<OASwitchProps> = (props) => {
       variants={props.variantsBg || variantsBg}
       animate={state ? 'active' : 'inactive'}
       onClick={handleChange}
+      style={props.style}
     >
       <SwitchToggle
         variants={props.variantsToggle || variantsToggle}

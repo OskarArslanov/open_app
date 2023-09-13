@@ -29,6 +29,7 @@ const OAThemeSwitch = () => {
       variantsToggle={variantsToggle}
       state={themeContext.theme === 'dark'}
       onChange={(e) => themeContext.onChangeTheme(e ? 'dark' : 'light')}
+      style={{ minWidth: '40px', maxWidth: '60px' }}
     />
   );
 };
