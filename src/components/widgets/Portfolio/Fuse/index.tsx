@@ -7,7 +7,7 @@ import format from 'date-fns/format';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const FuseController = styled.div({
   display: 'flex',
@@ -106,7 +106,7 @@ const Fuse = () => {
     inputRef.current?.focus();
   }, []);
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <FuseController>
         <FuseInput
           placeholder={t('placeholder')}
@@ -141,7 +141,7 @@ const Fuse = () => {
           );
         })}
       </JokesList>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

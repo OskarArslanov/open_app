@@ -14,7 +14,7 @@ interface AnimateContainerProps {
   children?: ReactNode;
   style?: CSSProperties;
 }
-export const AnimateContainer: FC<AnimateContainerProps> = (props) => {
+export const OAAnimateContainer: FC<AnimateContainerProps> = (props) => {
   return (
     <FlexContainer
       initial={{ opacity: 0 }}

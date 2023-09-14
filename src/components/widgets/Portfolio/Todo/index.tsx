@@ -11,7 +11,7 @@ import OAButton from '@/components/features/OAButton';
 import OACheckbox from '@/components/features/OACheckbox';
 import OAInput from '@/components/features/OAInput';
 import OAConfirmModal from '@/components/features/OAModal/OAConfirmModal';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const TodoWidgets = styled.div({
   display: 'flex',
@@ -52,7 +52,7 @@ const TodoItem = styled.li({
   justifyContent: 'space-between',
 });
 
-const Container = styled(AnimateContainer)({
+const Container = styled(OAAnimateContainer)({
   border: '1px solid var(--color-not_primary)',
   padding: '5px',
   borderRadius: '10px',

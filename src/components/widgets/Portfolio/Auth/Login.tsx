@@ -9,7 +9,7 @@ import OACheckbox from '@/components/features/OACheckbox';
 import OAForm from '@/components/features/OAForm';
 import OAInput from '@/components/features/OAInput';
 import axiosInstance from '@/components/shared/utils/axiosConfig';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const Container = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const Login = () => {
       .catch((err: AxiosError) => setError(err.response?.data as string));
   };
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <Container>
         <Title>{t('title')}</Title>
         <OAForm onSubmit={handleSubmit} error={error}>
@@ -76,7 +76,7 @@ const Login = () => {
           </OAButton>
         </OAForm>
       </Container>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

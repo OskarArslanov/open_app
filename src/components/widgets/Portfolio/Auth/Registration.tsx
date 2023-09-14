@@ -9,7 +9,7 @@ import OACheckbox from '@/components/features/OACheckbox';
 import OAForm from '@/components/features/OAForm';
 import OAInput from '@/components/features/OAInput';
 import OAModal from '@/components/features/OAModal';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Registration = () => {
   };
 
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <OAAlert alert={openAlert} onClose={() => setOpenAlert(undefined)} />
       <OAButton variant="ghost" query={{ job: 'login' }}>
         {t('already')}?
@@ -155,7 +155,7 @@ const Registration = () => {
       >
         Some private policy
       </OAModal>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

@@ -7,7 +7,7 @@ import LoadFile from '@/components/features/OAFiles/LoadFile';
 import OAModal from '@/components/features/OAModal';
 import Image from 'next/image';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const StyledImageList = styled.ul({
   display: 'flex',
@@ -28,7 +28,7 @@ const ImageCropper = () => {
     setImages(updatedImages);
   };
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <LoadFile
         onChange={(e) => {
           setFile(e?.[0]);
@@ -70,7 +70,7 @@ const ImageCropper = () => {
           style={{ objectFit: 'contain', alignSelf: 'center' }}
         />
       </OAModal>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

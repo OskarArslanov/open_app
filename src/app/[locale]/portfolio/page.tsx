@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
 import OAButton from '@/components/features/OAButton';
-import { AnimateContainer } from '@/components/widgets/Animations';
 import Registration from '@/components/widgets/Portfolio/Auth/Registration';
 import ChartJS from '@/components/widgets/Portfolio/ChartJS';
 import Commercial from '@/components/widgets/Portfolio/Commercial';
@@ -15,6 +14,8 @@ import Fuse from '@/components/widgets/Portfolio/Fuse';
 import ImageCropper from '@/components/widgets/Portfolio/ImageCropper';
 import Studies from '@/components/widgets/Portfolio/Studies';
 import Todo from '@/components/widgets/Portfolio/Todo';
+import GraphQL from '@/components/widgets/Portfolio/GraphQL';
+import { OAAnimateContainer } from '@/components/widgets/OAAnimateContainer';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
@@ -62,6 +63,11 @@ const portfolio: { id: number; name: string; content: ReactNode }[] = [
     name: 'files',
     content: <ImageCropper />,
   },
+  {
+    id: 9,
+    name: 'graphql',
+    content: <GraphQL />,
+  },
 ];
 
 const Menu = styled.menu({
@@ -94,7 +100,7 @@ const Portfolio = () => {
   }, [currentJob]);
 
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <Link
         href="https://github.com/OskarArslanov/open_app"
         style={{ textDecoration: 'underline' }}
@@ -123,7 +129,7 @@ const Portfolio = () => {
         if (!isShow) return null;
         return <Content key={item.id}>{item.content}</Content>;
       })}
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

@@ -7,7 +7,7 @@ import ChatArea from './ChatArea';
 import ChatInput from './ChatInput';
 import styles from './Main.module.scss';
 import { ChatMessageType } from './ChatMessage';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const Chat = () => {
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
@@ -44,13 +44,13 @@ const Chat = () => {
   };
 
   return (
-    <AnimateContainer className={styles.Container} style={{ gap: 0 }}>
+    <OAAnimateContainer className={styles.Container} style={{ gap: 0 }}>
       <div className={styles.Container_Wrapper}>
         <Title />
         <ChatArea messages={messages} />
         <ChatInput onSend={handleSend} />
       </div>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

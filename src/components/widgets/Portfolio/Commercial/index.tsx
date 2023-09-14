@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { useState } from 'react';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 interface ExpType {
   id: number;
@@ -167,7 +167,7 @@ const Commercial = () => {
   const locale = useLocale();
   const isEng = locale === 'en';
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <ProjectList>
         {exp.map((item) => (
           <Project
@@ -226,7 +226,7 @@ const Commercial = () => {
         </ol>
         <span>{isEng ? selected?.description : selected?.descriptionRu}</span>
       </OAModal>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

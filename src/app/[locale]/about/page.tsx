@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { AnimateContainer } from '@/components/widgets/Animations';
+import { OAAnimateContainer } from '@/components/widgets/OAAnimateContainer';
 
 const responsive = {
   superLargeDesktop: {
@@ -35,7 +35,7 @@ const ImageContainer = styled.div({
 const AboutPage = () => {
   const t = useTranslations('About');
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <h2>{t('title')}</h2>
       <h3>{t('school')}</h3>
       <p>{t('contentSchool')}</p>
@@ -64,7 +64,7 @@ const AboutPage = () => {
           );
         })}
       </Carousel>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

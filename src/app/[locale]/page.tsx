@@ -1,7 +1,7 @@
 'use client';
 
 import OAButton from '@/components/features/OAButton';
-import { AnimateContainer } from '@/components/widgets/Animations';
+import { OAAnimateContainer } from '@/components/widgets/OAAnimateContainer';
 import styled from '@emotion/styled';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -94,7 +94,7 @@ const Img = styled(Image)({
 const OAMainOrder = () => {
   const t = useTranslations('Main');
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <Base>
         <BaseInfo>
           <b style={{ width: '80%' }}>{t('job')}</b>
@@ -125,18 +125,14 @@ const OAMainOrder = () => {
       </Info>
 
       <Actions>
-        <Link href="/about">
-          <OAButton variant="filled" fullwidth size="large">
-            {t('about')}
-          </OAButton>
-        </Link>
-        <Link href="/contacts">
-          <OAButton variant="filled" fullwidth size="large">
-            {t('contacts')}
-          </OAButton>
-        </Link>
+        <OAButton variant="filled" fullwidth size="large" href="/about">
+          {t('about')}
+        </OAButton>
+        <OAButton variant="filled" fullwidth size="large" href="/contacts">
+          {t('contacts')}
+        </OAButton>
       </Actions>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

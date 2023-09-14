@@ -5,7 +5,7 @@ import OAColumnChart from '@/components/features/OAColumnChart';
 import OALineChart from '@/components/features/OALineChart';
 import styled from '@emotion/styled';
 import { useTranslations } from 'next-intl';
-import { AnimateContainer } from '../../Animations';
+import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const Analytics = styled.div({
   display: 'flex',
@@ -58,7 +58,7 @@ const Charts = styled.div({
 const ChartJS = () => {
   const t = useTranslations('Portfolio.chartjs');
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <Analytics>
         <AnalyticsTitle>{t('title')}</AnalyticsTitle>
         <AnalyticsDescription>{t('track')}</AnalyticsDescription>
@@ -72,7 +72,7 @@ const ChartJS = () => {
           <OAColumnChart />
         </OACard>
       </Charts>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 

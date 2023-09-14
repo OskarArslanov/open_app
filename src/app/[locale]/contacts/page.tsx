@@ -1,7 +1,7 @@
 'use client';
 
 import OAButton from '@/components/features/OAButton';
-import { AnimateContainer } from '@/components/widgets/Animations';
+import { OAAnimateContainer } from '@/components/widgets/OAAnimateContainer';
 import styled from '@emotion/styled';
 import {
   Email,
@@ -59,7 +59,7 @@ const ContactList = styled.ul({
 
 const ContactsPage = () => {
   return (
-    <AnimateContainer>
+    <OAAnimateContainer>
       <ContactList>
         {contacts.map((item) => {
           return (
@@ -74,7 +74,7 @@ const ContactsPage = () => {
           );
         })}
       </ContactList>
-    </AnimateContainer>
+    </OAAnimateContainer>
   );
 };
 
