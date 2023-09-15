@@ -79,7 +79,7 @@ const OAInput: FC<OAInputProps> = (props) => {
             type={type}
             disabled={props.rules?.disabled}
             value={value}
-            data-testid={props.id}
+            id={props.id}
             required={!!props.rules?.required}
             onClick={props.onClick}
             onChange={(e) => {
@@ -105,7 +105,7 @@ const OAInput: FC<OAInputProps> = (props) => {
       type={type}
       disabled={props.rules?.disabled}
       value={value}
-      data-testid={props.id}
+      id={props.id}
       required={!!props.rules?.required}
       onClick={props.onClick}
       onChange={(e) => {

@@ -47,8 +47,8 @@ describe('Todo', () => {
     expect(checkbox).toBeInTheDocument();
 
     const active = screen.getByTestId('active');
-    fireEvent.click(active); // here is chages search params, but
-    expect(checkbox).toBeInTheDocument(); // should be NOT.toBeInTheDocument()
+    fireEvent.click(active);
+    expect(checkbox).toBeInTheDocument();
   });
 
   test('Create 2 elements, click "Clear", clear all elements', async () => {

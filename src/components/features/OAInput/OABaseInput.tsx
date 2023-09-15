@@ -29,7 +29,7 @@ interface OABaseProps {
   disableFocus?: boolean;
 }
 
-const Container = styled.div<{ fullWidth?: boolean }>(
+const Container = styled.label<{ fullWidth?: boolean }>(
   {
     display: 'flex',
     flexDirection: 'column',
@@ -93,10 +93,10 @@ const OABaseInput: FC<OABaseProps> = (props) => {
   return (
     <Container fullWidth={props.fullWidth}>
       {props.label && (
-        <label>
+        <>
           {props.label}
           {props.required && <span style={{ color: 'red' }}>*</span>}
-        </label>
+        </>
       )}
       <InputContainer
         isError={props.isInvalid}
@@ -112,6 +112,7 @@ const OABaseInput: FC<OABaseProps> = (props) => {
           disabled={props.disabled}
           value={value}
           data-testid={props.id}
+          id={props.id}
           required={props.required}
           onChange={props.onChange}
         />

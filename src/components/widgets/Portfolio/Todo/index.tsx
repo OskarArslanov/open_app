@@ -12,6 +12,7 @@ import OACheckbox from '@/features/OACheckbox';
 import OAInput from '@/features/OAInput';
 import OAConfirmModal from '@/features/OAModal/OAConfirmModal';
 import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
+import OAForm from '@/components/features/OAForm';
 
 const TodoWidgets = styled.div({
   display: 'flex',
@@ -100,9 +101,9 @@ const Todo = () => {
     setOpenDelete(undefined);
   };
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e: any) => {
     const newTodo: TodoType = {
-      name,
+      name: e.name,
       done: false,
       id: todos.length,
     };
@@ -146,23 +147,27 @@ const Todo = () => {
   return (
     <Container style={{ width: 'auto' }}>
       <OAAlert alert={alert} onClose={() => setAlert(undefined)} />
-      <div style={{ flexDirection: 'row', display: 'flex', gap: '5px' }}>
+      <OAForm
+        style={{ flexDirection: 'row', gap: '5px' }}
+        onSubmit={handleAddTodo}
+      >
         <OAInput
           type="text"
           name="name"
           value={name}
-          onChange={setName}
           id="input"
+          onChange={setName}
         />
         <OAButton
           style={{ height: '100%' }}
           id="create"
           disabled={!name.length}
-          onClick={handleAddTodo}
+          type="submit"
         >
           {t('create')}
         </OAButton>
-      </div>
+      </OAForm>
+
       {!!filteredTodos.length && (
         <TodoList>
           {filteredTodos.map((item) => (
