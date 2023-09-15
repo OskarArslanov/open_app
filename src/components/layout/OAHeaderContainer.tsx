@@ -3,7 +3,6 @@
 import { useContext, useEffect, useState } from 'react';
 import Link from 'next-intl/link';
 import Image from 'next/image';
-import styled from 'styled-components';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
@@ -11,10 +10,11 @@ import { usePathname } from 'next/navigation';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import { useTranslations } from 'next-intl';
-import { ThemeContext } from '../shared/providers/ThemeProvider';
-import OAButton from '../features/OAButton';
-import OALangSelect from '../features/OASelect/OALangSelect';
-import OAThemeSwitch from '../features/OASwitch/OAThemeSwitch';
+import OALangSelectWidget from '@/widgets/OALangSelectWidget';
+import OAThemeSwitchWidget from '@/widgets/OAThemeSwitchWidget';
+import { ThemeContext } from '@/providers/ThemeProvider';
+import OAButton from '@/features/OAButton';
+import styled from '@emotion/styled';
 
 const Container = styled.section({
   display: 'flex',
@@ -67,7 +67,6 @@ const OAHeaderContainer = () => {
   const segments = usePathname()?.split('/').slice(1);
   const t = useTranslations('Header');
   const themeContext = useContext(ThemeContext);
-
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     const user = localStorage.getItem('user');
@@ -119,8 +118,8 @@ const OAHeaderContainer = () => {
             priority
           />
         </Link>
-        <OAThemeSwitch />
-        <OALangSelect
+        <OAThemeSwitchWidget />
+        <OALangSelectWidget
           className="hide__S"
           style={{ minWidth: '100px', maxWidth: '100px' }}
           id="desktop"
@@ -174,7 +173,7 @@ const OAHeaderContainer = () => {
               </OAButton>
             );
           })}
-          <OALangSelect className="hide__L hide__M" id="mobile" />
+          <OALangSelectWidget className="hide__L hide__M" id="mobile" />
         </NavMenu>
       </Drawer>
     </Container>

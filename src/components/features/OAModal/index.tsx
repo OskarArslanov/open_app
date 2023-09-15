@@ -62,7 +62,7 @@ const OAModal: FC<OAModalProps> = (props) => {
     <Modal
       open={props.isOpen}
       onClose={props.onClose}
-      data-theme={themeContext.theme}
+      data-theme={themeContext.data}
       style={props.style}
     >
       <ModalPos>

@@ -1,11 +1,11 @@
 'use client';
 
-import OACard from '@/components/features/OACard';
-import OAColumnChart from '@/components/features/OAColumnChart';
-import OALineChart from '@/components/features/OALineChart';
+import OACard from '@/features/OACard';
+import OAColumnChart from '@/features/OAColumnChart';
+import OALineChart from '@/features/OALineChart';
 import styled from '@emotion/styled';
 import { useTranslations } from 'next-intl';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const Analytics = styled.div({
   display: 'flex',

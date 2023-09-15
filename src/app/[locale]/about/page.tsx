@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { OAAnimateContainer } from '@/components/widgets/OAAnimateContainer';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const responsive = {
   superLargeDesktop: {

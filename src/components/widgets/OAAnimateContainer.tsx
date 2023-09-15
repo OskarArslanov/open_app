@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { CSSProperties, FC, ReactNode } from 'react';
-import { styled } from 'styled-components';
 
 const FlexContainer = styled(motion.div)({
   display: 'flex',

@@ -9,7 +9,9 @@
     "export": "next export",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",
@@ -45,9 +47,18 @@
     "react-multi-carousel": "^2.8.4",
     "react-switch": "^7.0.0",
     "sass": "^1.66.1",
+    "storybook": "^7.4.1",
     "styled-components": "^6.0.0-rc.3"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.4.1",
+    "@storybook/addon-interactions": "^7.4.1",
+    "@storybook/addon-links": "^7.4.1",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.4.1",
+    "@storybook/nextjs": "^7.4.1",
+    "@storybook/react": "^7.4.1",
+    "@storybook/testing-library": "^0.2.0",
     "@types/jest": "^29.5.4",
     "@types/jsonwebtoken": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -60,6 +71,7 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-storybook": "^0.6.13",
     "jest-environment-jsdom": "^29.6.4",
     "prettier": "^2.8.8",
     "typescript": "^5.1.3"

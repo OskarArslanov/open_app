@@ -1,9 +1,9 @@
-import OAModal from '@/components/features/OAModal';
+import OAModal from '@/features/OAModal';
 import styled from '@emotion/styled';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { useState } from 'react';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 interface ExpType {
   id: number;

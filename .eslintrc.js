@@ -3,14 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'next',
-    'eslint-config-airbnb-base',
-    'airbnb/rules/react',
-    'airbnb-typescript',
-    'plugin:prettier/recommended',
-    "prettier",
-  ],
+  extends: ['next', 'eslint-config-airbnb-base', 'airbnb/rules/react', 'airbnb-typescript', 'plugin:prettier/recommended', 'prettier', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   overrides: [],
   parserOptions: {

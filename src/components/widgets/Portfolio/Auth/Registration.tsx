@@ -1,15 +1,15 @@
 'use client';
 
-import styled from 'styled-components';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import OAAlert, { OAAlertType } from '@/components/features/OAAlert';
-import OAButton from '@/components/features/OAButton';
-import OACheckbox from '@/components/features/OACheckbox';
-import OAForm from '@/components/features/OAForm';
-import OAInput from '@/components/features/OAInput';
-import OAModal from '@/components/features/OAModal';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import OAAlert, { OAAlertType } from '@/features/OAAlert';
+import OAButton from '@/features/OAButton';
+import OACheckbox from '@/features/OACheckbox';
+import OAForm from '@/features/OAForm';
+import OAInput from '@/features/OAInput';
+import OAModal from '@/features/OAModal';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
+import styled from '@emotion/styled';
 
 const Container = styled.div`
   display: flex;

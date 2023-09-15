@@ -6,12 +6,12 @@ import { useSearchParams } from 'next/navigation';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useTranslations } from 'next-intl';
-import OAAlert, { OAAlertType } from '@/components/features/OAAlert';
-import OAButton from '@/components/features/OAButton';
-import OACheckbox from '@/components/features/OACheckbox';
-import OAInput from '@/components/features/OAInput';
-import OAConfirmModal from '@/components/features/OAModal/OAConfirmModal';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import OAAlert, { OAAlertType } from '@/features/OAAlert';
+import OAButton from '@/features/OAButton';
+import OACheckbox from '@/features/OACheckbox';
+import OAInput from '@/features/OAInput';
+import OAConfirmModal from '@/features/OAModal/OAConfirmModal';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const TodoWidgets = styled.div({
   display: 'flex',

@@ -21,10 +21,16 @@
     ],
     "baseUrl": "./src",
     "paths": {
-      "@/app/*": ["app*"],
+      "@/app/*": ["app/*"],
       "@/components/*": ["components/*"],
       "@/messages/*": ["messages/*"],
       "@/pages/*": ["pages/*"],
+      "@/providers/*": ["components/shared/providers/*"],
+      "@/utils/*": ["components/shared/utils/*"],
+      "@/assets/*": ["components/shared/assets/*"],
+      "@/widgets/*": ["components/widgets/*"],
+      "@/features/*": ["components/features/*"],
+      "@/entities/*": ["components/entities/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src"],

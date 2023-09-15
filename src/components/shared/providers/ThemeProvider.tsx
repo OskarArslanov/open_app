@@ -16,15 +16,15 @@ export const ThemeContext = createContext<{
   theme: string;
   onChangeTheme: any;
 }>({
-  theme: 'light',
+  theme: 'dark',
   onChangeTheme: () => {},
 });
 
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>('dark');
 
   useEffect(() => {
-    setTheme(localStorage.getItem('theme') || 'light');
+    setTheme(localStorage.getItem('theme') || 'dark');
   }, []);
 
   const onChangeTheme = useMemo(

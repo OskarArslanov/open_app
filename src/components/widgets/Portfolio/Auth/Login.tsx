@@ -4,12 +4,12 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import OAButton from '@/components/features/OAButton';
-import OACheckbox from '@/components/features/OACheckbox';
-import OAForm from '@/components/features/OAForm';
-import OAInput from '@/components/features/OAInput';
-import axiosInstance from '@/components/shared/utils/axiosConfig';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import OAButton from '@/features/OAButton';
+import OACheckbox from '@/features/OACheckbox';
+import OAForm from '@/features/OAForm';
+import OAInput from '@/features/OAInput';
+import axiosInstance from '@/utils/axiosConfig';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const Container = styled.div`
   display: flex;

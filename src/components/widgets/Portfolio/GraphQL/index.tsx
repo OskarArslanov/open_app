@@ -1,11 +1,11 @@
-import OAButton from '@/components/features/OAButton';
-import OAForm from '@/components/features/OAForm';
-import OAInput from '@/components/features/OAInput';
+import OAButton from '@/features/OAButton';
+import OAForm from '@/features/OAForm';
+import OAInput from '@/features/OAInput';
 import { useQuery, gql, useMutation } from '@apollo/client';
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
-import { OACircleLoader } from '../../OACircleLoader';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
+import { OACircleLoader } from '@/widgets/OACircleLoader';
 
 const CREATE_LINK_MUTATION = gql`
   mutation PostMutation($description: String!, $url: String!) {

@@ -1,8 +1,8 @@
 import { useLocale } from 'next-intl';
-import { IdValue } from 'components/entities/functional';
 import { usePathname, useRouter } from 'next-intl/client';
 import { CSSProperties, FC } from 'react';
-import OASelect from '.';
+import OASelect from '@/features/OASelect';
+import { IdValue } from '@/entities/functional';
 
 const langs = [
   {
@@ -15,12 +15,12 @@ const langs = [
   },
 ];
 
-interface OALangSelectProps {
+interface Props {
   className?: string;
   style?: CSSProperties;
   id?: string;
 }
-const OALangSelect: FC<OALangSelectProps> = (props) => {
+const OALangSelectWidget: FC<Props> = (props) => {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -42,4 +42,4 @@ const OALangSelect: FC<OALangSelectProps> = (props) => {
   );
 };
 
-export default OALangSelect;
+export default OALangSelectWidget;

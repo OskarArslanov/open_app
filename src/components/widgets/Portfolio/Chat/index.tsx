@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-loop-func */
 import { useState } from 'react';
-import { delay } from '@/components/shared/utils/delay';
+import { delay } from '@/utils/delay';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 import Title from './Title';
 import ChatArea from './ChatArea';
 import ChatInput from './ChatInput';
 import styles from './Main.module.scss';
 import { ChatMessageType } from './ChatMessage';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
 
 const Chat = () => {
   const [messages, setMessages] = useState<ChatMessageType[]>([]);

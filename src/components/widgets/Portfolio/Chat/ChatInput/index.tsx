@@ -3,10 +3,10 @@ import SendIcon from '@mui/icons-material/Send';
 import MailIcon from '@mui/icons-material/Mail';
 import { animate } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import OAButton from '@/components/features/OAButton';
-import OAForm from '@/components/features/OAForm';
-import OAInput from '@/components/features/OAInput';
-import { delay } from '@/components/shared/utils/delay';
+import OAButton from '@/features/OAButton';
+import OAForm from '@/features/OAForm';
+import OAInput from '@/features/OAInput';
+import { delay } from '@/utils/delay';
 import styles from './ChatInput.module.scss';
 
 interface ChatInputProps {

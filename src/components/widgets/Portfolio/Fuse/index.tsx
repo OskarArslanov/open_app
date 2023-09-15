@@ -7,7 +7,7 @@ import format from 'date-fns/format';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const FuseController = styled.div({
   display: 'flex',

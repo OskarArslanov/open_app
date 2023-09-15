@@ -8,11 +8,11 @@ import {
   createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
+import StyledComponentsProvider from '@/providers/StyledComponentsProvider';
+import ThemeProvider from '@/providers/ThemeProvider';
 import OABodyContainer from './OABodyContainer';
 import OAFooterContainer from './OAFooterContainer';
 import OAHeaderContainer from './OAHeaderContainer';
-import StyledComponentsProvider from '../shared/providers/StyledComponentsProvider';
-import ThemeProvider from '../shared/providers/ThemeProvider';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000',
@@ -32,13 +32,11 @@ const Container = styled.main({
 });
 
 const App: FC<PropsWithChildren> = (props) => {
-  const [theme, setTheme] = useState('light');
-
+  const [theme, setTheme] = useState('dark');
   useEffect(() => {
-    const defaultTheme = localStorage.getItem('theme') || 'light';
+    const defaultTheme = localStorage.getItem('theme') || 'dark';
     setTheme(defaultTheme);
   }, []);
-
   return (
     <StyledComponentsProvider>
       <ApolloProvider client={client}>

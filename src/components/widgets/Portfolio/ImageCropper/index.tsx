@@ -1,13 +1,13 @@
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import OAButton from '@/components/features/OAButton';
-import CropImage from '@/components/features/OAFiles/CropImage';
-import LoadFile from '@/components/features/OAFiles/LoadFile';
-import OAModal from '@/components/features/OAModal';
+import OAButton from '@/features/OAButton';
+import CropImage from '@/features/OAFiles/CropImage';
+import LoadFile from '@/features/OAFiles/LoadFile';
+import OAModal from '@/features/OAModal';
 import Image from 'next/image';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { OAAnimateContainer } from '../../OAAnimateContainer';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const StyledImageList = styled.ul({
   display: 'flex',

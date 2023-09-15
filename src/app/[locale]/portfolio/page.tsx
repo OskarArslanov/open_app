@@ -6,16 +6,16 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
-import OAButton from '@/components/features/OAButton';
-import Registration from '@/components/widgets/Portfolio/Auth/Registration';
-import ChartJS from '@/components/widgets/Portfolio/ChartJS';
-import Commercial from '@/components/widgets/Portfolio/Commercial';
-import Fuse from '@/components/widgets/Portfolio/Fuse';
-import ImageCropper from '@/components/widgets/Portfolio/ImageCropper';
-import Studies from '@/components/widgets/Portfolio/Studies';
-import Todo from '@/components/widgets/Portfolio/Todo';
-import GraphQL from '@/components/widgets/Portfolio/GraphQL';
-import { OAAnimateContainer } from '@/components/widgets/OAAnimateContainer';
+import OAButton from '@/features/OAButton';
+import Registration from '@/widgets/Portfolio/Auth/Registration';
+import ChartJS from '@/widgets/Portfolio/ChartJS';
+import Commercial from '@/widgets/Portfolio/Commercial';
+import Fuse from '@/widgets/Portfolio/Fuse';
+import ImageCropper from '@/widgets/Portfolio/ImageCropper';
+import Studies from '@/widgets/Portfolio/Studies';
+import Todo from '@/widgets/Portfolio/Todo';
+import GraphQL from '@/widgets/Portfolio/GraphQL';
+import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from '@/components/shared/providers/ThemeProvider';
-import OASwitch from '.';
+import OASwitch from '../features/OASwitch';
 
 const variantsToggle = {
   active: {
@@ -21,17 +21,22 @@ const variantsBg = {
   },
 };
 
-const OAThemeSwitch = () => {
+const OAThemeSwitchWidget = () => {
   const themeContext = useContext(ThemeContext);
+
+  const handleSwitchTheme = (e: boolean) => {
+    const newTheme = e ? 'dark' : 'light';
+    themeContext.onChangeTheme(newTheme);
+  };
   return (
     <OASwitch
       variantsBg={variantsBg}
       variantsToggle={variantsToggle}
       state={themeContext.theme === 'dark'}
-      onChange={(e) => themeContext.onChangeTheme(e ? 'dark' : 'light')}
+      onChange={handleSwitchTheme}
       style={{ minWidth: '40px', maxWidth: '60px' }}
     />
   );
 };
 
-export default OAThemeSwitch;
+export default OAThemeSwitchWidget;
