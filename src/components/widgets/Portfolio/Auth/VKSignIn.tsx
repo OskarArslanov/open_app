@@ -23,7 +23,7 @@ const VKSignIn: FC<Props> = (props) => {
       console.log('bad auth', data);
     } else {
       axios
-        .post('/api/auth/login/vk', { someData: 'name' })
+        .post('/api/auth/login/vk', data)
         .then((resp) => props.onSuccess(resp.data));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
