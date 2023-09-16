@@ -33,10 +33,10 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     };
     const urlProfile = 'https://api.vk.com/method/account.getProfileInfo';
     const profile = (
-      await axios.get<VKProfile>(urlProfile, {
+      await axios.get<{ response: VKProfile }>(urlProfile, {
         params: paramsProfile,
       })
-    ).data;
+    ).data.response;
     return res.status(200).send({ profile, tokenData });
   } catch (err: any) {
     return res.status(404).send({ ...err, stage: 'getting_rofile', tokenData });
