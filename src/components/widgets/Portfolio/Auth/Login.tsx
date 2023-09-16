@@ -85,7 +85,7 @@ const Login = () => {
             console.log(e);
             setAlert({
               type: 'success',
-              message: `Добрый день, ${e.response.first_name} ${e.response.last_name}`,
+              message: `Добрый день, ${e.first_name} ${e.last_name}`,
             });
           }}
         />

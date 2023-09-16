@@ -37,7 +37,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
         params: paramsProfile,
       })
     ).data.response;
-    return res.status(200).send({ profile, tokenData });
+    return res.status(200).send(profile);
   } catch (err: any) {
     return res.status(404).send({ ...err, stage: 'getting_rofile', tokenData });
   }

@@ -30,42 +30,40 @@ export interface VKAccessTokenData {
 }
 
 export interface VKProfile {
-  response: {
+  id: number;
+  home_town: string;
+  status: string;
+  photo_200: string;
+  is_service_account: boolean;
+  is_tinkoff_linked: boolean;
+  is_tinkoff_verified: boolean;
+  is_sber_verified: boolean;
+  oauth_linked: [];
+  oauth_verification: [];
+  verification_status: string;
+  promo_verifications: [];
+  first_name: string;
+  last_name: string;
+  bdate: string;
+  bdate_visibility: number;
+  phone: string;
+  relation: number;
+  relation_partner: {
     id: number;
-    home_town: string;
-    status: string;
-    photo_200: string;
-    is_service_account: boolean;
-    is_tinkoff_linked: boolean;
-    is_tinkoff_verified: boolean;
-    is_sber_verified: boolean;
-    oauth_linked: [];
-    oauth_verification: [];
-    verification_status: string;
-    promo_verifications: [];
     first_name: string;
     last_name: string;
-    bdate: string;
-    bdate_visibility: number;
-    phone: string;
-    relation: number;
-    relation_partner: {
+    can_access_closed: boolean;
+    is_closed: boolean;
+  };
+  relation_requests: [
+    {
       id: number;
       first_name: string;
       last_name: string;
       can_access_closed: boolean;
       is_closed: boolean;
-    };
-    relation_requests: [
-      {
-        id: number;
-        first_name: string;
-        last_name: string;
-        can_access_closed: boolean;
-        is_closed: boolean;
-      },
-    ];
-    screen_name: string;
-    sex: number;
-  };
+    },
+  ];
+  screen_name: string;
+  sex: number;
 }
