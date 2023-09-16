@@ -18,13 +18,12 @@ const VKSignIn: FC<Props> = (props) => {
 
   useEffect(() => {
     const data = payload?.payload as VKSilentData;
-    if (!data?.user.first_name) {
-      // eslint-disable-next-line no-console
-      console.log('bad auth', data);
-    } else {
+    if (data) {
       axios
         .post('/api/auth/login/vk', data)
         .then((resp) => props.onRequest(resp.data));
+    } else {
+      console.log('bad auth', data);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(payload?.payload)]);

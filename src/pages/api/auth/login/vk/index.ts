@@ -8,7 +8,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   const data: VKSilentData = req.body;
-
+  let tokenData;
   try {
     const paramsToken = {
       v: 5.131,
@@ -17,10 +17,14 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       uuid: data.uuid,
     };
     const urlToken = 'https://api.vk.com/method/auth.exchangeSilentAuthToken';
-    const tokenData = (
+    tokenData = (
       await axios.get<VKAccessTokenData>(urlToken, { params: paramsToken })
     ).data;
+  } catch (err: any) {
+    return res.status(404).send({ ...err, stage: 'getting_access_token' });
+  }
 
+  try {
     const paramsTProfile = {
       v: 5.131,
       access_token: tokenData.access_token,
@@ -32,7 +36,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       })
     ).data;
     return res.status(200).send(profile);
-  } catch (err) {
-    return res.status(404).send(err);
+  } catch (err: any) {
+    return res.status(404).send({ ...err, stage: 'getting_rofile', tokenData });
   }
 }
