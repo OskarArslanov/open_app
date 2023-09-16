@@ -18,21 +18,23 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     };
     const urlToken = 'https://api.vk.com/method/auth.exchangeSilentAuthToken';
     tokenData = (
-      await axios.get<VKAccessTokenData>(urlToken, { params: paramsToken })
-    ).data;
+      await axios.get<{ response: VKAccessTokenData }>(urlToken, {
+        params: paramsToken,
+      })
+    ).data.response;
   } catch (err: any) {
     return res.status(404).send({ ...err, stage: 'getting_access_token' });
   }
 
   try {
-    const paramsTProfile = {
+    const paramsProfile = {
       v: 5.131,
       access_token: tokenData.access_token,
     };
     const urlProfile = 'https://api.vk.com/method/account.getProfileInfo';
     const profile = (
       await axios.get<VKProfile>(urlProfile, {
-        params: paramsTProfile,
+        params: paramsProfile,
       })
     ).data;
     return res.status(200).send({ profile, tokenData });
