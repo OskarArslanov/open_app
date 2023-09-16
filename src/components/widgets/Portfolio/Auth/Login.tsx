@@ -77,7 +77,11 @@ const Login = () => {
             {t('title')}
           </OAButton>
         </OAForm>
-        <VKSignIn />
+        <VKSignIn
+          onSuccess={(e) => {
+            console.log(e);
+          }}
+        />
       </Container>
     </OAAnimateContainer>
   );

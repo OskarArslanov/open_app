@@ -1,9 +1,34 @@
 'use client';
 
-import { Config, Connect, ConnectEvents } from '@vkontakte/superappkit';
-import { useEffect } from 'react';
+import { VKSilentData, VKUserData } from '@/components/entities/vk';
+import {
+  Config,
+  Connect,
+  ConnectEvents,
+  VKAuthButtonCallbackResult,
+} from '@vkontakte/superappkit';
+import axios from 'axios';
+import { FC, useEffect, useState } from 'react';
 
-const VKSignIn = () => {
+interface Props {
+  onSuccess: (data: VKUserData) => void;
+}
+const VKSignIn: FC<Props> = (props) => {
+  const [payload, setPayload] = useState<VKAuthButtonCallbackResult>();
+
+  useEffect(() => {
+    const data = payload?.payload as VKSilentData;
+    if (!data?.user.first_name) {
+      // eslint-disable-next-line no-console
+      console.log('bad auth', data);
+    } else {
+      axios
+        .post('/api/auth/login/vk', { someData: 'name' })
+        .then((resp) => props.onSuccess(resp.data));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(payload?.payload)]);
+
   useEffect(() => {
     Config.init({
       appId: 51750467, // идентификатор приложения
@@ -18,7 +43,7 @@ const VKSignIn = () => {
 
         switch (type) {
           case ConnectEvents.OneTapAuthEventsSDK.LOGIN_SUCCESS: // = 'VKSDKOneTapAuthLoginSuccess'
-            console.log(e);
+            setPayload(e);
             return false;
           // Для этих событий нужно открыть полноценный VK ID чтобы
           // пользователь дорегистрировался или подтвердил телефон
