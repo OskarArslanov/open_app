@@ -34,8 +34,6 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     });
     return res.status(200).send(profile);
   } catch (err) {
-    console.log(err);
-    // @ts-ignore
-    return res.status(err.code).send(err);
+    return res.status(404).send(err);
   }
 }
