@@ -8,10 +8,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   const data: VKSilentData = req.body;
-  if (!data.token) {
-    const resp = { message: 'bad auth', data };
-    return res.status(401).send(resp);
-  }
+
   try {
     const paramsToken = {
       v: 5.131,
