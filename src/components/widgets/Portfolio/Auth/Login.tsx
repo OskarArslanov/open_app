@@ -10,6 +10,7 @@ import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
 import axiosInstance from '@/utils/axiosConfig';
 import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
+import VKSignIn from './VKSignIn';
 
 const Container = styled.div`
   display: flex;
@@ -50,9 +51,10 @@ const Login = () => {
       })
       .catch((err: AxiosError) => setError(err.response?.data as string));
   };
+
   return (
     <OAAnimateContainer>
-      <Container>
+      <Container id="login">
         <Title>{t('title')}</Title>
         <OAForm onSubmit={handleSubmit} error={error}>
           <OAInput
@@ -75,6 +77,7 @@ const Login = () => {
             {t('title')}
           </OAButton>
         </OAForm>
+        <VKSignIn />
       </Container>
     </OAAnimateContainer>
   );

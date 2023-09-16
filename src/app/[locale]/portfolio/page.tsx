@@ -1,7 +1,6 @@
 'use client';
 
 import styled from '@emotion/styled';
-import { Login, Chat } from '@mui/icons-material';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -16,6 +15,8 @@ import Studies from '@/widgets/Portfolio/Studies';
 import Todo from '@/widgets/Portfolio/Todo';
 import GraphQL from '@/widgets/Portfolio/GraphQL';
 import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
+import Login from '@/components/widgets/Portfolio/Auth/Login';
+import Chat from '@/components/widgets/Portfolio/Chat';
 
 const portfolio: { id: number; name: string; content: ReactNode }[] = [
   {
