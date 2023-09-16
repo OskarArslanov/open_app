@@ -26,9 +26,11 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       access_token: tokenData.access_token,
     };
     const urlProfile = 'https://api.vk.com/method/account.getProfileInfo';
-    const profile = await axios.get<VKProfile>(urlProfile, {
-      params: paramsTProfile,
-    });
+    const profile = (
+      await axios.get<VKProfile>(urlProfile, {
+        params: paramsTProfile,
+      })
+    ).data;
     return res.status(200).send(profile);
   } catch (err) {
     return res.status(404).send(err);
