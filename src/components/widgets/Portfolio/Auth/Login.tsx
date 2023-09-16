@@ -10,6 +10,7 @@ import OAForm from '@/features/OAForm';
 import OAInput from '@/features/OAInput';
 import axiosInstance from '@/utils/axiosConfig';
 import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
+import OAAlert, { OAAlertType } from '@/components/features/OAAlert';
 import VKSignIn from './VKSignIn';
 
 const Container = styled.div`
@@ -38,6 +39,7 @@ const RememberMe = styled.div`
 
 const Login = () => {
   const [error, setError] = useState<string>();
+  const [alert, setAlert] = useState<OAAlertType>();
   const t = useTranslations('Portfolio.login');
   const handleSubmit = async (data: Record<string, any>) => {
     axiosInstance
@@ -54,6 +56,7 @@ const Login = () => {
 
   return (
     <OAAnimateContainer>
+      <OAAlert alert={alert} onClose={() => setAlert(undefined)} />
       <Container id="login">
         <Title>{t('title')}</Title>
         <OAForm onSubmit={handleSubmit} error={error}>
@@ -78,8 +81,11 @@ const Login = () => {
           </OAButton>
         </OAForm>
         <VKSignIn
-          onSuccess={(e) => {
-            console.log(e);
+          onRequest={(e) => {
+            setAlert({
+              type: 'success',
+              message: `Добрый день, ${e.response.first_name} ${e.response.last_name}`,
+            });
           }}
         />
       </Container>

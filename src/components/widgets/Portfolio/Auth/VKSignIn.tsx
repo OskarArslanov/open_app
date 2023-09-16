@@ -1,6 +1,6 @@
 'use client';
 
-import { VKSilentData, VKUserData } from '@/components/entities/vk';
+import { VKSilentData, VKProfile } from '@/components/entities/vk';
 import {
   Config,
   Connect,
@@ -11,7 +11,7 @@ import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 
 interface Props {
-  onSuccess: (data: VKUserData) => void;
+  onRequest: (data: VKProfile) => void;
 }
 const VKSignIn: FC<Props> = (props) => {
   const [payload, setPayload] = useState<VKAuthButtonCallbackResult>();
@@ -24,7 +24,7 @@ const VKSignIn: FC<Props> = (props) => {
     } else {
       axios
         .post('/api/auth/login/vk', data)
-        .then((resp) => props.onSuccess(resp.data));
+        .then((resp) => props.onRequest(resp.data));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(payload?.payload)]);
