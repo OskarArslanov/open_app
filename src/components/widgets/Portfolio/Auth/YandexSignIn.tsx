@@ -18,15 +18,14 @@ const YandexSignIn: FC = (props) => {
     setYaAuthSuggest(window?.YaAuthSuggest);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
-    <>
+    <div id="yaButtonContainer">
       <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js" />
       <Script id="yaButton">
         {yaAuthSuggest
           ?.init(oauthQueryParams, tokenPageOrigin, {
             view: 'button',
-            parentId: 'buttonContainerId',
+            parentId: 'yaButtonContainer',
             buttonSize: 'm',
             buttonView: 'main',
             buttonTheme: 'light',
@@ -40,7 +39,7 @@ const YandexSignIn: FC = (props) => {
           .then((data: any) => console.log('Сообщение с токеном', data))
           .catch((error: any) => console.log('Обработка ошибки', error))}
       </Script>
-    </>
+    </div>
   );
 };
 
