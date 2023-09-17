@@ -3,13 +3,10 @@
 import Script from 'next/script';
 import { FC, useEffect, useState } from 'react';
 
-interface Props {
-  onRequest?: (data: any) => void;
-}
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const YandexSignIn: FC<Props> = (props) => {
+const YandexSignIn: FC = (props) => {
   const [el, setEl] = useState<any>();
-
+  const [yandexSuggest, setYandexSuggest] = useState<any>();
   useEffect(() => {
     const oauthQueryParams = {
       client_id: process.env.NEXT_PUBLIC_YANDEX_CLIENT_ID,
@@ -20,6 +17,7 @@ const YandexSignIn: FC<Props> = (props) => {
     const tokenPageOrigin = process.env.NEXT_PUBLIC_YANDEX_REDIRECT;
     // @ts-ignore
     const yaSuggest = window?.YaAuthSuggest;
+    setYandexSuggest(yaSuggest);
     const button = (
       <Script id="yaButton">
         {yaSuggest
@@ -40,7 +38,17 @@ const YandexSignIn: FC<Props> = (props) => {
     setEl(button);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return el;
+
+  yandexSuggest(process.env.NEXT_PUBLIC_YANDEX_REDIRECT, {
+    flag: true,
+  });
+
+  return (
+    <>
+      <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-token-with-polyfills-latest.js" />
+      {el}
+    </>
+  );
 };
 
 export default YandexSignIn;
