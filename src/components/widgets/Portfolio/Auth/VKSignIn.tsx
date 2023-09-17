@@ -30,7 +30,7 @@ const VKSignIn: FC<Props> = (props) => {
 
   useEffect(() => {
     Config.init({
-      appId: 51750467, // идентификатор приложения
+      appId: Number(process.env.NEXT_PUBLIC_VK_ID), // идентификатор приложения
     });
 
     const VKOneTapButton = Connect.buttonOneTapAuth({

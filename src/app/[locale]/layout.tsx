@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { Metadata } from 'next';
 import App from '@/components/layout/App';
+import Script from 'next/script';
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ru' }];
@@ -35,6 +36,7 @@ const LocaleLayout: FC<LocaleLayoutProps> = async (props) => {
   return (
     <html style={{ height: '100%' }} lang={locale}>
       <body className={inter.className} style={{ height: '100%' }}>
+        <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js" />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <App>{props.children}</App>
         </NextIntlClientProvider>
