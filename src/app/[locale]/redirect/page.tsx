@@ -18,7 +18,7 @@ export default function RedirectPage() {
         {yaSendSuggest?.(
           'https://oskararslanov.vercel.app/portfolio?job=login',
           {
-            flag: true,
+            kek: 'true',
           },
         )}
       </Script>
