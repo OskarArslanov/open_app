@@ -48,6 +48,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-switch": "^7.0.0",
     "sass": "^1.66.1",
+    "sharp": "^0.32.5",
     "storybook": "^7.4.1",
     "styled-components": "^6.0.0-rc.3"
   },
