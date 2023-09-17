@@ -10,11 +10,8 @@ const YandexSignIn: FC = (props) => {
     const oauthQueryParams = {
       client_id: process.env.NEXT_PUBLIC_YANDEX_CLIENT_ID,
       response_type: 'token',
-      redirect_uri: process.env.NEXT_PUBLIC_YANDEX_REDIRECT,
     };
-
-    console.log(window);
-    const tokenPageOrigin = process.env.NEXT_PUBLIC_YANDEX_REDIRECT;
+    const tokenPageOrigin = 'https://oskararslanov.vercel.app/redirect';
     // @ts-ignore
     const yaAuthSuggest = window?.YaAuthSuggest;
     const button = (
@@ -34,22 +31,11 @@ const YandexSignIn: FC = (props) => {
           .catch((error: any) => console.log('Обработка ошибки', error))}
       </Script>
     );
-
-    // @ts-ignore
-    const yaSendSuggest = window?.YaSendSuggestToken;
     setEl(button);
-    yaSendSuggest?.(process.env.NEXT_PUBLIC_YANDEX_REDIRECT, {
-      flag: true,
-    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <>
-      <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-token-with-polyfills-latest.js" />
-      {el}
-    </>
-  );
+  return el;
 };
 
 export default YandexSignIn;
