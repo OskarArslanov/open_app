@@ -83,7 +83,6 @@ const Login = () => {
         </OAForm>
         <VKSignIn
           onRequest={(e) => {
-            console.log(e);
             setAlert({
               type: 'success',
               message: `Добрый день, ${e.first_name} ${e.last_name}`,
