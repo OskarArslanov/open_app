@@ -35,6 +35,10 @@ const LocaleLayout: FC<LocaleLayoutProps> = async (props) => {
 
   return (
     <html style={{ height: '100%' }} lang={locale}>
+      <meta
+        httpEquiv="Content-Security-Policy"
+        content="img-src 'self' data: mc.admetrica.ru mc.yandex.ru avatars.mds.yandex.net yastatic.net https://passport-rc.yandex.ru/;"
+      />
       <body className={inter.className} style={{ height: '100%' }}>
         <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js" />
         <NextIntlClientProvider locale={locale} messages={messages}>
