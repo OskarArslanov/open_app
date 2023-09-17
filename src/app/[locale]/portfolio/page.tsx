@@ -92,6 +92,7 @@ const Portfolio = () => {
   const t = useTranslations('Portfolio');
 
   useEffect(() => {
+    console.log(params?.keys().next());
     if (params?.size) return;
     const defaultParams = new URLSearchParams();
     defaultParams.set('job', 'commercial');

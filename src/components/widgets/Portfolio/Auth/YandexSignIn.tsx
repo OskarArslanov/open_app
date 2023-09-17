@@ -6,7 +6,6 @@ import { FC, useEffect, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const YandexSignIn: FC = (props) => {
   const [el, setEl] = useState<any>();
-  const [yandexSuggest, setYandexSuggest] = useState<any>();
   useEffect(() => {
     const oauthQueryParams = {
       client_id: process.env.NEXT_PUBLIC_YANDEX_CLIENT_ID,
@@ -14,13 +13,13 @@ const YandexSignIn: FC = (props) => {
       redirect_uri: process.env.NEXT_PUBLIC_YANDEX_REDIRECT,
     };
 
+    console.log(window);
     const tokenPageOrigin = process.env.NEXT_PUBLIC_YANDEX_REDIRECT;
     // @ts-ignore
-    const yaSuggest = window?.YaAuthSuggest;
-    setYandexSuggest(yaSuggest);
+    const yaAuthSuggest = window?.YaAuthSuggest;
     const button = (
       <Script id="yaButton">
-        {yaSuggest
+        {yaAuthSuggest
           ?.init(oauthQueryParams, tokenPageOrigin, {
             view: 'button',
             parentId: 'buttonContainerId',
@@ -35,13 +34,15 @@ const YandexSignIn: FC = (props) => {
           .catch((error: any) => console.log('Обработка ошибки', error))}
       </Script>
     );
+
+    // @ts-ignore
+    const yaSendSuggest = window?.YaSendSuggestToken;
     setEl(button);
+    yaSendSuggest?.(process.env.NEXT_PUBLIC_YANDEX_REDIRECT, {
+      flag: true,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  yandexSuggest(process.env.NEXT_PUBLIC_YANDEX_REDIRECT, {
-    flag: true,
-  });
 
   return (
     <>
