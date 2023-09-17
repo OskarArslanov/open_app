@@ -16,45 +16,19 @@ const YandexSignIn: FC = (props) => {
     const yaAuthSuggest = window?.YaAuthSuggest;
     const button = (
       <Script id="yaButton">
-        {
-          // yaAuthSuggest
-          //   ?.init(oauthQueryParams, tokenPageOrigin, {
-          //     view: 'button',
-          //     parentId: 'buttonContainerId',
-          //     buttonSize: 'm',
-          //     buttonView: 'main',
-          //     buttonTheme: 'light',
-          //     buttonBorderRadius: '10',
-          //     buttonIcon: 'ya',
-          //   })
-          //   .then(({ handler }: { handler: any }) => handler())
-          //   .then((data: any) => console.log('Сообщение с токеном', data))
-          //   .catch((error: any) => console.log('Обработка ошибки', error))
-          yaAuthSuggest
-            .init(oauthQueryParams, tokenPageOrigin, {
-              view: 'button',
-              parentId: 'container',
-              buttonView: 'main',
-              buttonTheme: 'light',
-              buttonSize: 'm',
-              buttonBorderRadius: 0,
-            })
-            .then(function (result: any) {
-              return result.handler();
-            })
-            .then(function (data: any) {
-              console.log('Сообщение с токеном: ', data);
-              document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(
-                data,
-              )}`;
-            })
-            .catch(function (error: any) {
-              console.log('Что-то пошло не так: ', error);
-              document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(
-                error,
-              )}`;
-            })
-        }
+        {yaAuthSuggest
+          ?.init(oauthQueryParams, tokenPageOrigin, {
+            view: 'button',
+            parentId: 'buttonContainerId',
+            buttonSize: 'm',
+            buttonView: 'main',
+            buttonTheme: 'light',
+            buttonBorderRadius: '10',
+            buttonIcon: 'ya',
+          })
+          .then((resp: any) => resp.handler())
+          .then((data: any) => console.log('Сообщение с токеном', data))
+          .catch((error: any) => console.log('Обработка ошибки', error))}
       </Script>
     );
     setEl(button);
