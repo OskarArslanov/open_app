@@ -11,7 +11,7 @@ const intlMiddleware = createIntlMiddleware({
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const middleware = (req: NextRequest, res: NextResponse) => {
-  const requestHeaders = new Headers();
+  const requestHeaders = new Headers(req.headers);
   requestHeaders.set('Content-Security-Policy', csp);
   return NextResponse.next({
     headers: requestHeaders,

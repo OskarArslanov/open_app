@@ -26,7 +26,10 @@ const YandexSignIn: FC = (props) => {
             buttonBorderRadius: '10',
             buttonIcon: 'ya',
           })
-          .then((resp: any) => resp.handler())
+          .then((resp: any) => {
+            console.log(resp);
+            resp.handler();
+          })
           .then((data: any) => console.log('Сообщение с токеном', data))
           .catch((error: any) => console.log('Обработка ошибки', error))}
       </Script>
@@ -35,7 +38,12 @@ const YandexSignIn: FC = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return el;
+  return (
+    <>
+      <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js" />
+      {el}
+    </>
+  );
 };
 
 export default YandexSignIn;

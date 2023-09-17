@@ -85,7 +85,7 @@ const Login = () => {
           onRequest={(e) => {
             setAlert({
               type: 'success',
-              message: `Добрый день, ${e.first_name} ${e.last_name}`,
+              message: `Добрый день от vk.com, ${e.first_name} ${e.last_name}`,
             });
           }}
         />
