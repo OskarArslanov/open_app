@@ -7,7 +7,7 @@ export default function RedirectPage() {
   useEffect(() => {
     // @ts-ignore
     const yaSendSuggest = window?.YaSendSuggestToken;
-    yaSendSuggest?.(process.env.NEXT_PUBLIC_YANDEX_REDIRECT, {
+    yaSendSuggest?.('https://oskararslanov.vercel.app/portfolio?job=login', {
       flag: true,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
