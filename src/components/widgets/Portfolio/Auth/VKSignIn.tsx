@@ -71,7 +71,7 @@ const VKSignIn: FC<Props> = (props) => {
         // showAlternativeLogin: true, // Отображение кнопки "Войти другим способом"
         displayMode: 'default', // Режим отображения кнопки 'default' | 'name_phone' | 'phone_name'
         buttonStyles: {
-          borderRadius: 8, // Радиус скругления кнопок
+          borderRadius: 10, // Радиус скругления кнопок
         },
       },
     });

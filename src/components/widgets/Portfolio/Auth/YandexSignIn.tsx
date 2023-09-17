@@ -32,10 +32,7 @@ const YandexSignIn: FC = (props) => {
             buttonBorderRadius: '10',
             buttonIcon: 'ya',
           })
-          .then((resp: any) => {
-            console.log(resp);
-            resp.handler();
-          })
+          .then((resp: any) => resp.handler())
           .then((data: any) => console.log('Сообщение с токеном', data))
           .catch((error: any) => console.log('Обработка ошибки', error))}
       </Script>

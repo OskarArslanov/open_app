@@ -38,6 +38,11 @@ const RememberMe = styled.div`
   margin-bottom: 8px;
 `;
 
+const StyledLoginGroup = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10px',
+});
 const Login = () => {
   const [error, setError] = useState<string>();
   const [alert, setAlert] = useState<OAAlertType>();
@@ -77,19 +82,21 @@ const Login = () => {
             <OACheckbox name="remember" label={t('remember')} />
             <OAButton variant="ghost">{t('forget')}?</OAButton>
           </RememberMe>
-          <OAButton type="submit" fullwidth>
-            {t('title')}
-          </OAButton>
+          <StyledLoginGroup>
+            <OAButton type="submit" fullwidth style={{ borderRadius: '10px' }}>
+              {t('title')}
+            </OAButton>
+            <VKSignIn
+              onRequest={(e) => {
+                setAlert({
+                  type: 'success',
+                  message: `Добрый день от vk.com, ${e.first_name} ${e.last_name}`,
+                });
+              }}
+            />
+            <YandexSignIn />
+          </StyledLoginGroup>
         </OAForm>
-        <VKSignIn
-          onRequest={(e) => {
-            setAlert({
-              type: 'success',
-              message: `Добрый день от vk.com, ${e.first_name} ${e.last_name}`,
-            });
-          }}
-        />
-        <YandexSignIn />
       </Container>
     </OAAnimateContainer>
   );
