@@ -11,7 +11,6 @@ import OAInput from '@/features/OAInput';
 import axiosInstance from '@/utils/axiosConfig';
 import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 import OAAlert, { OAAlertType } from '@/components/features/OAAlert';
-import Script from 'next/script';
 import VKSignIn from './VKSignIn';
 import YandexSignIn from './YandexSignIn';
 import SberSignIn from './SberSignIn';
@@ -101,7 +100,6 @@ const Login = () => {
           </StyledLoginGroup>
         </OAForm>
       </Container>
-      <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js" />
     </OAAnimateContainer>
   );
 };

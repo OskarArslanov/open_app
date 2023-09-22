@@ -2,11 +2,8 @@
 
 import { FC, useEffect } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const YandexSignIn: FC = (props) => {
+const YandexSignIn: FC = () => {
   useEffect(() => {
-    console.log(window);
-
     // @ts-ignore
     window?.YaAuthSuggest?.init(
       {
@@ -24,13 +21,9 @@ const YandexSignIn: FC = (props) => {
         buttonIcon: 'ya',
       },
     )
-      .then((resp: any) => {
-        resp.handler();
-        console.log(resp);
-      })
+      .then((resp: any) => resp.handler())
       .then((data: any) => console.log('Сообщение с токеном', data))
       .catch((error: any) => console.log('Обработка ошибки', error));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <div id="yaButtonContainer" />;
 };
