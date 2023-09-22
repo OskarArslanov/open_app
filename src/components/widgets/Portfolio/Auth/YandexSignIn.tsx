@@ -1,11 +1,12 @@
 'use client';
 
-import Script from 'next/script';
 import { FC, useEffect } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const YandexSignIn: FC = (props) => {
   useEffect(() => {
+    console.log(window);
+
     // @ts-ignore
     window?.YaAuthSuggest?.init(
       {
@@ -31,11 +32,7 @@ const YandexSignIn: FC = (props) => {
       .catch((error: any) => console.log('Обработка ошибки', error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return (
-    <div id="yaButtonContainer">
-      <Script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js" />
-    </div>
-  );
+  return <div id="yaButtonContainer" />;
 };
 
 export default YandexSignIn;

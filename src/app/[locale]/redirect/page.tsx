@@ -5,11 +5,12 @@ import { useEffect } from 'react';
 
 export default function RedirectPage() {
   useEffect(() => {
+    console.log(window);
     // @ts-ignore
     window?.YaSendSuggestToken?.(
       'https://oskararslanov.vercel.app/portfolio?job=login',
       {
-        kek: 'true',
+        flag: true,
       },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
