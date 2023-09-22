@@ -4,14 +4,14 @@ import { FC, useEffect } from 'react';
 
 const YandexSignIn: FC = () => {
   useEffect(() => {
-    console.log(window);
     // @ts-ignore
     window?.YaAuthSuggest?.init(
       {
         client_id: process.env.NEXT_PUBLIC_YANDEX_CLIENT_ID,
         response_type: 'token',
+        redirect_uri: 'https://oskararslanov.vercel.app/redirect',
       },
-      'https://oskararslanov.vercel.app/redirect',
+      'https://oskararslanov.vercel.app',
       {
         view: 'button',
         parentId: 'yaButtonContainer',
