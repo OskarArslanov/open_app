@@ -13,6 +13,7 @@ import { OAAnimateContainer } from '@/widgets/OAAnimateContainer';
 import OAAlert, { OAAlertType } from '@/components/features/OAAlert';
 import VKSignIn from './VKSignIn';
 import YandexSignIn from './YandexSignIn';
+import SberSignIn from './SberSignIn';
 
 const Container = styled.div`
   display: flex;
@@ -95,6 +96,7 @@ const Login = () => {
               }}
             />
             <YandexSignIn />
+            <SberSignIn />
           </StyledLoginGroup>
         </OAForm>
       </Container>
