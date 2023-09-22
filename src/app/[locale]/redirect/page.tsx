@@ -8,14 +8,20 @@ export default function RedirectPage() {
   const [yaSendSuggest, setYaSendSuggest] = useState<any>();
   useEffect(() => {
     // @ts-ignore
-    setYaSendSuggest(
-      // @ts-ignore
-      window?.YaSendSuggestToken?.(
-        'https://oskararslanov.vercel.app/portfolio?job=login',
-        {
-          kek: 'true',
-        },
-      ),
+    // setYaSendSuggest(
+    //   // @ts-ignore
+    //   window?.YaSendSuggestToken?.(
+    //     'https://oskararslanov.vercel.app/portfolio?job=login',
+    //     {
+    //       kek: 'true',
+    //     },
+    //   ),
+    // );
+    window?.YaSendSuggestToken?.(
+      'https://oskararslanov.vercel.app/portfolio?job=login',
+      {
+        kek: 'true',
+      },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
