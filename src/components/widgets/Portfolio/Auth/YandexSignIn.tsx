@@ -4,6 +4,7 @@ import { FC, useEffect } from 'react';
 
 const YandexSignIn: FC = () => {
   useEffect(() => {
+    console.log(window);
     // @ts-ignore
     window?.YaAuthSuggest?.init(
       {
@@ -21,7 +22,10 @@ const YandexSignIn: FC = () => {
         buttonIcon: 'ya',
       },
     )
-      .then((resp: any) => resp.handler())
+      .then((resp: any) => {
+        console.log(resp);
+        resp.handler();
+      })
       .then((data: any) => console.log('Сообщение с токеном', data))
       .catch((error: any) => console.log('Обработка ошибки', error));
   }, []);

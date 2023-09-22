@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 const RedirectPage = () => {
   useEffect(() => {
+    console.log(window);
     // @ts-ignore
     window?.YaSendSuggestToken?.(
       'https://oskararslanov.vercel.app/portfolio?job=login',
